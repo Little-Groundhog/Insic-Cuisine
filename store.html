@@ -44,11 +44,31 @@
             <div class="row">
                 <div class="col-md-6"><img class="img-fluid" src="assets/img/bg.jpg"></div>
                 <div class="col-md-6"><form action="https://send.pageclip.co/QDUsPPaRQQDEqDT89SEa4pzJnajF1Yh7" class="pageclip-form" method="post">
-  <!-- Replace these inputs with your own. Make sure they have a "name" attribute! -->
-  <input type="text" name="name" value="John Doe" />
-  <input type="email" name="email" value="john.doe@example.com" />
 
-  <!-- This button will have a loading spinner. Keep the inner span for best results. -->
+  <!-- text field -->
+  <br><input type="text" name="name" value="John Doe"/>
+  <input type="email" name="email" value="john.doe@exemple.com"/><br><br>
+
+  <select name="heardFrom">
+    <option value="ph" selected>Cuisine bleue</option>
+    <option value="hn">Cuisine rouge</option>
+  </select><br>
+
+  <!-- radio buttons -->
+  <input type="radio" name="Evier" value="simple" id="evier" checked/>
+  <label htmlFor="tarantula">Evier</label>
+
+  <input type="radio" name="Evier2" value="double" id="evier2"/>
+  <label htmlFor="turtle">Evier double</label><br>
+
+  <!-- checkboxes -->
+  <input type="checkbox" name="pizza" id="pizza" checked/>
+  <label htmlFor="pizza">Pizza 🍕</label>
+
+  <input type="checkbox" name="frites" id="frites"/>
+  <label htmlFor="yams">Potatos 🍠</label><br>
+
+  <!-- hidden inputs -->
   <button type="submit" class="pageclip-form__submit">
     <span>Send</span>
   </button>
