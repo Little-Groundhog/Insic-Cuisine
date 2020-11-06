@@ -36,8 +36,7 @@
                     <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.html">Nos meubles</a></li>
-                    <li class="nav-item"><a class="nav-link" href="store.html">Configurateur</a></li>
->>>>>>> 080b4c0... Export du site web:index.html
+                    <li class="nav-item"><a class="nav-link" href="store.php">Configurateur</a></li>
                 </ul>
         </div>
         </div>
