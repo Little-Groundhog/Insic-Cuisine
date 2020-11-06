@@ -27,10 +27,17 @@
             <div
                 class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav mx-auto">
+<<<<<<< Updated upstream:index.html
                     <li class="nav-item" role="presentation"><a class="nav-link" href="index.html">Accueil</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="about.html">A propos</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="products.html">Nos meubles</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="store.html">Configurateur</a></li>
+=======
+                    <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.php">A propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.php">Nos meubles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="store.php">Configurateur</a></li>
+>>>>>>> Stashed changes:index.php
                 </ul>
         </div>
         </div>
