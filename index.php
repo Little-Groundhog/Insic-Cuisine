@@ -17,27 +17,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css">
     <link rel="stylesheet" href="assets/css/Team-Clean.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
 
 <body style="background: linear-gradient(rgba(255,255,255,0.43), rgba(47, 23, 15, 0.65) 65%);">
-    <h1 class="text-center text-white d-none d-lg-block site-heading"><span class="text-primary site-heading-upper mb-3">UNe cuisine d'exception conçu par vous</span><span class="site-heading-lower" style="color: rgb(30,29,29);">INSIC&nbsp; CUISINE</span></h1>
+    <h1 class="text-center text-white d-none d-lg-block site-heading"><span class="text-primary site-heading-upper mb-3">UNe cuisine d'exception conçu par vous</span><span class="site-heading-lower" style="color: rgb(30,29,29);">INSIC Cuisine</span></h1>
     <nav class="navbar navbar-light navbar-expand-lg bg-dark py-lg-4"
         id="mainNav">
         <div class="container"><a class="navbar-brand text-uppercase d-lg-none text-expanded" href="#">INSIC CUISINE</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div
                 class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav mx-auto">
-<<<<<<< Updated upstream:index.html
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="index.html">Accueil</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="about.html">A propos</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="products.html">Nos meubles</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="store.html">Configurateur</a></li>
-=======
                     <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.php">A propos</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.php">Nos meubles</a></li>
                     <li class="nav-item"><a class="nav-link" href="store.php">Configurateur</a></li>
->>>>>>> Stashed changes:index.php
+=======
+                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Nos meubles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="store.html">Configurateur</a></li>
+>>>>>>> 080b4c0... Export du site web:index.html
                 </ul>
         </div>
         </div>

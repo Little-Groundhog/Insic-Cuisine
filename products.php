@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css">
     <link rel="stylesheet" href="assets/css/Team-Clean.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
 
 <body style="background: linear-gradient(rgba(72,69,69,0.65) 0%, rgba(255,255,255,0.65) 0%, rgba(47, 23, 15, 0.65));">
@@ -26,10 +27,10 @@
             <div
                 class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav mx-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="index.html">Accueil</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="about.html">A propos</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="products.html">Nos meubles</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="store.html">Configurateur</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Nos meubles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="store.html">Configurateur</a></li>
                 </ul>
         </div>
         </div>

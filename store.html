@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css">
     <link rel="stylesheet" href="assets/css/Team-Clean.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
 
 <body style="background: linear-gradient(rgba(135,135,135,0.65), rgba(255,255,255,0.65) 51%, rgba(105,105,105,0.65) 100%);">
@@ -26,10 +27,10 @@
             <div
                 class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav mx-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="index.html">Accueil</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="about.html">A propos</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="products.html">Nos meubles</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="store.html">Configurateur</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Nos meubles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="store.html">Configurateur</a></li>
                 </ul>
         </div>
         </div>
@@ -46,7 +47,7 @@
                 <div class="col-md-6"><form action="https://send.pageclip.co/QDUsPPaRQQDEqDT89SEa4pzJnajF1Yh7" class="pageclip-form" method="post">
 
   <!-- text field -->
-  <br><input type="text" name="name" value="John Doe"/>
+  <br><input type="text" name="name" value="John Doe"/><br>
   <input type="email" name="email" value="john.doe@exemple.com"/><br><br>
 
   <select name="heardFrom">
@@ -63,35 +64,29 @@
 
   <!-- checkboxes -->
   <input type="checkbox" name="pizza" id="pizza" checked/>
-  <label htmlFor="pizza">Pizza 🍕</label>
+  <label htmlFor="pizza">Poignées 🍕</label>
 
   <input type="checkbox" name="frites" id="frites"/>
-  <label htmlFor="yams">Potatos 🍠</label><br>
+  <label htmlFor="yams">Pieds 🍠</label><br>
 
   <!-- hidden inputs -->
   <button type="submit" class="pageclip-form__submit">
     <span>Send</span>
   </button>
 </form>
-                    <p style="font-family: Raleway, sans-serif;font-size: 25px;margin: 15px 0px 0px;">Type de cuisine</p>
-                    <div class="btn-toolbar d-lg-flex justify-content-lg-start" style="border-style: none;height: 38px;font-size: 20px;">
-                        <div class="btn-group border rounded d-lg-flex" role="group"><button class="btn btn-primary" type="button" style="font-family: Raleway, sans-serif;font-size: 20px;" title="test">Intérieur</button><button class="btn btn-primary text-center d-lg-flex" type="button" style="font-family: Raleway, sans-serif;font-size: 20px;">Extérieur</button></div>
-                        <div
-                            class="btn-group" role="group"></div>
+                    <div class="btn-toolbar">
+                        <div class="btn-group" role="group"><button class="btn btn-primary" type="button">Button 1</button><button class="btn btn-primary" type="button">Button 2</button></div>
+                        <div class="btn-group" role="group"><button class="btn btn-primary" type="button">Button 1</button><a class="btn btn-primary" role="button">Button 2</a></div>
+                    </div>
+                    <div class="btn-group"><button class="btn btn-primary" type="button">Button </button><button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false" type="button"></button>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
+                    </div>
+                    <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown </button>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
+                    </div>
                 </div>
-                <p style="font-family: Raleway, sans-serif;font-size: 25px;margin: 15px 0px 0px;">Nombres de modules</p><input class="border rounded-0" type="number" data-toggle="tooltip" data-bs-tooltip="" data-placement="right" style="font-family: Raleway, sans-serif;font-size: 20px;" title="[1 ; 10]">
-                <p style="font-size: 25px;font-family: Raleway, sans-serif;margin: 15px 0px 0px;">Style</p>
-                <div class="btn-toolbar" style="border-style: none;font-size: 20px;">
-                    <div class="btn-group" role="group"><button class="btn btn-primary" type="button" style="font-size: 20px;font-family: Raleway, sans-serif;">Ancien</button><button class="btn btn-primary" type="button" style="font-size: 20px;font-family: Raleway, sans-serif;">Moderne</button></div>
-                    <div
-                        class="btn-group" role="group"><button class="btn btn-primary" type="button" style="font-size: 20px;font-family: Raleway, sans-serif;">Rétro</button><button class="btn btn-primary" type="button" style="font-size: 20px;font-family: Raleway, sans-serif;">Futuriste</button></div>
             </div>
-            <p style="font-size: 25px;font-family: Raleway, sans-serif;margin: 15px 0px 0px;">Niveau de finitions</p><button class="btn btn-primary" type="button" style="font-size: 20px;font-family: Raleway, sans-serif;">Classique</button><button class="btn btn-primary" type="button" style="font-size: 20px;font-family: Raleway, sans-serif;">Premium</button>
-            <button
-                class="btn btn-primary" type="button" style="font-size: 20px;font-family: Raleway, sans-serif;">Luxueux</button>
-                <p style="font-size: 25px;font-family: Raleway, sans-serif;margin: 15px 0px 0px;">Niveau de finitions</p><button class="btn btn-primary" type="button" style="font-size: 20px;font-family: Raleway, sans-serif;">Luxueux</button></div>
-    </div>
-    </div>
+        </div>
     </div>
     <footer class="footer text-faded text-center py-5">
         <div class="container">
