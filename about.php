@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css">
     <link rel="stylesheet" href="assets/css/Team-Clean.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
 
 <body style="background: linear-gradient(rgba(252,252,252,0.65), rgba(80,60,53,0.65) 0%, rgba(255,255,255,0.65) 47%, rgba(47, 23, 15, 0.65) 100%);">
@@ -26,10 +27,10 @@
             <div
                 class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav mx-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="index.html">Accueil</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="about.html">A propos</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="products.html">Nos meubles</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="store.html">Configurateur</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Nos meubles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="store.html">Configurateur</a></li>
                 </ul>
         </div>
         </div>
@@ -87,16 +88,16 @@
                 <p class="text-center"></p>
             </div>
             <div class="row people">
-                <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" data-bs-hover-animate="bounce" src="assets/img/1.jpg">
+                <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" data-bs-hover-animate="jello" src="assets/img/1.png">
                     <h3 class="name">Adrien NEBON</h3>
-                    <p class="title">CTO /&nbsp;<strong>mechanical engineer</strong></p>
+                    <p class="title">CTO /&nbsp;<strong>mARKETING MANAGER</strong></p>
                 </div>
                 <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" data-bs-hover-animate="bounce" src="assets/img/team%20cha.png">
                     <h3 class="name">Charlotte JANIK</h3>
                     <p class="title">CEO / Design manager</p>
                     <p class="description"></p>
                 </div>
-                <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" data-bs-hover-animate="bounce" src="assets/img/0.jpg" style="filter: brightness(99%) contrast(100%) saturate(101%) sepia(0%);">
+                <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" data-bs-hover-animate="tada" src="assets/img/0.jpg" style="filter: brightness(99%) contrast(100%) saturate(101%) sepia(0%);">
                     <h3 class="name">Maxime BELCOUR</h3>
                     <p class="title">CFO / developer</p>
                 </div>
