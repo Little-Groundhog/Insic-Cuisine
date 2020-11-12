@@ -58,10 +58,6 @@
                     }
                     ?>
 
-                    <?php//FIXME TEST A DEGAGER
-                    $reponse = $bdd->query('SELECT * FROM iblkmqyy_cuisine.client');
-                    $donnees = $reponse->fetch();
-                    ?>
   <!-- text field -->
   <form>
     <h1>Formulaire de contact</h1><br>
@@ -97,23 +93,14 @@
     </label><br>
 
   <!-- hidden inputs -->
-  <button type="submit" value="Envoyer 😘" name="go"></button>
+  <input type="submit" value="Envoyer 😘" name="go"></input>
 
   <?php
-  if(isset($_POST['go']) AND $_POST['go']=='Envoyer 😘')//Quand le bouton envoyer est pressé
-  {//recopie des valeurs dans les inputs
-      $nom = $_POST['nom'];
-      $prenom = $_POST['prenom'];
-      $telephone = $_POST['telephone'];
-      $adresse = $_POST['adresse'];
-      $codePostal = $_POST['codePostal'];
-      $mail = $_POST['mail'];
-
+  if(isset($_POST['go']))//Quand le bouton envoyer est pressé
+  {
       //Envoi dans la base de donnée
-      INSERT INTO iblkmqyy_cuisine.client(`nom`, `prenom`, `adresse`, `code_postal`, `telephone`, `mail`)
-      VALUES ($nom,$prenom,$adresse,$codePostal,$telephone,$mail);
-
-      print("<center>Merci $prenom $nom, c'est noté j'envoie tout ça à la base de données</center>");
+      $sql = 'INSERT INTO iblkmqyy_cuisine.client VALUES
+        ("'.$_POST['nom'].'","'.$_POST['prenom'].'","'.$_POST['adresse'].'","'.$_POST['codePostal'].'","'.$_POST['telephone'].'","'.$_POST['mail'].'");';
   }
   ?>
 </form>
@@ -131,7 +118,6 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/current-day.js"></script>
-    <script src="https://s.pageclip.co/v1/pageclip.js"></script>
 </body>
 
 </html>
