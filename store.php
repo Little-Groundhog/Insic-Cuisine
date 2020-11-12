@@ -46,14 +46,41 @@
                 <div class="col-md-6"><img class="img-fluid" src="assets/img/bg.jpg"></div>
                 <div class="col-md-6"><form action="https://send.pageclip.co/QDUsPPaRQQDEqDT89SEa4pzJnajF1Yh7" class="pageclip-form" method="post">
 
-  <!-- text field -->
-  <br><input type="text" name="name" value="John Doe"/><br>
-  <input type="email" name="email" value="john.doe@exemple.com"/><br><br>
+<!--Connexion à la base de données>
+                  <?php
+                  try
+                  {
+                  	$bdd = new PDO('mysql:host=localhost;dbname=iblkmqyy_cuisine;charset=utf8', 'iblkmqyy_cuisine', 'Marmotte8');
+                  }
+                  catch (Exception $e)
+                  {
+                          die('Erreur : ' . $e->getMessage());
+                  }
+                  ?>
 
-  <select name="heardFrom">
-    <option value="ph" selected>Cuisine bleue</option>
-    <option value="hn">Cuisine rouge</option>
-  </select><br>
+                  <?php
+                  $reponse = $bdd->query('SELECT * FROM 'client'');
+                  $donnees = $reponse->fetch();
+                  ?>
+  <!-- text field -->
+                  <br>
+                        <label>
+                            <input type="text" name="name" value=<?php echo $donnees['nom']; ?>/>
+                        </label>
+                  <br>
+                        <label>
+                            <input type="email" name="email" value=<?php echo $donnees['mail']; ?>/>
+                        </label>
+                  <br>
+                  <br>
+
+                        <label>
+                            <select name="heardFrom">
+                              <option value="ph" selected>Cuisine bleue</option>
+                              <option value="hn">Cuisine rouge</option>
+                            </select>
+                        </label>
+                  <br>
 
   <!-- radio buttons -->
   <input type="radio" name="Evier" value="simple" id="evier" checked/>
