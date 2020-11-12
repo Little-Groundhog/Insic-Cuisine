@@ -21,9 +21,6 @@
 </head>
 
 <body style="background: linear-gradient(rgba(135,135,135,0.65), rgba(255,255,255,0.65) 51%, rgba(105,105,105,0.65) 100%);">
-    <?php
-        $bdd = new PDO('mysql:host=cuisine.czdtdui8tllu.us-east-1.rds.amazonaws.com;dbname=cuisine;charset=utf8', 'admin', 'marmotte');
-    ?>
     <h1 class="text-center text-white d-none d-lg-block site-heading"><span class="text-primary site-heading-upper mb-3">CRÉONS votre cuisine ensemble&nbsp;</span><span class="site-heading-lower">INSIC CUISINE</span></h1>
     <nav class="navbar navbar-light navbar-expand-lg bg-dark py-lg-4" id="mainNav">
         <div class="container"><a class="navbar-brand text-uppercase d-lg-none text-expanded" href="#">INSIC CUISINE</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -102,5 +99,6 @@
     <script src="assets/js/current-day.js"></script>
     <script src="https://s.pageclip.co/v1/pageclip.js"></script>
 </body>
+
 
 </html>
