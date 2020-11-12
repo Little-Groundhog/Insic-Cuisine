@@ -82,41 +82,40 @@
 
   <!-- hidden inputs -->
   <input type="submit" value="Envoyer 😘" name="go"></input>
-
-  <?php
-  if(isset($_POST["go"]))//Quand le bouton envoyer est pressé
-  {
-      try
-      {
-        $bdd = new PDO('mysql:host=localhost;dbname=iblkmqyy_cuisine;charset=utf8', 'iblkmqyy_cuisine', 'Marmotte8');
-        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      }
-      catch (Exception $e)
-      {
-              die('Erreur : ' . $e->getMessage());
-      }
-
-      $nom = $_POST["nom"];
-      $prenom = $_POST["prenom"];
-      $adresse = $_POST["adresse"];
-      $codePostal = $_POST["codePostal"];
-      $telephone = $_POST["telephone"];
-      $mail = $_POST["mail"];
-
-      //Envoi dans la base de donnée
-      $sql = $bdd->prepare ("INSERT INTO client VALUES
-                            (:nom, :prenom, :adresse, :codePostal, :telephone, :mail)");
-
-      $sql->bindParam(':nom',$nom);
-      $sql->bindParam(':prenom',$prenom);
-      $sql->bindParam(':adresse',$adresse);
-      $sql->bindParam(':codePostal',$codePostal);
-      $sql->bindParam(':telephone',$telephone);
-      $sql->bindParam(':mail',$mail);
-      $sql->execute();
-  }
-  ?>
 </form>
+<?php
+if(isset($_POST["go"]))//Quand le bouton envoyer est pressé
+{
+    try
+    {
+      $bdd = new PDO('mysql:host=localhost;dbname=iblkmqyy_cuisine;charset=utf8', 'iblkmqyy_cuisine', 'Marmotte8');
+      $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+    catch (Exception $e)
+    {
+            die('Erreur : ' . $e->getMessage());
+    }
+
+    $nom = $_POST["nom"];
+    $prenom = $_POST["prenom"];
+    $adresse = $_POST["adresse"];
+    $codePostal = $_POST["codePostal"];
+    $telephone = $_POST["telephone"];
+    $mail = $_POST["mail"];
+
+    //Envoi dans la base de donnée
+    $sql = $bdd->prepare ("INSERT INTO client VALUES
+                          (:nom, :prenom, :adresse, :codePostal, :telephone, :mail)");
+
+    $sql->bindParam(':nom',$nom);
+    $sql->bindParam(':prenom',$prenom);
+    $sql->bindParam(':adresse',$adresse);
+    $sql->bindParam(':codePostal',$codePostal);
+    $sql->bindParam(':telephone',$telephone);
+    $sql->bindParam(':mail',$mail);
+    $sql->execute();
+}
+?>
                     <div class="btn-toolbar"></div>
                 </div>
             </div>
