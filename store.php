@@ -41,76 +41,83 @@
         </div>
     </section>
     <div>
-        <div class="container">
+        <div class="container-fluid text-left">
             <div class="row">
                 <div class="col-md-6"><img class="img-fluid" src="assets/img/bg.jpg"></div>
                 <div class="col-md-6"><form action="https://send.pageclip.co/QDUsPPaRQQDEqDT89SEa4pzJnajF1Yh7" class="pageclip-form" method="post">
 
-<!--Connexion à la base de données>
-                  <?php
-                  try
-                  {
-                  	$bdd = new PDO('mysql:host=localhost;dbname=iblkmqyy_cuisine;charset=utf8', 'iblkmqyy_cuisine', 'Marmotte8');
-                  }
-                  catch (Exception $e)
-                  {
-                          die('Erreur : ' . $e->getMessage());
-                  }
-                  ?>
+  <!--Connexion à la base de données>
+                    <?php
+                    try
+                    {
+                    	$bdd = new PDO('mysql:host=localhost;dbname=iblkmqyy_cuisine;charset=utf8', 'iblkmqyy_cuisine', 'Marmotte8');
+                    }
+                    catch (Exception $e)
+                    {
+                            die('Erreur : ' . $e->getMessage());
+                    }
+                    ?>
 
-                  <?php
-                  $reponse = $bdd->query('SELECT * FROM iblkmqyy_cuisine.client');
-                  $donnees = $reponse->fetch();
-                  ?>
+                    <?php//FIXME TEST A DEGAGER
+                    $reponse = $bdd->query('SELECT * FROM iblkmqyy_cuisine.client');
+                    $donnees = $reponse->fetch();
+                    ?>
   <!-- text field -->
-                  <br>
-                        <label>
-                            <input type="text" name="name" value=<?php echo $donnees['nom']; ?>/>
-                        </label>
-                  <br>
-                        <label>
-                            <input type="email" name="email" value=<?php echo $donnees['mail']; ?>/>
-                        </label>
-                  <br>
-                  <br>
+  <form>
+    <h1>Formulaire de contact</h1><br>
 
-                        <label>
-                            <select name="heardFrom">
-                              <option value="ph" selected>Cuisine bleue</option>
-                              <option value="hn">Cuisine rouge</option>
-                            </select>
-                        </label>
-                  <br>
+    <label class="formulaire_client" for="nom">
+        Nom 😀 :<br>
+        <input type="text" name="nom" value=""/>
+    </label>
 
-  <!-- radio buttons -->
-  <input type="radio" name="Evier" value="simple" id="evier" checked/>
-  <label htmlFor="tarantula">Evier</label>
+    <label class="formulaire_client" for="prenom">
+        Prénom 😎 :<br>
+        <input type="text" name="prenom" value=""/>
+    </label><br>
 
-  <input type="radio" name="Evier2" value="double" id="evier2"/>
-  <label htmlFor="turtle">Evier double</label><br>
+    <label class="formulaire_client" for="telephone">
+        Téléphone 📱 :<br>
+        <input type="text" name="telephone" value=""/>
+    </label><br>
 
-  <!-- checkboxes -->
-  <input type="checkbox" name="pizza" id="pizza" checked/>
-  <label htmlFor="pizza">Poignées 🍕</label>
+    <label class="formulaire_client" for="adresse">
+        Adresse 🏠 :<br>
+        <input type="text" name="adresse" value=""/>
+    </label>
 
-  <input type="checkbox" name="frites" id="frites"/>
-  <label htmlFor="yams">Pieds 🍠</label><br>
+    <label class="formulaire_client" for="code_postal">
+        Code postal ✉ :<br>
+        <input type="text" name="codePostal" value=""/>
+    </label><br>
+
+    <label class="formulaire_client" for="mail">
+        Adresse email 💻 :<br>
+        <input type="email" name="mail" value=""/>
+    </label><br>
 
   <!-- hidden inputs -->
-  <button type="submit" class="pageclip-form__submit">
-    <span>Send</span>
-  </button>
+  <button type="submit" value="Envoyer 😘" name="go"></button>
+
+  <?php
+  if(isset($_POST['go']) AND $_POST['go']=='Envoyer 😘')//Quand le bouton envoyer est pressé
+  {//recopie des valeurs dans les inputs
+      $nom = $_POST['nom'];
+      $prenom = $_POST['prenom'];
+      $telephone = $_POST['telephone'];
+      $adresse = $_POST['adresse'];
+      $codePostal = $_POST['codePostal'];
+      $mail = $_POST['mail'];
+
+      //Envoi dans la base de donnée
+      INSERT INTO iblkmqyy_cuisine.client(`nom`, `prenom`, `adresse`, `code_postal`, `telephone`, `mail`)
+      VALUES ($nom,$prenom,$adresse,$codePostal,$telephone,$mail);
+
+      print("<center>Merci $prenom $nom, c'est noté j'envoie tout ça à la base de données</center>");
+  }
+  ?>
 </form>
-                    <div class="btn-toolbar">
-                        <div class="btn-group" role="group"><button class="btn btn-primary" type="button">Button 1</button><button class="btn btn-primary" type="button">Button 2</button></div>
-                        <div class="btn-group" role="group"><button class="btn btn-primary" type="button">Button 1</button><a class="btn btn-primary" role="button">Button 2</a></div>
-                    </div>
-                    <div class="btn-group"><button class="btn btn-primary" type="button">Button </button><button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false" type="button"></button>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
-                    </div>
-                    <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown </button>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
-                    </div>
+                    <div class="btn-toolbar"></div>
                 </div>
             </div>
         </div>
@@ -126,6 +133,5 @@
     <script src="assets/js/current-day.js"></script>
     <script src="https://s.pageclip.co/v1/pageclip.js"></script>
 </body>
-
 
 </html>
