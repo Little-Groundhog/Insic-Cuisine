@@ -46,61 +46,74 @@
                 <div class="col-md-6"><img class="img-fluid" src="assets/img/bg.jpg"></div>
                 <div class="col-md-6"><form action="https://send.pageclip.co/QDUsPPaRQQDEqDT89SEa4pzJnajF1Yh7" class="pageclip-form" method="post">
 
-  <!--Connexion à la base de données>
-                    <?php
-                    try
-                    {
-                    	$bdd = new PDO('mysql:host=localhost;dbname=iblkmqyy_cuisine;charset=utf8', 'iblkmqyy_cuisine', 'Marmotte8');
-                    }
-                    catch (Exception $e)
-                    {
-                            die('Erreur : ' . $e->getMessage());
-                    }
-                    ?>
-
   <!-- text field -->
-  <form>
+  <form action="store.php" method="post" >
     <h1>Formulaire de contact</h1><br>
 
     <label class="formulaire_client" for="nom">
         Nom 😀 :<br>
-        <input type="text" name="nom" value=""/>
+        <input type="text" name="nom" value="" placeholder="Nom"/>
     </label>
 
     <label class="formulaire_client" for="prenom">
         Prénom 😎 :<br>
-        <input type="text" name="prenom" value=""/>
+        <input type="text" name="prenom" value="" placeholder="Prénom"/>
     </label><br>
 
     <label class="formulaire_client" for="telephone">
         Téléphone 📱 :<br>
-        <input type="text" name="telephone" value=""/>
+        <input type="text" name="telephone" value="" placeholder="Téléphone"/>
     </label><br>
 
     <label class="formulaire_client" for="adresse">
         Adresse 🏠 :<br>
-        <input type="text" name="adresse" value=""/>
+        <input type="text" name="adresse" value="" placeholder="Adresse"/>
     </label>
 
     <label class="formulaire_client" for="code_postal">
         Code postal ✉ :<br>
-        <input type="text" name="codePostal" value=""/>
+        <input type="text" name="codePostal" value="" placeholder="Code Postal"/>
     </label><br>
 
     <label class="formulaire_client" for="mail">
         Adresse email 💻 :<br>
-        <input type="email" name="mail" value=""/>
+        <input type="email" name="mail" value="" placeholder="Adresse mail"/>
     </label><br>
 
   <!-- hidden inputs -->
   <input type="submit" value="Envoyer 😘" name="go"></input>
 
   <?php
-  if(isset($_POST['go']))//Quand le bouton envoyer est pressé
+  if(isset($_POST["go"]))//Quand le bouton envoyer est pressé
   {
+      try
+      {
+        $bdd = new PDO('mysql:host=localhost;dbname=iblkmqyy_cuisine;charset=utf8', 'iblkmqyy_cuisine', 'Marmotte8');
+        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      }
+      catch (Exception $e)
+      {
+              die('Erreur : ' . $e->getMessage());
+      }
+
+      $nom = $_POST["nom"];
+      $prenom = $_POST["prenom"];
+      $adresse = $_POST["adresse"];
+      $codePostal = $_POST["codePostal"];
+      $telephone = $_POST["telephone"];
+      $mail = $_POST["mail"];
+
       //Envoi dans la base de donnée
-      $sql = 'INSERT INTO iblkmqyy_cuisine.client VALUES
-        ("'.$_POST['nom'].'","'.$_POST['prenom'].'","'.$_POST['adresse'].'","'.$_POST['codePostal'].'","'.$_POST['telephone'].'","'.$_POST['mail'].'");';
+      $sql = $bdd->prepare ("INSERT INTO client VALUES
+                            (:nom, :prenom, :adresse, :codePostal, :telephone, :mail)");
+
+      $sql->bindParam(':nom',$nom);
+      $sql->bindParam(':prenom',$prenom);
+      $sql->bindParam(':adresse',$adresse);
+      $sql->bindParam(':codePostal',$codePostal);
+      $sql->bindParam(':telephone',$telephone);
+      $sql->bindParam(':mail',$mail);
+      $sql->execute();
   }
   ?>
 </form>
