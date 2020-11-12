@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -27,10 +27,10 @@
             <div
                 class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.html">Nos meubles</a></li>
-                    <li class="nav-item"><a class="nav-link" href="store.html">Configurateur</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.php">A propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.php">Nos meubles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="store.php">Configurateur</a></li>
                 </ul>
         </div>
         </div>
@@ -43,30 +43,41 @@
     <div>
         <div class="container">
             <div class="row">
-                <div class="col-md-6"><img class="img-fluid" src="assets/img/bg.jpg"></div>
+                <div class="col-md-6"><img class="img-fluid" src="assets/img/bg.jpg" alt="cuisine exemple"></div>
                 <div class="col-md-6"><form action="https://send.pageclip.co/QDUsPPaRQQDEqDT89SEa4pzJnajF1Yh7" class="pageclip-form" method="post">
 
   <!-- text field -->
-  <br><input type="text" name="name" value="John Doe"/><br>
-  <input type="email" name="email" value="john.doe@exemple.com"/><br><br>
+  <br>
+                        <label>
+                            <input type="text" name="name" value="John Doe"/>
+                        </label>
+  <br>
+                        <label>
+                            <input type="email" name="email" value="john.doe@exemple.com"/>
+                        </label>
+  <br>
+  <br>
 
-  <select name="heardFrom">
-    <option value="ph" selected>Cuisine bleue</option>
-    <option value="hn">Cuisine rouge</option>
-  </select><br>
+                        <label>
+                            <select name="heardFrom">
+                              <option value="ph" selected>Cuisine bleue</option>
+                              <option value="hn">Cuisine rouge</option>
+                            </select>
+                        </label>
+  <br>
 
   <!-- radio buttons -->
-  <input type="radio" name="Evier" value="simple" id="evier" checked/>
+                        <label for="evier"></label><input type="radio" name="Evier" value="simple" id="evier" checked/>
   <label htmlFor="tarantula">Evier</label>
 
-  <input type="radio" name="Evier2" value="double" id="evier2"/>
+                        <label for="evier2"></label><input type="radio" name="Evier2" value="double" id="evier2"/>
   <label htmlFor="turtle">Evier double</label><br>
 
   <!-- checkboxes -->
-  <input type="checkbox" name="pizza" id="pizza" checked/>
+                        <label for="pizza"></label><input type="checkbox" name="pizza" id="pizza" checked/>
   <label htmlFor="pizza">Poignées 🍕</label>
 
-  <input type="checkbox" name="frites" id="frites"/>
+                        <label for="frites"></label><input type="checkbox" name="frites" id="frites"/>
   <label htmlFor="yams">Pieds 🍠</label><br>
 
   <!-- hidden inputs -->

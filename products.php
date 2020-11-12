@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -27,10 +27,10 @@
             <div
                 class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.html">Nos meubles</a></li>
-                    <li class="nav-item"><a class="nav-link" href="store.html">Configurateur</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.php">A propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.php">Nos meubles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="store.php">Configurateur</a></li>
                 </ul>
         </div>
         </div>
@@ -42,7 +42,7 @@
                     <div class="d-flex mr-auto bg-faded p-5 rounded">
                         <h2 class="section-heading mb-0"><span class="section-heading-upper"><strong>MEUBLES SUR MESURE</strong><br></span><span class="section-heading-lower">UNE CUISINE COMPLÈTE<br></span></h2>
                     </div>
-                </div><img class="img-fluid d-flex mx-auto product-item-img mb-3 mb-lg-0 rounded" src="assets/img/cuisine-design-home.jpg">
+                </div><img class="img-fluid d-flex mx-auto product-item-img mb-3 mb-lg-0 rounded" src="assets/img/cuisine-design-home.jpg" alt="cusine orange">
                 <div class="bg-faded p-5 rounded">
                     <p class="mb-0">Nous saurons vous guider pas à pas dans votre configuration jusqu'à vous fournir une cuisine complète selon vos goûts, vos besoins, vos envies et votre budget. Bref nous allons créer la cuisine faites pour vous par vous.<br>Tous nos
                         meubles sont pensés de façon intelligente pour faciliter la vie des utilisateurs au quotidien, vous allez aimer utiliser votre nouvelle cuisine.<br></p>
@@ -57,7 +57,7 @@
                     <div class="d-flex ml-auto bg-faded p-5 rounded">
                         <h2 class="section-heading mb-0"><span class="section-heading-upper"><strong>DES MEUBLES POUR TOUS LES GOÛTS</strong><br></span><span class="section-heading-lower">COULEURS ET STYLES<br></span></h2>
                     </div>
-                </div><img class="img-fluid d-flex mx-auto product-item-img mb-3 mb-lg-0 rounded" src="assets/img/table_lampe.jpg">
+                </div><img class="img-fluid d-flex mx-auto product-item-img mb-3 mb-lg-0 rounded" src="assets/img/table_lampe.jpg" alt="table lampe">
                 <div class="bg-faded p-5 rounded">
                     <p class="mb-0">Il n'est pas si mal ce vert olive pour vos portes de placard....&nbsp;C'est vrai que vous avez de très bon goût.&nbsp;<br>Nous savons que chaque personne est unique et chaque besoin est particulier. C'est pourquoi aucune cuisine n'est
                         identique à une autre. Vous souhaitez une cuisine avec des arcs-en-ciel ? C'est possible ! (Leprechaun au pied des arcs-en-ciel non fourni).<br>Maintenant c'est vous les créateurs de votre nouvelle cuisine !</p>
@@ -72,7 +72,7 @@
                     <div class="d-flex mx-auto bg-faded p-5 rounded">
                         <h2 class="section-heading mb-0"><span class="section-heading-upper"><strong>CONCEPTION ET FABRICATION</strong><br></span><span class="section-heading-lower">PENSÉE, CONÇUE et CONSTRUITE&nbsp;<br>EN FRANCE<br></span></h2>
                     </div>
-                </div><img class="img-fluid d-flex mx-auto product-item-img mb-3 mb-lg-0 rounded" src="assets/img/travail_equipe.jpg">
+                </div><img class="img-fluid d-flex mx-auto product-item-img mb-3 mb-lg-0 rounded" src="assets/img/travail_equipe.jpg" alt="equipe">
                 <div class="bg-faded p-5 rounded">
                     <p class="mb-0">Tous nos meubles, modules, éléments... sont développés par notre équipe d'ingénieur(e)s, construits par des artisans de talent. Nous nous basons sur un retour d'expérience client pour comprendre au mieux le produit et les matériaux
                         utilisés afin de vous proposer toujours les meilleurs produits.&nbsp;<br></p>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -28,7 +28,7 @@
             <div
                 class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">test</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.php">A propos</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.php">Nos meubles</a></li>
                     <li class="nav-item"><a class="nav-link" href="store.php">Configurateur</a></li>
@@ -38,11 +38,11 @@
     </nav>
     <section class="page-section clearfix">
         <div class="container">
-            <div class="intro"><img class="img-fluid intro-img mb-3 mb-lg-0 rounded" src="assets/img/intro.jpg">
+            <div class="intro"><img class="img-fluid intro-img mb-3 mb-lg-0 rounded" src="assets/img/intro.jpg" alt="intro">
                 <div class="intro-text left-0 text-centerfaded p-5 rounded bg-faded text-center">
                     <h2 class="section-heading mb-4"><span class="section-heading-upper">Une cuisine ?</span><span class="section-heading-lower">Créé pour vous...</span></h2>
                     <p class="mb-3">Toutes nos cuisines sont développées et construites par nous selon vos choix et vos critères. Si vous avez une demande particulière n'hésitez pas à nous en faire part et nous pourrons réaliser vos rêves.</p>
-                    <div class="mx-auto intro-button"><a class="btn btn-primary d-inline-block mx-auto btn-xl" role="button" href="store.html" style="font-size: 20px;">Commander aujourd'hui !</a></div>
+                    <div class="mx-auto intro-button"><a class="btn btn-primary d-inline-block mx-auto btn-xl" role="button" href="store.php" style="font-size: 20px;">Commander aujourd'hui !</a></div>
                 </div>
             </div>
         </div>

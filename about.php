@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -27,15 +27,15 @@
             <div
                 class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.html">Nos meubles</a></li>
-                    <li class="nav-item"><a class="nav-link" href="store.html">Configurateur</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.php">A propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.php">Nos meubles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="store.php">Configurateur</a></li>
                 </ul>
         </div>
         </div>
     </nav>
-    <section class="page-section about-heading"><img src="assets/img/about.jpg">
+    <section class="page-section about-heading"><img src="assets/img/about.jpg" alt="cuisine bleu">
         <div class="container">
             <div class="about-heading-content">
                 <div class="row">
@@ -70,11 +70,11 @@
                     <h3 class="name">Esprit d'équipe</h3>
                     <p class="description" style="color: #21313a;">Nous formons une petite équipe soudée, cette structure nous a permis d'innover et de développer de nouveaux produits.</p>
                 </div>
-                <div class="col-sm-6 col-lg-4 item" style="margin: 0px 100px 40px;"><i class="fa fa-flask icon"></i>
+                <div class="col-sm-6 col-lg-4 item" style="margin: 0 100px 40px;"><i class="fa fa-flask icon"></i>
                     <h3 class="name">Innovation</h3>
                     <p class="description" style="color: #21313a;">Nos différents profils vous offrent différentes visions des problèmes et vous apportent des solutions innovantes.</p>
                 </div>
-                <div class="col-sm-6 col-lg-4 text-left item" style="margin: 0px 0px 40px;"><i class="fa fa-plane icon"></i>
+                <div class="col-sm-6 col-lg-4 text-left item" style="margin: 0 0 40px;"><i class="fa fa-plane icon"></i>
                     <h3 class="name">Rapidité</h3>
                     <p class="description" style="color: #21313a;">Notre réactivité saura vous étonner, si vous avez une demande particulière pour votre cuisine nous saurons vous apporter une réponse précise.&nbsp;</p>
                 </div>
@@ -88,16 +88,16 @@
                 <p class="text-center"></p>
             </div>
             <div class="row people">
-                <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" data-bs-hover-animate="jello" src="assets/img/1.png">
+                <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" data-bs-hover-animate="jello" src="assets/img/1.png" alt="Adrien">
                     <h3 class="name">Adrien NEBON</h3>
                     <p class="title">CTO /&nbsp;<strong>mARKETING MANAGER</strong></p>
                 </div>
-                <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" data-bs-hover-animate="bounce" src="assets/img/team%20cha.png">
+                <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" data-bs-hover-animate="bounce" src="assets/img/team%20cha.png" alt="Charlotte">
                     <h3 class="name">Charlotte JANIK</h3>
                     <p class="title">CEO / Design manager</p>
                     <p class="description"></p>
                 </div>
-                <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" data-bs-hover-animate="tada" src="assets/img/0.jpg" style="filter: brightness(99%) contrast(100%) saturate(101%) sepia(0%);">
+                <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" data-bs-hover-animate="tada" src="assets/img/0.jpg" style="filter: brightness(99%) contrast(100%) saturate(101%) sepia(0%);" alt="Maxime">
                     <h3 class="name">Maxime BELCOUR</h3>
                     <p class="title">CFO / developer</p>
                 </div>
