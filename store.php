@@ -59,7 +59,7 @@
                   ?>
 
                   <?php
-                  $reponse = $bdd->query('SELECT * FROM 'iblkmqyy_cuisine.client'');
+                  $reponse = $bdd->query('SELECT * FROM iblkmqyy_cuisine.client');
                   $donnees = $reponse->fetch();
                   ?>
   <!-- text field -->
