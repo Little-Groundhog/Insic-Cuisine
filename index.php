@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="assets/css/Features-Clean.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css">
     <link rel="stylesheet" href="assets/css/Team-Clean.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
@@ -38,7 +37,8 @@
     </nav>
     <section class="page-section clearfix">
         <div class="container">
-            <div class="intro"><img class="img-fluid intro-img mb-3 mb-lg-0 rounded" src="assets/img/intro.jpg" alt="intro">
+            <div class="intro"><img class="img-fluid intro-img mb-3 mb-lg-0 rounded" src="assets/img/intro.jpg" alt="accueil">
+
                 <div class="intro-text left-0 text-centerfaded p-5 rounded bg-faded text-center">
                     <h2 class="section-heading mb-4"><span class="section-heading-upper">Une cuisine ?</span><span class="section-heading-lower">Créé pour vous...</span></h2>
                     <p class="mb-3">Toutes nos cuisines sont développées et construites par nous selon vos choix et vos critères. Si vous avez une demande particulière n'hésitez pas à nous en faire part et nous pourrons réaliser vos rêves.</p>

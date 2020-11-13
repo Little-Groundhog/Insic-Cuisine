@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="assets/css/Features-Clean.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css">
     <link rel="stylesheet" href="assets/css/Team-Clean.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
@@ -35,7 +34,7 @@
         </div>
         </div>
     </nav>
-    <section class="page-section about-heading"><img src="assets/img/about.jpg" alt="cuisine bleu">
+    <section class="page-section about-heading"><img src="assets/img/about.jpg" alt="cuisine-exemple">
         <div class="container">
             <div class="about-heading-content">
                 <div class="row">
