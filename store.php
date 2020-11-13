@@ -42,10 +42,63 @@
     <div>
         <div class="container-fluid text-left">
             <div class="row">
-                <div class="col-md-6"><img class="img-fluid" src="assets/img/bg.jpg" alt="cuisine_exemple"></div>
+                <div class="col-md-6">
+<?php
+                try
+                {
+                $bdd = new PDO('mysql:host=localhost;dbname=iblkmqyy_cuisine;charset=utf8', 'iblkmqyy_cuisine', 'Marmotte8');
+                $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                }
+                catch (Exception $e)
+                {
+                die('Erreur : ' . $e->getMessage());
+                }
+?>
+<!-- text field -->
+  <form action="store.php" method="post" ><br>
+    <h1>Tests avec CATIA</h1><br>
+      <h2>Paramérage du placard</h2><br>
 
-  <!-- text field -->
-  <form action="store.php" method="post" >
+    <label class="formulaire_client" for="nom">
+        Largeur :<br>
+        <input type="text" name="largeur" value="" placeholder="largeur"/>
+    </label><br>
+
+    <label class="formulaire_client" for="prenom">
+        Hauteur :<br>
+        <input type="text" name="hauteur" value="" placeholder="hauteur"/>
+    </label><br>
+
+    <label class="formulaire_client" for="telephone">
+        Profondeur :<br>
+        <input type="text" name="profondeur" value="" placeholder="profondeur"/>
+    </label><br>
+
+  <!-- hidden inputs -->
+      <input type="submit" value="Envoyer 😋" name="go_param_placard"/>
+</form>
+<?php
+if(isset($_POST["go_param_placard"]))//Quand le bouton envoyer est pressé pour le paramétre placard
+{
+    $largeur = $_POST["largeur"];
+    $hauteur = $_POST["hauteur"];
+    $profondeur = $_POST["profondeur"];
+
+    //Envoi dans la base de donnée
+    $sql = $bdd->prepare ("INSERT INTO placard_bas 
+                                    (largeur, hauteur, profondeur)
+                                    VALUES
+                                    (:largeur, :hauteur, :profondeur)");
+
+    $sql->bindParam(':largeur',$largeur);
+    $sql->bindParam(':hauteur',$hauteur);
+    $sql->bindParam(':profondeur',$profondeur);
+    $sql->execute();
+}
+?>
+</div>
+    <div class="col-md-6"><!-- text field -->
+  <form action="store.php" method="post" ><br>
     <h1>Formulaire de contact</h1><br>
 
     <label class="formulaire_client" for="nom">
@@ -82,18 +135,8 @@
       <input type="submit" value="Envoyer 😘" name="go"/>
 </form>
 <?php
-if(isset($_POST["go"]))//Quand le bouton envoyer est pressé
+if(isset($_POST["go"]))//Quand le bouton envoyer est pressé pour le formulaire client
 {
-    try
-    {
-      $bdd = new PDO('mysql:host=localhost;dbname=iblkmqyy_cuisine;charset=utf8', 'iblkmqyy_cuisine', 'Marmotte8');
-      $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    }
-    catch (Exception $e)
-    {
-            die('Erreur : ' . $e->getMessage());
-    }
-
     $nom = $_POST["nom"];
     $prenom = $_POST["prenom"];
     $adresse = $_POST["adresse"];
@@ -118,6 +161,7 @@ if(isset($_POST["go"]))//Quand le bouton envoyer est pressé
                 </div>
             </div>
         </div>
+    </div>
     <footer class="footer text-faded text-center py-5">
         <div class="container">
             <p class="m-0 small">Copyright&nbsp;©&nbsp;cuisine Insic 2020</p>
