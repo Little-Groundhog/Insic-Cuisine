@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="assets/css/Features-Clean.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css">
     <link rel="stylesheet" href="assets/css/Team-Clean.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
@@ -41,49 +40,122 @@
         </div>
     </section>
     <div>
-        <div class="container">
+        <div class="container-fluid text-left">
             <div class="row">
-                <div class="col-md-6"><img class="img-fluid" src="assets/img/bg.jpg"></div>
-                <div class="col-md-6"><form action="https://send.pageclip.co/QDUsPPaRQQDEqDT89SEa4pzJnajF1Yh7" class="pageclip-form" method="post">
+                <div class="col-md-6">
+<?php
+                try
+                {
+                $bdd = new PDO('mysql:host=localhost;dbname=iblkmqyy_cuisine;charset=utf8', 'iblkmqyy_cuisine', 'Marmotte8');
+                $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                }
+                catch (Exception $e)
+                {
+                die('Erreur : ' . $e->getMessage());
+                }
+?>
+<!-- text field -->
+  <form action="store.php" method="post" ><br>
+    <h1>Tests avec CATIA</h1><br>
+      <h2>Paramérage du placard</h2><br>
 
-  <!-- text field -->
-  <br><input type="text" name="name" value="John Doe"/><br>
-  <input type="email" name="email" value="john.doe@exemple.com"/><br><br>
+    <label class="formulaire_client" for="nom">
+        Largeur :<br>
+        <input type="text" name="largeur" value="" placeholder="largeur"/>
+    </label><br>
 
-  <select name="heardFrom">
-    <option value="ph" selected>Cuisine bleue</option>
-    <option value="hn">Cuisine rouge</option>
-  </select><br>
+    <label class="formulaire_client" for="prenom">
+        Hauteur :<br>
+        <input type="text" name="hauteur" value="" placeholder="hauteur"/>
+    </label><br>
 
-  <!-- radio buttons -->
-  <input type="radio" name="Evier" value="simple" id="evier" checked/>
-  <label htmlFor="tarantula">Evier</label>
-
-  <input type="radio" name="Evier2" value="double" id="evier2"/>
-  <label htmlFor="turtle">Evier double</label><br>
-
-  <!-- checkboxes -->
-  <input type="checkbox" name="pizza" id="pizza" checked/>
-  <label htmlFor="pizza">Poignées 🍕</label>
-
-  <input type="checkbox" name="frites" id="frites"/>
-  <label htmlFor="yams">Pieds 🍠</label><br>
+    <label class="formulaire_client" for="telephone">
+        Profondeur :<br>
+        <input type="text" name="profondeur" value="" placeholder="profondeur"/>
+    </label><br>
 
   <!-- hidden inputs -->
-  <button type="submit" class="pageclip-form__submit">
-    <span>Send</span>
-  </button>
+      <input type="submit" value="Envoyer 😋" name="go_param_placard"/>
 </form>
-                    <div class="btn-toolbar">
-                        <div class="btn-group" role="group"><button class="btn btn-primary" type="button">Button 1</button><button class="btn btn-primary" type="button">Button 2</button></div>
-                        <div class="btn-group" role="group"><button class="btn btn-primary" type="button">Button 1</button><a class="btn btn-primary" role="button">Button 2</a></div>
-                    </div>
-                    <div class="btn-group"><button class="btn btn-primary" type="button">Button </button><button class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false" type="button"></button>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
-                    </div>
-                    <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown </button>
-                        <div class="dropdown-menu"><a class="dropdown-item" href="#">First Item</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
-                    </div>
+<?php
+if(isset($_POST["go_param_placard"]))//Quand le bouton envoyer est pressé pour le paramétre placard
+{
+    $largeur = $_POST["largeur"];
+    $hauteur = $_POST["hauteur"];
+    $profondeur = $_POST["profondeur"];
+
+    //Envoi dans la base de donnée
+    $sql = $bdd->prepare ("INSERT INTO placard_bas VALUES
+                                    (:largeur, :hauteur, :profondeur, 0, 0, 0, 0, 0, 0)");
+
+    $sql->bindParam(':largeur',$largeur);
+    $sql->bindParam(':hauteur',$hauteur);
+    $sql->bindParam(':profondeur',$profondeur);
+    $sql->execute();
+}
+?>
+</div>
+    <div class="col-md-6"><!-- text field -->
+  <form action="store.php" method="post" ><br>
+    <h1>Formulaire de contact</h1><br>
+
+    <label class="formulaire_client" for="nom">
+        Nom 😀 :<br>
+        <input type="text" name="nom" value="" placeholder="Nom"/>
+    </label>
+
+    <label class="formulaire_client" for="prenom">
+        Prénom 😎 :<br>
+        <input type="text" name="prenom" value="" placeholder="Prénom"/>
+    </label><br>
+
+    <label class="formulaire_client" for="telephone">
+        Téléphone 📱 :<br>
+        <input type="text" name="telephone" value="" placeholder="Téléphone"/>
+    </label><br>
+
+    <label class="formulaire_client" for="adresse">
+        Adresse 🏠 :<br>
+        <input type="text" name="adresse" value="" placeholder="Adresse"/>
+    </label>
+
+    <label class="formulaire_client" for="code_postal">
+        Code postal ✉ :<br>
+        <input type="text" name="codePostal" value="" placeholder="Code Postal"/>
+    </label><br>
+
+    <label class="formulaire_client" for="mail">
+        Adresse email 💻 :<br>
+        <input type="email" name="mail" value="" placeholder="Adresse mail"/>
+    </label><br>
+
+  <!-- hidden inputs -->
+      <input type="submit" value="Envoyer 😘" name="go"/>
+</form>
+<?php
+if(isset($_POST["go"]))//Quand le bouton envoyer est pressé pour le formulaire client
+{
+    $nom = $_POST["nom"];
+    $prenom = $_POST["prenom"];
+    $adresse = $_POST["adresse"];
+    $codePostal = $_POST["codePostal"];
+    $telephone = $_POST["telephone"];
+    $mail = $_POST["mail"];
+
+    //Envoi dans la base de donnée
+    $sql = $bdd->prepare ("INSERT INTO client VALUES
+                          (:nom, :prenom, :adresse, :codePostal, :telephone, :mail)");
+
+    $sql->bindParam(':nom',$nom);
+    $sql->bindParam(':prenom',$prenom);
+    $sql->bindParam(':adresse',$adresse);
+    $sql->bindParam(':codePostal',$codePostal);
+    $sql->bindParam(':telephone',$telephone);
+    $sql->bindParam(':mail',$mail);
+    $sql->execute();
+}
+?>
+                    <div class="btn-toolbar"></div>
                 </div>
             </div>
         </div>
@@ -97,8 +169,6 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/current-day.js"></script>
-    <script src="https://s.pageclip.co/v1/pageclip.js"></script>
 </body>
-
 
 </html>

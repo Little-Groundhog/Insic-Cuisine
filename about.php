@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="assets/css/Features-Clean.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css">
     <link rel="stylesheet" href="assets/css/Team-Clean.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
@@ -35,7 +34,7 @@
         </div>
         </div>
     </nav>
-    <section class="page-section about-heading"><img src="assets/img/about.jpg">
+    <section class="page-section about-heading"><img src="assets/img/about.jpg" alt="cuisine-exemple">
         <div class="container">
             <div class="about-heading-content">
                 <div class="row">
@@ -70,11 +69,11 @@
                     <h3 class="name">Esprit d'équipe</h3>
                     <p class="description" style="color: #21313a;">Nous formons une petite équipe soudée, cette structure nous a permis d'innover et de développer de nouveaux produits.</p>
                 </div>
-                <div class="col-sm-6 col-lg-4 item" style="margin: 0px 100px 40px;"><i class="fa fa-flask icon"></i>
+                <div class="col-sm-6 col-lg-4 item" style="margin: 0 100px 40px;"><i class="fa fa-flask icon"></i>
                     <h3 class="name">Innovation</h3>
                     <p class="description" style="color: #21313a;">Nos différents profils vous offrent différentes visions des problèmes et vous apportent des solutions innovantes.</p>
                 </div>
-                <div class="col-sm-6 col-lg-4 text-left item" style="margin: 0px 0px 40px;"><i class="fa fa-plane icon"></i>
+                <div class="col-sm-6 col-lg-4 text-left item" style="margin: 0 0 40px;"><i class="fa fa-plane icon"></i>
                     <h3 class="name">Rapidité</h3>
                     <p class="description" style="color: #21313a;">Notre réactivité saura vous étonner, si vous avez une demande particulière pour votre cuisine nous saurons vous apporter une réponse précise.&nbsp;</p>
                 </div>
@@ -88,16 +87,16 @@
                 <p class="text-center"></p>
             </div>
             <div class="row people">
-                <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" data-bs-hover-animate="jello" src="assets/img/1.png">
+                <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" data-bs-hover-animate="jello" src="assets/img/1.png" alt="Adrien">
                     <h3 class="name">Adrien NEBON</h3>
                     <p class="title">CTO /&nbsp;<strong>mARKETING MANAGER</strong></p>
                 </div>
-                <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" data-bs-hover-animate="bounce" src="assets/img/team%20cha.png">
+                <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" data-bs-hover-animate="bounce" src="assets/img/team%20cha.png" alt="Charlotte">
                     <h3 class="name">Charlotte JANIK</h3>
                     <p class="title">CEO / Design manager</p>
                     <p class="description"></p>
                 </div>
-                <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" data-bs-hover-animate="tada" src="assets/img/0.jpg" style="filter: brightness(99%) contrast(100%) saturate(101%) sepia(0%);">
+                <div class="col-md-6 col-lg-4 item"><img class="rounded-circle" data-bs-hover-animate="tada" src="assets/img/0.jpg" style="filter: brightness(99%) contrast(100%) saturate(101%) sepia(0%);" alt="Maxime">
                     <h3 class="name">Maxime BELCOUR</h3>
                     <p class="title">CFO / developer</p>
                 </div>
