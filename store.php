@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
     <meta charset="utf-8">
@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="assets/css/Features-Clean.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="https://s.pageclip.co/v1/pageclip.css">
     <link rel="stylesheet" href="assets/css/Team-Clean.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
@@ -43,8 +42,7 @@
     <div>
         <div class="container-fluid text-left">
             <div class="row">
-                <div class="col-md-6"><img class="img-fluid" src="assets/img/bg.jpg"></div>
-                <div class="col-md-6"><form action="https://send.pageclip.co/QDUsPPaRQQDEqDT89SEa4pzJnajF1Yh7" class="pageclip-form" method="post">
+                <div class="col-md-6"><img class="img-fluid" src="assets/img/bg.jpg" alt="cuisine_exemple"></div>
 
   <!-- text field -->
   <form action="store.php" method="post" >
@@ -81,7 +79,7 @@
     </label><br>
 
   <!-- hidden inputs -->
-  <input type="submit" value="Envoyer 😘" name="go"></input>
+      <input type="submit" value="Envoyer 😘" name="go"/>
 </form>
 <?php
 if(isset($_POST["go"]))//Quand le bouton envoyer est pressé
@@ -120,7 +118,6 @@ if(isset($_POST["go"]))//Quand le bouton envoyer est pressé
                 </div>
             </div>
         </div>
-    </div>
     <footer class="footer text-faded text-center py-5">
         <div class="container">
             <p class="m-0 small">Copyright&nbsp;©&nbsp;cuisine Insic 2020</p>
