@@ -85,10 +85,8 @@ if(isset($_POST["go_param_placard"]))//Quand le bouton envoyer est pressé pour 
     $profondeur = $_POST["profondeur"];
 
     //Envoi dans la base de donnée
-    $sql = $bdd->prepare ("INSERT INTO placard_bas 
-                                    (largeur, hauteur, profondeur)
-                                    VALUES
-                                    (:largeur, :hauteur, :profondeur)");
+    $sql = $bdd->prepare ("INSERT INTO placard_bas VALUES
+                                    (:largeur, :hauteur, :profondeur, 0, 0, 0, 0, 0, 0)");
 
     $sql->bindParam(':largeur',$largeur);
     $sql->bindParam(':hauteur',$hauteur);
