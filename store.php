@@ -17,6 +17,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="assets/css/Team-Clean.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+    <script>
+        var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Desktop.json", {onProgress: UnityProgress});
+    </script>
 </head>
 
 <body style="background: linear-gradient(rgba(135,135,135,0.65), rgba(255,255,255,0.65) 51%, rgba(105,105,105,0.65) 100%);">
@@ -93,9 +100,8 @@ if(isset($_POST["go_param_placard"]))//Quand le bouton envoyer est pressé pour 
     $sql->bindParam(':profondeur',$profondeur);
     $sql->execute();
 }
-?>
-</div>
-    <div class="col-md-6"><!-- text field -->
+?></div>
+                <div class="col-md-6"><!-- text field -->
   <form action="store.php" method="post" ><br>
     <h1>Formulaire de contact</h1><br>
 
@@ -158,6 +164,15 @@ if(isset($_POST["go"]))//Quand le bouton envoyer est pressé pour le formulaire 
                     <div class="btn-toolbar"></div>
                 </div>
             </div>
+            <div class="row"><div class="webgl-content">
+  <div id="unityContainer" style="width: 960px; height:600px">
+  </div>
+  <div class="footer">
+    <div class="webgl-logo"></div>
+    <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+    <div class="title">New Unity Project</div>
+  </div>
+</div></div>
         </div>
     </div>
     <footer class="footer text-faded text-center py-5">
