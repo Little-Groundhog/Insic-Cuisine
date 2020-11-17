@@ -1,7 +1,7 @@
 ## INSIC CUISINE
 Intégration continue (validité du code) : ![Jekyll site CI](https://github.com/Little-Groundhog/Insic-Cuisine/workflows/Jekyll%20site%20CI/badge.svg)
 
-[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)  [![forthebadge](http://forthebadge.com/images/badges/powered-by-electricity.svg)](http://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/powered-by-black-magic.svg)](https://forthebadge.com)
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/powered-by-black-magic.svg)](https://forthebadge.com)
 
 Dans le cadre de notre formation à Mines Nancy / INSIC, nous avons comme projet de créer un cuisine 100% paramtérable dans Catia commandé à l'aide d'un site web relié à une base de données
 
