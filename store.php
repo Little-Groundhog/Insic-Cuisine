@@ -33,9 +33,9 @@
             <div
                 class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="nav navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.php">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.php">A propos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="products.php">Nos meubles</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Nos meubles</a></li>
                     <li class="nav-item"><a class="nav-link" href="store.php">Configurateur</a></li>
                 </ul>
         </div>
@@ -101,7 +101,8 @@ if(isset($_POST["go_param_placard"]))//Quand le bouton envoyer est pressé pour 
     $sql->execute();
 }
 ?></div>
-                <div class="col-md-6"><!-- text field -->
+<div class="col-md-6">
+    <!-- text field -->
   <form action="store.php" method="post" ><br>
     <h1>Formulaire de contact</h1><br>
 
@@ -162,17 +163,17 @@ if(isset($_POST["go"]))//Quand le bouton envoyer est pressé pour le formulaire 
 }
 ?>
                     <div class="btn-toolbar"></div>
-                </div>
             </div>
-            <div class="row"><div class="webgl-content">
-  <div id="unityContainer" style="width: 960px; height:600px">
-  </div>
-  <div class="footer">
-    <div class="webgl-logo"></div>
-    <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-    <div class="title">New Unity Project</div>
-  </div>
-</div></div>
+            </div>
+            <div class="row">
+                  <div id="unityContainer" style="width: 960px; height:600px">
+                  </div>
+                  <div class="footer">
+                    <div class="webgl-logo"></div>
+                    <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
+                    <div class="title">Tests intégration modules 3D</div>
+                  </div>
+            </div>
         </div>
     </div>
     <footer class="footer text-faded text-center py-5">
