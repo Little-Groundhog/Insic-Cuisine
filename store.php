@@ -171,7 +171,6 @@ if(isset($_POST["go"]))//Quand le bouton envoyer est pressé pour le formulaire 
                   <div class="footer">
                     <div class="webgl-logo"></div>
                     <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-                    <div class="title">New Unity Project</div>
                   </div>
             </div>
         </div>
