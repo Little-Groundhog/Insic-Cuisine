@@ -165,13 +165,13 @@ if(isset($_POST["go"]))//Quand le bouton envoyer est pressé pour le formulaire 
                     <div class="btn-toolbar"></div>
             </div>
             </div>
-            <div class="row">
+            <div class="row justify-content-center align-items-center">
                   <div id="unityContainer" style="width: 960px; height:600px">
                   </div>
                   <div class="footer">
                     <div class="webgl-logo"></div>
                     <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-                    <div class="title">Tests intégration modules 3D</div>
+                    <div class="title">New Unity Project</div>
                   </div>
             </div>
         </div>
