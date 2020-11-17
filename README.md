@@ -31,3 +31,5 @@ Pour essayer rendez-vous simplement sur notre site et essayer de passer une comm
 ## License
 
 Ce projet est sous licence - voir le fichier [LICENSE.md](LICENSE.md) pour plus d'informations
+
+[![forthebadge](https://forthebadge.com/images/badges/contains-cat-gifs.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/winter-is-coming.svg)](https://forthebadge.com)
