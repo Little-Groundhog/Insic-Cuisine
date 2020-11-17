@@ -166,7 +166,7 @@ if(isset($_POST["go"]))//Quand le bouton envoyer est pressé pour le formulaire 
             </div>
             </div>
             <div class="row justify-content-center align-items-center">
-                  <div id="unityContainer" style="width: 960px; height:600px">
+                  <div id="unityContainer" style="width: 1400px; height:800px">
                   </div>
                   <div class="footer">
                     <div class="webgl-logo"></div>
