@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="MySQL - iblkmqyy_cuisine@localhost" uuid="a657116d-96b4-4201-b0b0-139f681796d5">
+    <data-source source="LOCAL" name="insic_cuisine" uuid="1d333f43-9ba4-4528-a31a-6e62d27c27be">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/iblkmqyy_cuisine</jdbc-url>
+      <jdbc-url>jdbc:mysql://littlegroundhog.codes:3306/iblkmqyy_cuisine</jdbc-url>
     </data-source>
   </component>
 </project>

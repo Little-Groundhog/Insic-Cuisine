@@ -24,9 +24,9 @@ Pour essayer rendez-vous simplement sur notre site et essayer de passer une comm
 
 ## Auteurs
 
-* **Charlotte Janik** 
-* **Adrien Nebon** 
-* **Maxime Belcour** 
+* **Charlotte** 
+* **Adrien** 
+* **Maxime** 
 
 ## License
 
