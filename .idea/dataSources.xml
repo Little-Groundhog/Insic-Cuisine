@@ -5,7 +5,7 @@
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://littlegroundhog.codes:3306/iblkmqyy_cuisine</jdbc-url>
+      <jdbc-url>jdbc:mysql://88.211.101.187:3306/iblkmqyy_cuisine</jdbc-url>
     </data-source>
   </component>
 </project>
