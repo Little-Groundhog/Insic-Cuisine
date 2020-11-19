@@ -22,7 +22,7 @@
     <script src="TemplateData/UnityProgress.js"></script>
     <script src="Build/UnityLoader.js"></script>
     <script>
-        var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Desktop.json", {onProgress: UnityProgress});
+        const unityInstance = UnityLoader.instantiate("unityContainer", "Build/Desktop.json", {onProgress: UnityProgress});
     </script>
 </head>
 
