@@ -7,5 +7,12 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://88.211.101.187:3306/iblkmqyy_cuisine</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="http://localhost/phpmyadmin/db_structure.php?server=1&amp;db=clientsprodcmdes" uuid="0609bf96-d908-430f-ae3d-c80a9f69ee27">
+      <driver-ref>derby.embedded</driver-ref>
+      <synchronize>true</synchronize>
+      <configured-by-url>true</configured-by-url>
+      <jdbc-driver>org.apache.derby.jdbc.EmbeddedDriver</jdbc-driver>
+      <jdbc-url>http://localhost/phpmyadmin/db_structure.php?server=1&amp;db=clientsprodcmdes</jdbc-url>
+    </data-source>
   </component>
 </project>

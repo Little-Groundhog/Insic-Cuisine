@@ -62,21 +62,41 @@
 
     <label class="formulaire_client" for="nom">
         Largeur :<br>
+<<<<<<< Updated upstream
         <input type="text" name="largeur" value="" placeholder="largeur"/>
+=======
+        <input type="tel" name="largeur" value="" placeholder="largeur" required/>
+>>>>>>> Stashed changes
     </label><br>
 
     <label class="formulaire_client" for="prenom">
         Hauteur :<br>
+<<<<<<< Updated upstream
         <input type="text" name="hauteur" value="" placeholder="hauteur"/>
+=======
+        <input type="tel" name="hauteur" value="" placeholder="hauteur" required/>
+>>>>>>> Stashed changes
     </label><br>
 
     <label class="formulaire_client" for="telephone">
         Profondeur :<br>
+<<<<<<< Updated upstream
         <input type="text" name="profondeur" value="" placeholder="profondeur"/>
     </label><br>
 
+=======
+        <input type="tel" name="profondeur" value="" placeholder="profondeur" required/>
+    </label><br>
+
+      <label class="formulaire_test" for="nombre_etagere">
+          Nombre d'étagère :
+          <input type="number" min="0" max="3" name="nombre_etagere" value="" placeholder="" required/>
+      </label><br><br>
+
+>>>>>>> Stashed changes
   <!-- hidden inputs -->
       <input type="submit" value="Envoyer 😋" name="go_param_placard"/>
+
 </form>
 <?php
 if(isset($_POST["go_param_placard"]))//Quand le bouton envoyer est pressé pour le paramétre placard
@@ -85,9 +105,15 @@ if(isset($_POST["go_param_placard"]))//Quand le bouton envoyer est pressé pour 
     $hauteur = $_POST["hauteur"];
     $profondeur = $_POST["profondeur"];
 
+<<<<<<< Updated upstream
     //Envoi dans la base de donnée
     $sql = $bdd->prepare ("INSERT INTO placard_bas VALUES
                                     (:largeur/100, :hauteur/100, :profondeur/100, 0, 0, 0, 0, 0, 0)");
+=======
+    //Envoi dans la base de données
+    $sql = $bdd->prepare ("INSERT INTO placard_bas (id_client, largeur, hauteur, profondeur, etagere, etagere1, etagere2, etagere3)
+                                    VALUES (:nom, :largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere, :eta1, :eta2, :eta3)");
+>>>>>>> Stashed changes
 
     $sql->bindParam(':largeur',$largeur);
     $sql->bindParam(':hauteur',$hauteur);
