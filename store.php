@@ -26,7 +26,12 @@
     <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Team-Clean.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
-
+    <script>
+        function IDClient{
+            alert('ça marche');
+            document.getElementById("IDClient").innerHTML = "test";
+        }
+    </script>
 </head>
 
 <body style="background: linear-gradient(rgba(0,0,0,0.49), rgba(153,146,143,0.4626405090137858) 34%, rgba(255,255,255,0.65) 100%);">
@@ -41,22 +46,24 @@
             die('Erreur : ' . $e->getMessage());
         }
     ?>
-    <div class="container-fluid text-right" style="margin: 0;padding: 0;"><strong style="color: rgb(255,255,255);" id="IDClient">Actuellement non connecté</strong><strong>&nbsp; &nbsp; &nbsp;&nbsp;</strong><button class="btn btn-primary" data-toggle="modal" data-target="#modal1" type="button">Se connecter</button>
+    <div class="container-fluid text-right" style="margin: 0;padding: 0;" id="IDClient">Actuellement non connecté   <button class="btn btn-primary" data-toggle="modal" data-target="#modal1" type="button">Se connecter</button>
         <div class="modal fade"
              role="dialog" tabindex="-1" id="modal1">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title">Connexion</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-                    <form action="store.php" method="post">
-                        <div class="modal-body text-left">
-                            <input type="email" name="email" placeholder="Email" required><br>
+                        <h4 class="modal-title">Connexion</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <form method="post" onsubmit="return IDClient()">
+                        <label>
+                            <input type="email" name="email" placeholder="Email" id="email" required>
+                        </label><br>
+                        
+                        <label>
                             <input type="password" placeholder="" name="Password" required>
-                        </div>
-
-                        <div
-                                class="modal-footer"><button class="btn btn-primary" type="submit" name="connexion">Connexion</button>
-                        </div>
+                        </label><br>
+                        <input type="submit" value="Envoyer" name="connexion">
                     </form>
                     <?php
                         $IDClient = NULL;
@@ -65,26 +72,15 @@
                             $mail = $_POST["email"];
                             $mdp = $_POST["Password"];
 
-                            $IDClient = $bdd->prepare("SELECT `IDClient` FROM `client` WHERE `mail`= :mail AND `motDePasse`=:mdp");
+                            $sql = $bdd->prepare("SELECT `IDClient` FROM `client` WHERE `mail`= :mail AND `motDePasse`=:mdp");
 
-                            $IDClient->bindParam(':mail',$mail);
-                            $IDClient->bindParam(':mdp',$mdp);
-                            $IDClient->execute();
+                            $sql->bindParam(':mail',$mail);
+                            $sql->bindParam(':mdp',$mdp);
+                            $sql->execute();
 
-                            if($IDClient != NULL){//On a bien récupéré un IDClient
-
-                            }
-                            else{//Erreur de connexion
-
-                            }
+                            $IDClient = $sql->fetch();
                         }
                     ?>
-                    <script>
-                        function IDClient(id){
-                            id = <?php echo $IDCLient; ?>
-                            document.getElementById("IDClient").innerHTML = id;
-                        }
-                    </script>
                 </div>
             </div>
         </div><strong>&nbsp; &nbsp;&nbsp;</strong><button class="btn btn-primary text-right" type="button">Créer un compte</button></div>
@@ -238,16 +234,11 @@
                                 $eta3 = "true";
                             }
 
-                            //Récupération du dernier client
-                            //$dernier_client = $bdd->prepare ("SELECT IDClient FROM clients ORDER BY id DESC LIMIT 0, 1");
-                            //$dernier_client->execute();
-                            $dernier_client = 1;//FIXME DEBUG POUR ADRIEN A SHOOTER
-
                             //Envoi dans la base de données
                             $sql = $bdd->prepare ("INSERT INTO placard_bas (IDClient, largeur, hauteur, profondeur, etagere, etagere1, etagere2, etagere3)
-                                        VALUES (:dernier_client, :largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere, :eta1, :eta2, :eta3)");
+                                        VALUES (:IDClient, :largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere, :eta1, :eta2, :eta3)");
 
-                            $sql->bindParam(':dernier_client',$dernier_client);
+                            $sql->bindParam(':IDClient',$IDClient['client.IDClient']);
                             $sql->bindParam(':largeur',$largeur);
                             $sql->bindParam(':hauteur',$hauteur);
                             $sql->bindParam(':profondeur',$profondeur);
