@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
@@ -17,11 +18,15 @@
     <link rel="stylesheet" href="assets/css/Animated-Typing-With-Blinking.css">
     <link rel="stylesheet" href="assets/css/Features-Clean.css">
     <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="assets/css/Good-login-dropdown-menu-1.css">
+    <link rel="stylesheet" href="assets/css/Good-login-dropdown-menu.css">
     <link rel="stylesheet" href="assets/css/Highlight-Blue.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Team-Clean.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
+
 </head>
 
 <body style="background: linear-gradient(rgba(0,0,0,0.49), rgba(153,146,143,0.4626405090137858) 34%, rgba(255,255,255,0.65) 100%);">
@@ -36,6 +41,53 @@
             die('Erreur : ' . $e->getMessage());
         }
     ?>
+    <div class="container-fluid text-right" style="margin: 0;padding: 0;"><strong style="color: rgb(255,255,255);" id="IDClient">Actuellement non connecté</strong><strong>&nbsp; &nbsp; &nbsp;&nbsp;</strong><button class="btn btn-primary" data-toggle="modal" data-target="#modal1" type="button">Se connecter</button>
+        <div class="modal fade"
+             role="dialog" tabindex="-1" id="modal1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Connexion</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                    <form action="store.php" method="post">
+                        <div class="modal-body text-left">
+                            <input type="email" name="email" placeholder="Email" required><br>
+                            <input type="password" placeholder="" name="Password" required>
+                        </div>
+
+                        <div
+                                class="modal-footer"><button class="btn btn-primary" type="submit" name="connexion">Connexion</button>
+                        </div>
+                    </form>
+                    <?php
+                        $IDClient = NULL;
+                        if(isset($_POST["connexion"]))//Quand le bouton envoyer est pressé pour le formulaire client
+                        {
+                            $mail = $_POST["email"];
+                            $mdp = $_POST["Password"];
+
+                            $IDClient = $bdd->prepare("SELECT `IDClient` FROM `client` WHERE `mail`= :mail AND `motDePasse`=:mdp");
+
+                            $IDClient->bindParam(':mail',$mail);
+                            $IDClient->bindParam(':mdp',$mdp);
+                            $IDClient->execute();
+
+                            if($IDClient != NULL){//On a bien récupéré un IDClient
+
+                            }
+                            else{//Erreur de connexion
+
+                            }
+                        }
+                    ?>
+                    <script>
+                        function IDClient(id){
+                            id = <?php echo $IDCLient; ?>
+                            document.getElementById("IDClient").innerHTML = id;
+                        }
+                    </script>
+                </div>
+            </div>
+        </div><strong>&nbsp; &nbsp;&nbsp;</strong><button class="btn btn-primary text-right" type="button">Créer un compte</button></div>
     <h1 class="text-center text-white d-none d-lg-block site-heading"><span class="site-heading-lower">INSIC CUISINE</span></h1>
     <nav class="navbar navbar-light navbar-expand-lg bg-dark py-lg-4" id="mainNav">
         <div class="container"><a class="navbar-brand text-uppercase d-lg-none text-expanded" href="#">INSIC CUISINE</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -172,6 +224,10 @@
                             $profondeur = $_POST["profondeur"];
                             $nombre_etagere = $_POST["nombre_etagere"];
 
+                            $eta1 = "false";
+                            $eta2 = "false";
+                            $eta3 = "false";
+
                             if($nombre_etagere >= 1){
                                 $eta1 = "true";
                             }
@@ -182,10 +238,16 @@
                                 $eta3 = "true";
                             }
 
-                            //Envoi dans la base de données
-                            $sql = $bdd->prepare ("INSERT INTO placard_bas (largeur, hauteur, profondeur, etagere, etagere1, etagere2, etagere3)
-                                        VALUES (:largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere, :eta1, :eta2, :eta3)");
+                            //Récupération du dernier client
+                            //$dernier_client = $bdd->prepare ("SELECT IDClient FROM clients ORDER BY id DESC LIMIT 0, 1");
+                            //$dernier_client->execute();
+                            $dernier_client = 1;//FIXME DEBUG POUR ADRIEN A SHOOTER
 
+                            //Envoi dans la base de données
+                            $sql = $bdd->prepare ("INSERT INTO placard_bas (IDClient, largeur, hauteur, profondeur, etagere, etagere1, etagere2, etagere3)
+                                        VALUES (:dernier_client, :largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere, :eta1, :eta2, :eta3)");
+
+                            $sql->bindParam(':dernier_client',$dernier_client);
                             $sql->bindParam(':largeur',$largeur);
                             $sql->bindParam(':hauteur',$hauteur);
                             $sql->bindParam(':profondeur',$profondeur);
