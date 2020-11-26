@@ -158,7 +158,7 @@
                     </label><br>
 
                       <label class="formulaire_placard_bas" for="nombre_etagere">
-                          Profondeur :<br>
+                          Nombre d'étagère :<br>
                           <input type="number" min="0" max="3" name="nombre_etagere" value="" placeholder="" required/>
                       </label><br><br>
 
