@@ -1,3 +1,8 @@
+<?php
+@session_start(); //Lancement de la session pour les cookies
+setcookie('IDClient', 'NULL', time() + 365*24*3600, null, null, false, true);
+setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, true);
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -29,7 +34,7 @@
     <script>
         function IDClient{
             alert('ça marche');
-            document.getElementById("IDClient").innerHTML = "test";
+            document.getElementById("ID").innerHTML = "test";
         }
     </script>
 </head>
@@ -46,7 +51,7 @@
             die('Erreur : ' . $e->getMessage());
         }
     ?>
-    <div class="container-fluid text-right" style="margin: 0;padding: 0;" id="IDClient">Actuellement non connecté   <button class="btn btn-primary" data-toggle="modal" data-target="#modal1" type="button">Se connecter</button>
+    <div class="container-fluid text-right" style="margin: 0;padding: 0;" id="ID">Actuellement non connecté   <button class="btn btn-primary" data-toggle="modal" data-target="#modal1" type="button">Se connecter</button>
         <div class="modal fade"
              role="dialog" tabindex="-1" id="modal1">
             <div class="modal-dialog" role="document">
@@ -55,34 +60,42 @@
                         <h4 class="modal-title">Connexion</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                     </div>
-                    <form method="post" onsubmit="return IDClient()">
-                        <label>
-                            <input type="email" name="email" placeholder="Email" id="email" required>
+                    <form method="post" ><br>
+                        <label class="connexion" for="email">
+                            Email :<br>
+                            <input type="email" name="email" placeholder="Email" required/>
                         </label><br>
 
-                        <label>
-                            <input type="password" placeholder="" name="Password" required>
+                        <label class="connexion" for="password">
+                            Mot de passe :<br>
+                            <input type="password" name="motDePasse" required/>
                         </label><br>
-                        <input type="submit" value="Envoyer" name="connexion">
+
+                        <input type="submit" value="Connexion" name="connexion"/>
                     </form>
-                    <?php
-                        $IDClient = NULL;
-                        if(isset($_POST["connexion"]))//Quand le bouton envoyer est pressé pour le formulaire client
-                        {
-                            $mail = $_POST["email"];
-                            $mdp = $_POST["Password"];
-
-                            $sql = $bdd->prepare("SELECT `IDClient` FROM `client` WHERE `mail`= :mail AND `motDePasse`=:mdp");
-
-                            $sql->bindParam(':mail',$mail);
-                            $sql->bindParam(':mdp',$mdp);
-                            $sql->execute();
-
-                            $IDClient = $sql->fetch();
-                        }
-                    ?>
                 </div>
             </div>
+            <?php
+            if(isset($_POST["connexion"]))//Quand le bouton envoyer est pressé pour le formulaire client
+            {
+                $IDClient = NULL;
+
+                $mail = $_POST["email"];
+                $mdp = $_POST["Password"];
+
+                $sql = $bdd->prepare("SELECT `IDClient` FROM `client` WHERE `mail`= :mail AND `motDePasse`=:mdp");
+
+                $sql->bindParam(':mail',$mail);
+                $sql->bindParam(':mdp',$mdp);
+                $sql->execute();
+
+                $IDClient = $sql->fetch();
+                //TODO stocker l'identifiant client et l'email dans un cookies pour pouvoir le réutiliser plus tard
+                //Impossible de passer par un stockage de variable car au moment de l'appuie sur le bouton submit la page et totalement rechargé
+                //Il faut pouvoir avoir accès à l'identifiant depuis toutes les pages web
+
+            }
+            ?>
         </div><strong>&nbsp; &nbsp;&nbsp;</strong><button class="btn btn-primary text-right" type="button">Créer un compte</button></div>
     <h1 class="text-center text-white d-none d-lg-block site-heading"><span class="site-heading-lower">INSIC CUISINE</span></h1>
     <nav class="navbar navbar-light navbar-expand-lg bg-dark py-lg-4" id="mainNav">
