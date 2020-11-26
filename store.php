@@ -11,16 +11,32 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/fonts/material-icons.min.css">
     <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/Animated-Typing-With-Blinking.css">
     <link rel="stylesheet" href="assets/css/Features-Clean.css">
+    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="assets/css/Highlight-Blue.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.css">
     <link rel="stylesheet" href="assets/css/Team-Clean.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
 
-<body style="background: linear-gradient(rgba(67,51,43,0.65), rgba(255,255,255,0.65) 46%, rgba(255,255,255,0.65) 100%);">
-    <h1 class="text-center text-white d-none d-lg-block site-heading"><span class="text-primary site-heading-upper mb-3">CRÉONS votre cuisine ensemble&nbsp;</span><span class="site-heading-lower">INSIC CUISINE</span></h1>
+<body style="background: linear-gradient(rgba(0,0,0,0.49), rgba(153,146,143,0.4626405090137858) 34%, rgba(255,255,255,0.65) 100%);">
+    <?php
+        try
+        {
+            $bdd = new PDO('mysql:host=localhost;dbname=iblkmqyy_cuisine;charset=utf8', 'iblkmqyy_cuisine', 'Marmotte8');
+            $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (Exception $e)
+        {
+            die('Erreur : ' . $e->getMessage());
+        }
+    ?>
+    <h1 class="text-center text-white d-none d-lg-block site-heading"><span class="site-heading-lower">INSIC CUISINE</span></h1>
     <nav class="navbar navbar-light navbar-expand-lg bg-dark py-lg-4" id="mainNav">
         <div class="container"><a class="navbar-brand text-uppercase d-lg-none text-expanded" href="#">INSIC CUISINE</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div
@@ -35,6 +51,15 @@
         </div>
         </div>
     </nav>
+    <div class="highlight-blue">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Zone en tests</h2>
+                <p class="text-center">Emplacement pour les formulaires en relation avec la base de données et CATIA, ici tout peut arriver 😉</p>
+            </div>
+            <div class="buttons"><a class="btn btn-primary" role="button" href="index.html">Retourner en sécurité</a></div>
+        </div>
+    </div>
     <section class="page-section about-heading">
         <div class="container">
             <div class="about-heading-content"></div>
@@ -43,158 +68,157 @@
     <div>
         <div class="container-fluid text-left">
             <div class="row">
+                <div class="col-md-6"></div>
                 <div class="col-md-6">
-<?php
-                try
-                {
-                $bdd = new PDO('mysql:host=localhost;dbname=iblkmqyy_cuisine;charset=utf8', 'iblkmqyy_cuisine', 'Marmotte8');
-                $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                }
-                catch (Exception $e)
-                {
-                die('Erreur : ' . $e->getMessage());
-                }
-?>
-<!-- text field -->
-  <form action="store.php" method="post" ><br>
-    <h1>Tests avec CATIA</h1><br>
-      <h2>Paramérage du placard</h2><br>
+                      <form action="store.php" method="post" ><br>
+                        <h1>Formulaire de contact</h1><br>
 
-    <label class="formulaire_client" for="nom">
-        Largeur :<br>
-<<<<<<< Updated upstream
-        <input type="text" name="largeur" value="" placeholder="largeur"/>
-=======
-        <input type="tel" name="largeur" value="" placeholder="largeur" required/>
->>>>>>> Stashed changes
-    </label><br>
+                        <label class="formulaire_client" for="nom">
+                            Nom 😀 :<br>
+                            <input type="text" name="nom" value="" placeholder="Nom" required/>
+                        </label>
 
-    <label class="formulaire_client" for="prenom">
-        Hauteur :<br>
-<<<<<<< Updated upstream
-        <input type="text" name="hauteur" value="" placeholder="hauteur"/>
-=======
-        <input type="tel" name="hauteur" value="" placeholder="hauteur" required/>
->>>>>>> Stashed changes
-    </label><br>
+                        <label class="formulaire_client" for="prenom">
+                            Prénom 😎 :<br>
+                            <input type="text" name="prenom" value="" placeholder="Prénom" required/>
+                        </label><br>
 
-    <label class="formulaire_client" for="telephone">
-        Profondeur :<br>
-<<<<<<< Updated upstream
-        <input type="text" name="profondeur" value="" placeholder="profondeur"/>
-    </label><br>
+                        <label class="formulaire_client" for="telephone">
+                            Téléphone 📱 :<br>
+                            <input type="text" name="telephone" value="" placeholder="Téléphone" required/>
+                        </label><br>
 
-=======
-        <input type="tel" name="profondeur" value="" placeholder="profondeur" required/>
-    </label><br>
+                        <label class="formulaire_client" for="adresse">
+                            Adresse 🏠 :<br>
+                            <input type="text" name="adresse" value="" placeholder="Adresse" required/>
+                        </label>
 
-      <label class="formulaire_test" for="nombre_etagere">
-          Nombre d'étagère :
-          <input type="number" min="0" max="3" name="nombre_etagere" value="" placeholder="" required/>
-      </label><br><br>
+                        <label class="formulaire_client" for="code_postal">
+                            Code postal ✉ :<br>
+                            <input type="text" name="codePostal" value="" placeholder="Code Postal" required/>
+                        </label><br>
 
->>>>>>> Stashed changes
-  <!-- hidden inputs -->
-      <input type="submit" value="Envoyer 😋" name="go_param_placard"/>
+                        <label class="formulaire_client" for="mail">
+                            Adresse email 💻 :<br>
+                            <input type="email" name="mail" value="" placeholder="Adresse mail" required/>
+                        </label><br>
 
-</form>
-<?php
-if(isset($_POST["go_param_placard"]))//Quand le bouton envoyer est pressé pour le paramétre placard
-{
-    $largeur = $_POST["largeur"];
-    $hauteur = $_POST["hauteur"];
-    $profondeur = $_POST["profondeur"];
+                          <input type="submit" value="Envoyer 😘" name="go"/>
+                      </form>
+                    <?php
+                        if(isset($_POST["go"]))//Quand le bouton envoyer est pressé pour le formulaire client
+                        {
+                            $nom = $_POST["nom"];
+                            $prenom = $_POST["prenom"];
+                            $adresse = $_POST["adresse"];
+                            $codePostal = $_POST["codePostal"];
+                            $telephone = $_POST["telephone"];
+                            $mail = $_POST["mail"];
 
-<<<<<<< Updated upstream
-    //Envoi dans la base de donnée
-    $sql = $bdd->prepare ("INSERT INTO placard_bas VALUES
-                                    (:largeur/100, :hauteur/100, :profondeur/100, 0, 0, 0, 0, 0, 0)");
-=======
-    //Envoi dans la base de données
-    $sql = $bdd->prepare ("INSERT INTO placard_bas (id_client, largeur, hauteur, profondeur, etagere, etagere1, etagere2, etagere3)
-                                    VALUES (:nom, :largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere, :eta1, :eta2, :eta3)");
->>>>>>> Stashed changes
+                            //Envoi dans la base de donnée
+                            $sql = $bdd->prepare ("INSERT INTO client VALUES
+                              (:nom, :prenom, :adresse, :codePostal, :telephone, :mail)");
 
-    $sql->bindParam(':largeur',$largeur);
-    $sql->bindParam(':hauteur',$hauteur);
-    $sql->bindParam(':profondeur',$profondeur);
-    $sql->execute();
-}
-?></div>
-<div class="col-md-6">
-    <!-- text field -->
-  <form action="store.php" method="post" ><br>
-    <h1>Formulaire de contact</h1><br>
-
-    <label class="formulaire_client" for="nom">
-        Nom 😀 :<br>
-        <input type="text" name="nom" value="" placeholder="Nom"/>
-    </label>
-
-    <label class="formulaire_client" for="prenom">
-        Prénom 😎 :<br>
-        <input type="text" name="prenom" value="" placeholder="Prénom"/>
-    </label><br>
-
-    <label class="formulaire_client" for="telephone">
-        Téléphone 📱 :<br>
-        <input type="text" name="telephone" value="" placeholder="Téléphone"/>
-    </label><br>
-
-    <label class="formulaire_client" for="adresse">
-        Adresse 🏠 :<br>
-        <input type="text" name="adresse" value="" placeholder="Adresse"/>
-    </label>
-
-    <label class="formulaire_client" for="code_postal">
-        Code postal ✉ :<br>
-        <input type="text" name="codePostal" value="" placeholder="Code Postal"/>
-    </label><br>
-
-    <label class="formulaire_client" for="mail">
-        Adresse email 💻 :<br>
-        <input type="email" name="mail" value="" placeholder="Adresse mail"/>
-    </label><br>
-
-  <!-- hidden inputs -->
-      <input type="submit" value="Envoyer 😘" name="go"/>
-</form>
-<?php
-if(isset($_POST["go"]))//Quand le bouton envoyer est pressé pour le formulaire client
-{
-    $nom = $_POST["nom"];
-    $prenom = $_POST["prenom"];
-    $adresse = $_POST["adresse"];
-    $codePostal = $_POST["codePostal"];
-    $telephone = $_POST["telephone"];
-    $mail = $_POST["mail"];
-
-    //Envoi dans la base de donnée
-    $sql = $bdd->prepare ("INSERT INTO client VALUES
-                          (:nom, :prenom, :adresse, :codePostal, :telephone, :mail)");
-
-    $sql->bindParam(':nom',$nom);
-    $sql->bindParam(':prenom',$prenom);
-    $sql->bindParam(':adresse',$adresse);
-    $sql->bindParam(':codePostal',$codePostal);
-    $sql->bindParam(':telephone',$telephone);
-    $sql->bindParam(':mail',$mail);
-    $sql->execute();
-}
-?>
+                            $sql->bindParam(':nom',$nom);
+                            $sql->bindParam(':prenom',$prenom);
+                            $sql->bindParam(':adresse',$adresse);
+                            $sql->bindParam(':codePostal',$codePostal);
+                            $sql->bindParam(':telephone',$telephone);
+                            $sql->bindParam(':mail',$mail);
+                            $sql->execute();
+                        }
+                    ?>
                     <div class="btn-toolbar"></div>
                 </div>
             </div>
         </div>
     </div>
-    <footer class="footer text-faded text-center py-5">
+    <div>
         <div class="container">
-            <p class="m-0 small">Copyright&nbsp;©&nbsp;cuisine Insic 2020</p>
+            <div class="row">
+                <div class="col-md-6"><img class="rounded img-fluid" src="assets/img/grand-débat.gif" alt="serpent"></div>
+                <div class="col-md-6">
+                  <form action="store.php" method="post" ><br>
+                    <h1>Tests avec CATIA</h1><br>
+                      <h2>Paramétrage du placard</h2><br>
+
+                    <label class="formulaire_placard_bas" for="nom">
+                        Largeur :<br>
+                        <input type="text" name="largeur" value="" placeholder="largeur" required/>
+                    </label><br>
+
+                    <label class="formulaire_placard_bas" for="prenom">
+                        Hauteur :<br>
+                        <input type="text" name="hauteur" value="" placeholder="hauteur" required/>
+                    </label><br>
+
+                    <label class="formulaire_placard_bas" for="telephone">
+                        Profondeur :<br>
+                        <input type="text" name="profondeur" value="" placeholder="profondeur" required/>
+                    </label><br>
+
+                      <label class="formulaire_placard_bas" for="nombre_etagere">
+                          Profondeur :<br>
+                          <input type="number" min="0" max="3" name="nombre_etagere" value="" placeholder="" required/>
+                      </label><br><br>
+
+                      <input type="submit" value="Envoyer 😋" name="go_param_placard"/>
+                  </form>
+                    <?php
+                        if(isset($_POST["go_param_placard"]))//Quand le bouton envoyer est pressé pour le paramétre placard
+                        {
+                            $largeur = $_POST["largeur"];
+                            $hauteur = $_POST["hauteur"];
+                            $profondeur = $_POST["profondeur"];
+                            $nombre_etagere = $_POST["nombre_etagere"];
+
+                            if($nombre_etagere >= 1){
+                                $eta1 = "true";
+                            }
+                            if($nombre_etagere >= 2){
+                                $eta2 = "true";
+                            }
+                            if($nombre_etagere >= 3){
+                                $eta3 = "true";
+                            }
+
+                            //Envoi dans la base de données
+                            $sql = $bdd->prepare ("INSERT INTO placard_bas (largeur, hauteur, profondeur, etagere, etagere1, etagere2, etagere3)
+                                        VALUES (:largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere, :eta1, :eta2, :eta3)");
+
+                            $sql->bindParam(':largeur',$largeur);
+                            $sql->bindParam(':hauteur',$hauteur);
+                            $sql->bindParam(':profondeur',$profondeur);
+                            $sql->bindParam(':nombre_etagere',$nombre_etagere);
+                            $sql->bindParam(':eta1',$eta1);
+                            $sql->bindParam(':eta2',$eta2);
+                            $sql->bindParam(':eta3',$eta3);
+                            $sql->execute();
+                        }
+                    ?>
+                </div>
+            </div>
         </div>
-    </footer>
+    </div>
+    <div class="footer-basic">
+        <footer>
+            <div class="social"><a href="https://github.com/Little-Groundhog/Insic-Cuisine"><i class="icon ion-social-github"></i></a><a href="https://mines-nancy.univ-lorraine.fr/formation/ingenieur-de-specialite-ingenierie-de-conception-ic/"><i class="icon ion-briefcase"></i></a></div>
+            <ul
+                class="list-inline">
+                <li class="list-inline-item"><a href="index.html">Accueil</a></li>
+                <li class="list-inline-item"><a href="about.html">A propos</a></li>
+                <li class="list-inline-item"><a href="products.html">Nos meubles</a></li>
+                <li class="list-inline-item"><a href="store.php">Réaliser une commande</a></li>
+                <li class="list-inline-item"><a href="3D.html">Configurateur 3D</a></li>
+                </ul>
+                <p class="copyright">Insic Cusine @2020</p>
+        </footer>
+    </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.js"></script>
+    <script src="assets/js/Animated-Typing-With-Blinking.js"></script>
     <script src="assets/js/current-day.js"></script>
 </body>
 
