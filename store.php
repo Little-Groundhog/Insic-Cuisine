@@ -59,7 +59,7 @@
                         <label>
                             <input type="email" name="email" placeholder="Email" id="email" required>
                         </label><br>
-                        
+
                         <label>
                             <input type="password" placeholder="" name="Password" required>
                         </label><br>
