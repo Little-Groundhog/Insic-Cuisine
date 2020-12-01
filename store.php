@@ -129,7 +129,67 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
     <div>
         <div class="container-fluid text-left">
             <div class="row">
-                <div class="col-md-6"></div>
+                <div class="col-md-6"><form action="store.php" method="post" ><br>
+                        <h1>Tests avec CATIA</h1><br>
+                        <h2>Paramétrage du placard haut</h2><br>
+
+                        <label class="formulaire_placard_haut" for="largeur">
+                            Largeur :<br>
+                            <input type="text" name="largeur_haut" value="" placeholder="largeur" required/>
+                        </label><br>
+
+                        <label class="formulaire_placard_haut" for="hauteur">
+                            Hauteur :<br>
+                            <input type="text" name="hauteur_haut" value="" placeholder="hauteur" required/>
+                        </label><br>
+
+                        <label class="formulaire_placard_haut" for="profondeur">
+                            Profondeur :<br>
+                            <input type="text" name="profondeur_haut" value="" placeholder="profondeur" required/>
+                        </label><br>
+
+                        <label class="formulaire_placard_haut" for="nombre_etagere">
+                            Nombre d'étagère :<br>
+                            <input type="number" min="0" max="3" name="nombre_etagere_haut" value="" placeholder="" required/>
+                        </label><br><br>
+
+                        <input type="submit" value="Envoyer :yum:" name="go_param_placard_haut"/>
+                    </form>
+                    <?php
+                    if(isset($_POST["go_param_placard_haut"]))//Quand le bouton envoyer est pressé pour le paramétre placard
+                    {
+                        $largeur = $_POST["largeur_haut"];
+                        $hauteur = $_POST["hauteur_haut"];
+                        $profondeur = $_POST["profondeur_haut"];
+                        $nombre_etagere = $_POST["nombre_etagere_haut"];
+                        $eta1 = "false";
+                        $eta2 = "false";
+                        $eta3 = "false";
+                        if($nombre_etagere >= 1){
+                            $eta1 = "true";
+                        }
+                        if($nombre_etagere >= 2){
+                            $eta2 = "true";
+                        }
+                        if($nombre_etagere >= 3){
+                            $eta3 = "true";
+                        }
+
+                        //Envoi dans la base de données
+                        $sql = $bdd->prepare ("INSERT INTO placard_haut (largeur, hauteur, profondeur, etagere, etagere1, etagere2, etagere3)
+                                        VALUES (:largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere, :eta1, :eta2, :eta3)");
+
+                        $sql->bindParam(':largeur',$largeur);
+                        $sql->bindParam(':hauteur',$hauteur);
+                        $sql->bindParam(':profondeur',$profondeur);
+                        $sql->bindParam(':nombre_etagere',$nombre_etagere);
+                        $sql->bindParam(':eta1',$eta1);
+                        $sql->bindParam(':eta2',$eta2);
+                        $sql->bindParam(':eta3',$eta3);
+                        $sql->execute();
+                    }
+                    ?>
+                </div>
                 <div class="col-md-6">
                       <form action="store.php" method="post" ><br>
                         <h1>Formulaire de contact</h1><br>
