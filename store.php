@@ -134,26 +134,26 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                         <h2>Paramétrage du placard haut</h2><br>
 
                         <label class="formulaire_placard_haut" for="largeur">
-                            Largeur :<br>
-                            <input type="text" name="largeur_haut" value="" placeholder="largeur" required/>
+                            Largeur (compris entre 60 et 100 cm) :<br>
+                            <input type="number" min="60" max="100" name="largeur_haut" value="" placeholder="" required/>
                         </label><br>
 
                         <label class="formulaire_placard_haut" for="hauteur">
-                            Hauteur :<br>
-                            <input type="text" name="hauteur_haut" value="" placeholder="hauteur" required/>
+                            Hauteur (Compris entre 80 et 100 cm) :<br>
+                            <input type="number" min="80" max="100" name="hauteur_haut" value="" placeholder="" required/>
                         </label><br>
 
                         <label class="formulaire_placard_haut" for="profondeur">
-                            Profondeur :<br>
-                            <input type="text" name="profondeur_haut" value="" placeholder="profondeur" required/>
+                            Profondeur (Compris entre 40 et 80 cm) :<br>
+                            <input type="number" min="40" max="80" name="profondeur_haut" value="" placeholder="" required/>
                         </label><br>
 
                         <label class="formulaire_placard_haut" for="nombre_etagere">
-                            Nombre d'étagère :<br>
+                            Nombre d'étagères (Compris entre 0 et 3) :<br>
                             <input type="number" min="0" max="3" name="nombre_etagere_haut" value="" placeholder="" required/>
                         </label><br><br>
 
-                        <input type="submit" value="Envoyer :yum:" name="go_param_placard_haut"/>
+                        <input type="submit" value="Envoyer" name="go_param_placard_haut"/>
                     </form>
                     <?php
                     if(isset($_POST["go_param_placard_haut"]))//Quand le bouton envoyer est pressé pour le paramétre placard
@@ -257,29 +257,29 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
     <div>
         <div class="container">
             <div class="row">
-                <div class="col-md-6"><img class="rounded img-fluid" src="assets/img/grand-débat.gif" alt="serpent"></div>
+                <div class="col-md-6"></div>
                 <div class="col-md-6">
                   <form action="store.php" method="post" ><br>
                     <h1>Tests avec CATIA</h1><br>
                       <h2>Paramétrage du placard</h2><br>
 
                     <label class="formulaire_placard_bas" for="nom">
-                        Largeur :<br>
-                        <input type="text" name="largeur" value="" placeholder="largeur" required/>
+                        Largeur (Compris entre 60 et 100 cm) :<br>
+                        <input type="number" min="60" max="100" name="largeur" value="" placeholder="" required/>
                     </label><br>
 
                     <label class="formulaire_placard_bas" for="prenom">
-                        Hauteur :<br>
-                        <input type="text" name="hauteur" value="" placeholder="hauteur" required/>
+                        Hauteur (Compris entre 80 et 100 cm) :<br>
+                        <input type="number" min="80" max="100" name="hauteur" value="" placeholder="" required/>
                     </label><br>
 
                     <label class="formulaire_placard_bas" for="telephone">
-                        Profondeur :<br>
-                        <input type="text" name="profondeur" value="" placeholder="profondeur" required/>
+                        Profondeur (Compris entre 40 et 80 cm) :<br>
+                        <input type="number" min="40" max="80" name="profondeur" value="" placeholder="" required/>
                     </label><br>
 
                       <label class="formulaire_placard_bas" for="nombre_etagere">
-                          Nombre d'étagère :<br>
+                          Nombre d'étagères (Compris entre 0 et 3) :<br>
                           <input type="number" min="0" max="3" name="nombre_etagere" value="" placeholder="" required/>
                       </label><br><br>
 
