@@ -162,30 +162,16 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                         $hauteur = $_POST["hauteur_haut"];
                         $profondeur = $_POST["profondeur_haut"];
                         $nombre_etagere = $_POST["nombre_etagere_haut"];
-                        $eta1 = "false";
-                        $eta2 = "false";
-                        $eta3 = "false";
-                        if($nombre_etagere >= 1){
-                            $eta1 = "true";
-                        }
-                        if($nombre_etagere >= 2){
-                            $eta2 = "true";
-                        }
-                        if($nombre_etagere >= 3){
-                            $eta3 = "true";
-                        }
+
 
                         //Envoi dans la base de données
-                        $sql = $bdd->prepare ("INSERT INTO placard_haut (largeur, hauteur, profondeur, etagere, etagere1, etagere2, etagere3)
-                                        VALUES (:largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere, :eta1, :eta2, :eta3)");
+                        $sql = $bdd->prepare ("INSERT INTO placard_haut (largeur, hauteur, profondeur, etagere)
+                                        VALUES (:largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere)");
 
                         $sql->bindParam(':largeur',$largeur);
                         $sql->bindParam(':hauteur',$hauteur);
                         $sql->bindParam(':profondeur',$profondeur);
                         $sql->bindParam(':nombre_etagere',$nombre_etagere);
-                        $sql->bindParam(':eta1',$eta1);
-                        $sql->bindParam(':eta2',$eta2);
-                        $sql->bindParam(':eta3',$eta3);
                         $sql->execute();
                     }
                     ?>
@@ -349,17 +335,14 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                             }
 
                             //Envoi dans la base de données
-                            $sql = $bdd->prepare ("INSERT INTO placard_bas (IDClient, largeur, hauteur, profondeur, etagere, etagere1, etagere2, etagere3)
-                                        VALUES (:IDClient, :largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere, :eta1, :eta2, :eta3)");
+                            $sql = $bdd->prepare ("INSERT INTO placard_bas (IDClient, largeur, hauteur, profondeur, etagere)
+                                        VALUES (:IDClient, :largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere)");
 
                             $sql->bindParam(':IDClient',$IDClient['client.IDClient']);
                             $sql->bindParam(':largeur',$largeur);
                             $sql->bindParam(':hauteur',$hauteur);
                             $sql->bindParam(':profondeur',$profondeur);
                             $sql->bindParam(':nombre_etagere',$nombre_etagere);
-                            $sql->bindParam(':eta1',$eta1);
-                            $sql->bindParam(':eta2',$eta2);
-                            $sql->bindParam(':eta3',$eta3);
                             $sql->execute();
                         }
                     ?>
