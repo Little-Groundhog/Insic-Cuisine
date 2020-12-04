@@ -249,13 +249,13 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                             <h2>Paramétrage du bar</h2><br>
 
                             <label class="formulaire_bar" for="largeur">
-                                Largeur (Compris entre 150 et 300 cm) :<br>
-                                <input type="number" min="150" max="300" name="largeur" value="" placeholder="" required/>
+                                Largeur (Compris entre 100 et 400 cm) :<br>
+                                <input type="number" min="100" max="400" name="largeur" value="" placeholder="" required/>
                             </label><br>
 
                             <label class="formulaire_bar" for="hauteur">
-                                Hauteur (Compris entre 90 et 140 cm) :<br>
-                                <input type="number" min="90" max="140" name="hauteur" value="" placeholder="" required/>
+                                Hauteur (Compris entre 15 et 40 cm) :<br>
+                                <input type="number" min="15" max="40" name="hauteur" value="" placeholder="" required/>
                             </label><br>
 
                             <label class="formulaire_bar" for="profondeur">
