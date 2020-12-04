@@ -275,16 +275,6 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                             <label class="formulaire_bar" for="profondeur">
                                 Profondeur (Compris entre 40 et 80 cm) :<br>
                                 <input type="number" min="40" max="80" name="profondeur" value="" placeholder="" required/>
-                            </label><br>
-
-                            <label class="formulaire_bar" for="nombre_etagere">
-                                Nombre de portes (Compris entre 2 et 3 portes) :<br>
-                                <input type="number" min="2" max="3" name="nombre_portes" value="" placeholder="" required/>
-                            </label><br>
-
-                            <label class="formulaire_bar" for="nombre_etagere">
-                                Nombre d'étagère (Compris entre 0 et 3 étagères) :<br>
-                                <input type="number" min="0" max="3" name="nombre_etagere" value="" placeholder="" required/>
                             </label><br><br>
 
                             <input type="submit" value="Envoyer" name="go_param_bar"/>
@@ -295,42 +285,15 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                         $largeur = $_POST["largeur"];
                         $hauteur = $_POST["hauteur"];
                         $profondeur = $_POST["profondeur"];
-                        $nombre_etagere = $_POST["nombre_etagere"];
-                        $nombre_portes = $_POST["nombre_portes"];
-
-                        $eta1 = "false";
-                        $eta2 = "false";
-                        $eta3 = "false";
-                        $porte3 = "false";
-
-                        if($nombre_etagere >= 1){
-                            $eta1 = "true";
-                        }
-                        if($nombre_etagere >= 2){
-                            $eta2 = "true";
-                        }
-                        if($nombre_etagere >= 3){
-                            $eta3 = "true";
-                        }
-
-                        if($nombre_portes == 3){
-                            $porte3 = "true";
-                        }
 
                         //Envoi dans la base de données
-                        $sql = $bdd->prepare ("INSERT INTO bar (IDClient, largeur, hauteur, profondeur, nombrePortes, portes3, etagere, etagere1, etagere2, etagere3)
-                                        VALUES (:IDClient, :largeur/100, :hauteur/100, :profondeur/100,:nombre_portes, :portes3, :nombre_etagere, :eta1, :eta2, :eta3)");
+                        $sql = $bdd->prepare ("INSERT INTO bar (IDClient, largeur, hauteur, profondeur)
+                                        VALUES (:IDClient, :largeur/100, :hauteur/100, :profondeur/100)");
 
                         $sql->bindParam(':IDClient',$IDClient['client.IDClient']);
                         $sql->bindParam(':largeur',$largeur);
                         $sql->bindParam(':hauteur',$hauteur);
                         $sql->bindParam(':profondeur',$profondeur);
-                        $sql->bindParam(':nombre_portes',$nombre_portes);
-                        $sql->bindParam(':portes3',$porte3);
-                        $sql->bindParam(':nombre_etagere',$nombre_etagere);
-                        $sql->bindParam(':eta1',$eta1);
-                        $sql->bindParam(':eta2',$eta2);
-                        $sql->bindParam(':eta3',$eta3);
                         $sql->execute();
                     }
                     ?>
