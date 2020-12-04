@@ -1,3 +1,8 @@
+<?php
+@session_start(); //Lancement de la session pour les cookies
+setcookie('IDClient', 'NULL', time() + 365*24*3600, null, null, false, true);
+setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, true);
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -9,6 +14,7 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
@@ -17,11 +23,20 @@
     <link rel="stylesheet" href="assets/css/Animated-Typing-With-Blinking.css">
     <link rel="stylesheet" href="assets/css/Features-Clean.css">
     <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="assets/css/Good-login-dropdown-menu-1.css">
+    <link rel="stylesheet" href="assets/css/Good-login-dropdown-menu.css">
     <link rel="stylesheet" href="assets/css/Highlight-Blue.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.2.0/aos.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Team-Clean.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
+    <script>
+        function IDClient{
+            alert('ça marche');
+            document.getElementById("ID").innerHTML = "test";
+        }
+    </script>
 </head>
 
 <body style="background: linear-gradient(rgba(0,0,0,0.49), rgba(153,146,143,0.4626405090137858) 34%, rgba(255,255,255,0.65) 100%);">
@@ -36,6 +51,52 @@
             die('Erreur : ' . $e->getMessage());
         }
     ?>
+    <div class="container-fluid text-right" style="margin: 0;padding: 0;" id="ID">Actuellement non connecté   <button class="btn btn-primary" data-toggle="modal" data-target="#modal1" type="button">Se connecter</button>
+        <div class="modal fade"
+             role="dialog" tabindex="-1" id="modal1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Connexion</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <form method="post" ><br>
+                        <label class="connexion" for="email">
+                            Email :<br>
+                            <input type="email" name="email" placeholder="Email" required/>
+                        </label><br>
+
+                        <label class="connexion" for="password">
+                            Mot de passe :<br>
+                            <input type="password" name="motDePasse" required/>
+                        </label><br>
+
+                        <input type="submit" value="Connexion" name="connexion"/>
+                    </form>
+                </div>
+            </div>
+            <?php
+            if(isset($_POST["connexion"]))//Quand le bouton envoyer est pressé pour le formulaire client
+            {
+                $IDClient = NULL;
+
+                $mail = $_POST["email"];
+                $mdp = $_POST["Password"];
+
+                $sql = $bdd->prepare("SELECT `IDClient` FROM `client` WHERE `mail`= :mail AND `motDePasse`=:mdp");
+
+                $sql->bindParam(':mail',$mail);
+                $sql->bindParam(':mdp',$mdp);
+                $sql->execute();
+
+                $IDClient = $sql->fetch();
+                //TODO stocker l'identifiant client et l'email dans un cookies pour pouvoir le réutiliser plus tard
+                //Impossible de passer par un stockage de variable car au moment de l'appuie sur le bouton submit la page et totalement rechargé
+                //Il faut pouvoir avoir accès à l'identifiant depuis toutes les pages web
+
+            }
+            ?>
+        </div><strong>&nbsp; &nbsp;&nbsp;</strong><button class="btn btn-primary text-right" type="button">Créer un compte</button></div>
     <h1 class="text-center text-white d-none d-lg-block site-heading"><span class="site-heading-lower">INSIC CUISINE</span></h1>
     <nav class="navbar navbar-light navbar-expand-lg bg-dark py-lg-4" id="mainNav">
         <div class="container"><a class="navbar-brand text-uppercase d-lg-none text-expanded" href="#">INSIC CUISINE</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -68,7 +129,67 @@
     <div>
         <div class="container-fluid text-left">
             <div class="row">
-                <div class="col-md-6"></div>
+                <div class="col-md-6"><form action="store.php" method="post" ><br>
+                        <h1>Tests avec CATIA</h1><br>
+                        <h2>Paramétrage du placard haut</h2><br>
+
+                        <label class="formulaire_placard_haut" for="largeur">
+                            Largeur (compris entre 60 et 100 cm) :<br>
+                            <input type="number" min="60" max="100" name="largeur_haut" value="" placeholder="" required/>
+                        </label><br>
+
+                        <label class="formulaire_placard_haut" for="hauteur">
+                            Hauteur (Compris entre 80 et 100 cm) :<br>
+                            <input type="number" min="80" max="100" name="hauteur_haut" value="" placeholder="" required/>
+                        </label><br>
+
+                        <label class="formulaire_placard_haut" for="profondeur">
+                            Profondeur (Compris entre 40 et 80 cm) :<br>
+                            <input type="number" min="40" max="80" name="profondeur_haut" value="" placeholder="" required/>
+                        </label><br>
+
+                        <label class="formulaire_placard_haut" for="nombre_etagere">
+                            Nombre d'étagères (Compris entre 0 et 3) :<br>
+                            <input type="number" min="0" max="3" name="nombre_etagere_haut" value="" placeholder="" required/>
+                        </label><br><br>
+
+                        <input type="submit" value="Envoyer" name="go_param_placard_haut"/>
+                    </form>
+                    <?php
+                    if(isset($_POST["go_param_placard_haut"]))//Quand le bouton envoyer est pressé pour le paramétre placard
+                    {
+                        $largeur = $_POST["largeur_haut"];
+                        $hauteur = $_POST["hauteur_haut"];
+                        $profondeur = $_POST["profondeur_haut"];
+                        $nombre_etagere = $_POST["nombre_etagere_haut"];
+                        $eta1 = "false";
+                        $eta2 = "false";
+                        $eta3 = "false";
+                        if($nombre_etagere >= 1){
+                            $eta1 = "true";
+                        }
+                        if($nombre_etagere >= 2){
+                            $eta2 = "true";
+                        }
+                        if($nombre_etagere >= 3){
+                            $eta3 = "true";
+                        }
+
+                        //Envoi dans la base de données
+                        $sql = $bdd->prepare ("INSERT INTO placard_haut (largeur, hauteur, profondeur, etagere, etagere1, etagere2, etagere3)
+                                        VALUES (:largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere, :eta1, :eta2, :eta3)");
+
+                        $sql->bindParam(':largeur',$largeur);
+                        $sql->bindParam(':hauteur',$hauteur);
+                        $sql->bindParam(':profondeur',$profondeur);
+                        $sql->bindParam(':nombre_etagere',$nombre_etagere);
+                        $sql->bindParam(':eta1',$eta1);
+                        $sql->bindParam(':eta2',$eta2);
+                        $sql->bindParam(':eta3',$eta3);
+                        $sql->execute();
+                    }
+                    ?>
+                </div>
                 <div class="col-md-6">
                       <form action="store.php" method="post" ><br>
                         <h1>Formulaire de contact</h1><br>
@@ -136,29 +257,107 @@
     <div>
         <div class="container">
             <div class="row">
-                <div class="col-md-6"><img class="rounded img-fluid" src="assets/img/grand-débat.gif" alt="serpent"></div>
+                <div class="col-md-6">
+                    <form action="store.php" method="post" ><br>
+                            <h1>Tests avec CATIA</h1><br>
+                            <h2>Paramétrage du bar</h2><br>
+
+                            <label class="formulaire_bar" for="largeur">
+                                Largeur (Compris entre 150 et 300 cm) :<br>
+                                <input type="number" min="150" max="300" name="largeur" value="" placeholder="" required/>
+                            </label><br>
+
+                            <label class="formulaire_bar" for="hauteur">
+                                Hauteur (Compris entre 90 et 140 cm) :<br>
+                                <input type="number" min="90" max="140" name="hauteur" value="" placeholder="" required/>
+                            </label><br>
+
+                            <label class="formulaire_bar" for="profondeur">
+                                Profondeur (Compris entre 40 et 80 cm) :<br>
+                                <input type="number" min="40" max="80" name="profondeur" value="" placeholder="" required/>
+                            </label><br>
+
+                            <label class="formulaire_bar" for="nombre_etagere">
+                                Nombre de portes (Compris entre 2 et 3 portes) :<br>
+                                <input type="number" min="2" max="3" name="nombre_portes" value="" placeholder="" required/>
+                            </label><br>
+
+                            <label class="formulaire_bar" for="nombre_etagere">
+                                Nombre d'étagère (Compris entre 0 et 3 étagères) :<br>
+                                <input type="number" min="0" max="3" name="nombre_etagere" value="" placeholder="" required/>
+                            </label><br><br>
+
+                            <input type="submit" value="Envoyer" name="go_param_bar"/>
+                        </form>
+                    <?php
+                    if(isset($_POST["go_param_bar"]))//Quand le bouton envoyer est pressé pour le paramétre placard
+                    {
+                        $largeur = $_POST["largeur"];
+                        $hauteur = $_POST["hauteur"];
+                        $profondeur = $_POST["profondeur"];
+                        $nombre_etagere = $_POST["nombre_etagere"];
+                        $nombre_portes = $_POST["nombre_portes"];
+
+                        $eta1 = "false";
+                        $eta2 = "false";
+                        $eta3 = "false";
+                        $porte3 = "false";
+
+                        if($nombre_etagere >= 1){
+                            $eta1 = "true";
+                        }
+                        if($nombre_etagere >= 2){
+                            $eta2 = "true";
+                        }
+                        if($nombre_etagere >= 3){
+                            $eta3 = "true";
+                        }
+
+                        if($nombre_portes == 3){
+                            $porte3 = "true";
+                        }
+
+                        //Envoi dans la base de données
+                        $sql = $bdd->prepare ("INSERT INTO bar (IDClient, largeur, hauteur, profondeur, nombrePortes, portes3, etagere, etagere1, etagere2, etagere3)
+                                        VALUES (:IDClient, :largeur/100, :hauteur/100, :profondeur/100,:nombre_portes, :portes3, :nombre_etagere, :eta1, :eta2, :eta3)");
+
+                        $sql->bindParam(':IDClient',$IDClient['client.IDClient']);
+                        $sql->bindParam(':largeur',$largeur);
+                        $sql->bindParam(':hauteur',$hauteur);
+                        $sql->bindParam(':profondeur',$profondeur);
+                        $sql->bindParam(':nombre_portes',$nombre_portes);
+                        $sql->bindParam(':portes3',$porte3);
+                        $sql->bindParam(':nombre_etagere',$nombre_etagere);
+                        $sql->bindParam(':eta1',$eta1);
+                        $sql->bindParam(':eta2',$eta2);
+                        $sql->bindParam(':eta3',$eta3);
+                        $sql->execute();
+                    }
+                    ?>
+
+                </div>
                 <div class="col-md-6">
                   <form action="store.php" method="post" ><br>
                     <h1>Tests avec CATIA</h1><br>
                       <h2>Paramétrage du placard</h2><br>
 
                     <label class="formulaire_placard_bas" for="nom">
-                        Largeur :<br>
-                        <input type="text" name="largeur" value="" placeholder="largeur" required/>
+                        Largeur (Compris entre 60 et 100 cm) :<br>
+                        <input type="number" min="60" max="100" name="largeur" value="" placeholder="" required/>
                     </label><br>
 
                     <label class="formulaire_placard_bas" for="prenom">
-                        Hauteur :<br>
-                        <input type="text" name="hauteur" value="" placeholder="hauteur" required/>
+                        Hauteur (Compris entre 80 et 100 cm) :<br>
+                        <input type="number" min="80" max="100" name="hauteur" value="" placeholder="" required/>
                     </label><br>
 
                     <label class="formulaire_placard_bas" for="telephone">
-                        Profondeur :<br>
-                        <input type="text" name="profondeur" value="" placeholder="profondeur" required/>
+                        Profondeur (Compris entre 40 et 80 cm) :<br>
+                        <input type="number" min="40" max="80" name="profondeur" value="" placeholder="" required/>
                     </label><br>
 
                       <label class="formulaire_placard_bas" for="nombre_etagere">
-                          Nombre d'étagère :<br>
+                          Nombre d'étagères (Compris entre 0 et 3) :<br>
                           <input type="number" min="0" max="3" name="nombre_etagere" value="" placeholder="" required/>
                       </label><br><br>
 
@@ -172,6 +371,10 @@
                             $profondeur = $_POST["profondeur"];
                             $nombre_etagere = $_POST["nombre_etagere"];
 
+                            $eta1 = "false";
+                            $eta2 = "false";
+                            $eta3 = "false";
+
                             if($nombre_etagere >= 1){
                                 $eta1 = "true";
                             }
@@ -183,9 +386,10 @@
                             }
 
                             //Envoi dans la base de données
-                            $sql = $bdd->prepare ("INSERT INTO placard_bas (largeur, hauteur, profondeur, etagere, etagere1, etagere2, etagere3)
-                                        VALUES (:largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere, :eta1, :eta2, :eta3)");
+                            $sql = $bdd->prepare ("INSERT INTO placard_bas (IDClient, largeur, hauteur, profondeur, etagere, etagere1, etagere2, etagere3)
+                                        VALUES (:IDClient, :largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere, :eta1, :eta2, :eta3)");
 
+                            $sql->bindParam(':IDClient',$IDClient['client.IDClient']);
                             $sql->bindParam(':largeur',$largeur);
                             $sql->bindParam(':hauteur',$hauteur);
                             $sql->bindParam(':profondeur',$profondeur);
