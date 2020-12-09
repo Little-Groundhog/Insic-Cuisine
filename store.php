@@ -34,7 +34,7 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
     <script>
         function IDClient{
             alert('ça marche');
-            document.getElementById("ID").innerHTML = "test";
+            document.getElementById("ID").innerHTML = <?php echo $_COOKIE['IDClient']; ?>;
         }
     </script>
 </head>
