@@ -92,6 +92,7 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                 $IDClient = $sql->fetch();
 
                 setcookie('IDClient', $IDClient, time() + 365 * 24 * 3600, null, null, false, true);
+                $sql->closeCursor();
             }
             ?>
         </div><strong>&nbsp; &nbsp;&nbsp;</strong><button class="btn btn-primary text-right" type="button">Créer un compte</button></div>
@@ -185,6 +186,7 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                         $sql->bindParam(':eta2',$eta2);
                         $sql->bindParam(':eta3',$eta3);
                         $sql->execute();
+                        $sql->closeCursor();
                     }
                     ?>
                 </div>
@@ -245,6 +247,7 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                             $sql->bindParam(':telephone',$telephone);
                             $sql->bindParam(':mail',$mail);
                             $sql->execute();
+                            $sql->closeCursor();
                         }
                     ?>
                     <div class="btn-toolbar"></div>
@@ -330,6 +333,7 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                         $sql->bindParam(':eta2',$eta2);
                         $sql->bindParam(':eta3',$eta3);
                         $sql->execute();
+                        $sql->closeCursor();
                     }
                     ?>
 
@@ -396,6 +400,7 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                             $sql->bindParam(':eta2',$eta2);
                             $sql->bindParam(':eta3',$eta3);
                             $sql->execute();
+                            $sql->closeCursor();
                         }
                     ?>
                 </div>
