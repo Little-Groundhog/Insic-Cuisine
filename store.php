@@ -90,10 +90,8 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                 $sql->execute();
 
                 $IDClient = $sql->fetch();
-                //TODO stocker l'identifiant client et l'email dans un cookies pour pouvoir le réutiliser plus tard
-                //Impossible de passer par un stockage de variable car au moment de l'appuie sur le bouton submit la page et totalement rechargé
-                //Il faut pouvoir avoir accès à l'identifiant depuis toutes les pages web
 
+                setcookie('IDClient', $IDClient, time() + 365 * 24 * 3600, null, null, false, true);
             }
             ?>
         </div><strong>&nbsp; &nbsp;&nbsp;</strong><button class="btn btn-primary text-right" type="button">Créer un compte</button></div>
