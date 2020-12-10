@@ -1,6 +1,6 @@
 <?php
 @session_start(); //Lancement de la session pour les cookies
-setcookie('IDClient', 'NULL', time() + 365*24*3600, null, null, false, true);
+setcookie('IDClientCookies', 2, time() + 365*24*3600, null, null, false, true);
 setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, true);
 ?>
 <!DOCTYPE html>
@@ -32,9 +32,9 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
     <link rel="stylesheet" href="assets/css/Team-Clean.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
     <script>
-        function IDClient{
+        function IDClient(){
             alert('ça marche');
-            document.getElementById("ID").innerHTML = <?php echo $_COOKIE['IDClient']; ?>;
+            document.getElementById("ID").innerHTML = <?php echo $_COOKIE['IDClientCookies']; ?>;
         }
     </script>
 </head>
@@ -76,23 +76,26 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                 </div>
             </div>
             <?php
+            $IDClient = array('Chameau','ragondin');
             if(isset($_POST["connexion"]))//Quand le bouton envoyer est pressé pour le formulaire client
             {
-                $IDClient = NULL;
+
 
                 $mail = $_POST["email"];
                 $mdp = $_POST["Password"];
 
-                $sql = $bdd->prepare("SELECT `IDClient` FROM `client` WHERE `mail`= :mail AND `motDePasse`=:mdp");
+                $sql = $bdd->prepare("SELECT `IDClient` FROM `client` WHERE `mail`= 'maximebelcour@gmail.com' AND `motDePasse`= 'admin'");
 
                 $sql->bindParam(':mail',$mail);
                 $sql->bindParam(':mdp',$mdp);
                 $sql->execute();
 
-                $IDClient = $sql->fetch();
+                $IDClient[0] = $sql->fetch();
+                $tableau_serialize = serialize($IDClient);
 
-                setcookie('IDClient', $IDClient, time() + 365 * 24 * 3600, null, null, false, true);
-                $sql->closeCursor();
+                setcookie('IDClientCookies', $tableau_serialize, time() + 365 * 24 * 3600, null, null, false, true);
+
+            $sql->closeCursor();
             }
             ?>
         </div><strong>&nbsp; &nbsp;&nbsp;</strong><button class="btn btn-primary text-right" type="button">Créer un compte</button></div>
@@ -114,7 +117,7 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
     <div class="highlight-blue">
         <div class="container">
             <div class="intro">
-                <h2 class="text-center">Zone en tests</h2>
+                <h2 class="text-center">Zone en tests <br> <?php echo "Cookie named IDClientCookies '" . $tableau_serialize . "'"; ?></h2>
                 <p class="text-center">Emplacement pour les formulaires en relation avec la base de données et CATIA, ici tout peut arriver 😉</p>
             </div>
             <div class="buttons"><a class="btn btn-primary" role="button" href="index.html">Retourner en sécurité</a></div>
@@ -277,7 +280,7 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                         $sql = $bdd->prepare ("INSERT INTO bar (IDClient, largeur, hauteur, profondeur)
                                         VALUES (:IDClient, :largeur/100, :hauteur/100, :profondeur/100)");
 
-                        $sql->bindParam(':IDClient',$IDClient['client.IDClient']);
+                        $sql->bindParam(':IDClient',$_COOKIE['IDClientCookies']);
                         $sql->bindParam(':largeur',$largeur);
                         $sql->bindParam(':hauteur',$hauteur);
                         $sql->bindParam(':profondeur',$profondeur);
@@ -340,7 +343,7 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                             $sql = $bdd->prepare ("INSERT INTO placard_bas (IDClient, largeur, hauteur, profondeur, etagere)
                                         VALUES (:IDClient, :largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere)");
 
-                            $sql->bindParam(':IDClient',$IDClient['client.IDClient']);
+                            $sql->bindParam(':IDClient',$_COOKIE['IDClientCookies']);
                             $sql->bindParam(':largeur',$largeur);
                             $sql->bindParam(':hauteur',$hauteur);
                             $sql->bindParam(':profondeur',$profondeur);
