@@ -33,7 +33,6 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
     <link rel="stylesheet" href="assets/css/untitled.css">
     <script>
         function IDClient(){
-            alert('ça marche');
             document.getElementById("ID").innerHTML = <?php echo $_COOKIE['IDClientCookies']; ?>;
         }
     </script>
@@ -60,7 +59,7 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                         <h4 class="modal-title">Connexion</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                     </div>
-                    <form method="post" ><br>
+                    <form method="post" action="store.php"><br>
                         <label class="connexion" for="email">
                             Email :<br>
                             <input type="email" name="email" placeholder="Email" required/>
@@ -76,27 +75,23 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                 </div>
             </div>
             <?php
-            $IDClient = array('Chameau','ragondin');
-            if(isset($_POST["connexion"]))//Quand le bouton envoyer est pressé pour le formulaire client
-            {
+                $IDClient = 0;
+                if(isset($_POST["connexion"]))//Quand le bouton envoyer est pressé pour le formulaire client
+                {
+                    $sql = $bdd->prepare("SELECT IDClient FROM client WHERE mail = 'maximebelcour@gmail.com' AND motDePasse = 'admin'");
+                    $sql->execute(array('mail' => $_POST["email"], 'mdp' => $_POST["Password"]));
 
+                    $donnees =0;//init
 
-                $mail = $_POST["email"];
-                $mdp = $_POST["Password"];
+                    while($donnees = $sql->fetch())
+                    {
+                        $IDClient = $donnees['IDClient'];
+                        setcookie('IDClientCookies', $IDClient, time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+                        echo '<script> IDClient(); </script>';//Lancement du script pour l'affichage de l'ID en haut de page
+                    }
 
-                $sql = $bdd->prepare("SELECT `IDClient` FROM `client` WHERE `mail`= 'maximebelcour@gmail.com' AND `motDePasse`= 'admin'");
-
-                $sql->bindParam(':mail',$mail);
-                $sql->bindParam(':mdp',$mdp);
-                $sql->execute();
-
-                $IDClient[0] = $sql->fetch();
-                $tableau_serialize = serialize($IDClient);
-
-                setcookie('IDClientCookies', $tableau_serialize, time() + 365 * 24 * 3600, null, null, false, true);
-
-            $sql->closeCursor();
-            }
+                    $sql->closeCursor();//Fin de la requete
+                }
             ?>
         </div><strong>&nbsp; &nbsp;&nbsp;</strong><button class="btn btn-primary text-right" type="button">Créer un compte</button></div>
     <h1 class="text-center text-white d-none d-lg-block site-heading"><span class="site-heading-lower">INSIC CUISINE</span></h1>
@@ -117,7 +112,7 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
     <div class="highlight-blue">
         <div class="container">
             <div class="intro">
-                <h2 class="text-center">Zone en tests <br> <?php echo "Cookie named IDClientCookies '" . $tableau_serialize . "'"; ?></h2>
+                <h2 class="text-center">Zone en tests <br> <?php echo "Cookie named IDClientCookies '" . $IDClient . "'"; ?></h2>
                 <p class="text-center">Emplacement pour les formulaires en relation avec la base de données et CATIA, ici tout peut arriver 😉</p>
             </div>
             <div class="buttons"><a class="btn btn-primary" role="button" href="index.html">Retourner en sécurité</a></div>
