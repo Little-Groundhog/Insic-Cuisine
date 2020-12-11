@@ -80,7 +80,7 @@ setcookie('pseudo', 'john', time() + 365*24*3600, null, null, false, true);
 
                             setcookie('pseudo', $pseudo, time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
 
-                            $sql = $bdd->prepare("SELECT IDClient FROM client WHERE pseudo = 'Marsoin' AND motDePasse = 'admin'");
+                            $sql = $bdd->prepare("SELECT IDClient FROM client WHERE pseudo = :pseudo AND motDePasse = :mdp");
                             $sql->bindParam(':pseudo',$pseudo);
                             $sql->bindParam(':mdp',$mdp);
                             $sql->execute();
