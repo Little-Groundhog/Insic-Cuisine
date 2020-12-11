@@ -1,7 +1,7 @@
 <?php
 @session_start(); //Lancement de la session pour les cookies
 setcookie('IDClientCookies', 2, time() + 365*24*3600, null, null, false, true);
-setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, true);
+setcookie('pseudo', 'john', time() + 365*24*3600, null, null, false, true);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -60,9 +60,9 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                     </div>
                     <form method="post" action="store.php"><br>
-                        <label class="connexion" for="email">
+                        <label class="connexion" for="pseudo">
                             Email :<br>
-                            <input type="email" name="email" placeholder="Email" required/>
+                            <input type="pseudo" name="pseudo" placeholder="Pseudo" required/>
                         </label><br>
 
                         <label class="connexion" for="password">
@@ -71,28 +71,35 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                         </label><br>
 
                         <input type="submit" value="Connexion" name="connexion"/>
+                        <?php
+                        $IDClient = 0;
+                        if(isset($_POST["connexion"]))//Quand le bouton envoyer est pressé pour le formulaire client
+                        {
+                            $pseudo = $_POST["pseudo"];
+                            $mdp = $_POST["motDePasse"];
+
+                            setcookie('pseudo', $pseudo, time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+
+                            $sql = $bdd->prepare("SELECT IDClient FROM client WHERE pseudo = 'Marsoin' AND motDePasse = 'admin'");
+                            $sql->bindParam(':pseudo',$pseudo);
+                            $sql->bindParam(':mdp',$mdp);
+                            $sql->execute();
+
+                            $donnees =0;//init
+
+                            while($donnees = $sql->fetch())//Récupération des données ligne par ligne
+                            {
+                                $IDClient = $donnees['IDClient'];//Valur à récuperer stockée en décimal
+                                echo '<script> IDClient(); </script>';//Lancement du script pour l'affichage de l'ID en haut de page
+                            }
+                            setcookie('IDClientCookies', $IDClient, time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+
+                            $sql->closeCursor();//Fin de la requete
+                        }
+                        ?>
                     </form>
                 </div>
             </div>
-            <?php
-                $IDClient = 0;
-                if(isset($_POST["connexion"]))//Quand le bouton envoyer est pressé pour le formulaire client
-                {
-                    $sql = $bdd->prepare("SELECT IDClient FROM client WHERE mail = 'maximebelcour@gmail.com' AND motDePasse = 'admin'");
-                    $sql->execute(array('mail' => $_POST["email"], 'mdp' => $_POST["Password"]));
-
-                    $donnees =0;//init
-
-                    while($donnees = $sql->fetch())
-                    {
-                        $IDClient = $donnees['IDClient'];
-                        setcookie('IDClientCookies', $IDClient, time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
-                        echo '<script> IDClient(); </script>';//Lancement du script pour l'affichage de l'ID en haut de page
-                    }
-
-                    $sql->closeCursor();//Fin de la requete
-                }
-            ?>
         </div><strong>&nbsp; &nbsp;&nbsp;</strong><button class="btn btn-primary text-right" type="button">Créer un compte</button></div>
     <h1 class="text-center text-white d-none d-lg-block site-heading"><span class="site-heading-lower">INSIC CUISINE</span></h1>
     <nav class="navbar navbar-light navbar-expand-lg bg-dark py-lg-4" id="mainNav">
@@ -112,7 +119,7 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
     <div class="highlight-blue">
         <div class="container">
             <div class="intro">
-                <h2 class="text-center">Zone en tests <br> <?php echo "Cookie named IDClientCookies '" . $IDClient . "'"; ?></h2>
+                <h2 class="text-center">Zone en tests <br> <?php echo "IDClient récupéré : '" . $IDClient . "' avec le pseudo :'".$_COOKIE['pseudo']."'"; ?></h2>
                 <p class="text-center">Emplacement pour les formulaires en relation avec la base de données et CATIA, ici tout peut arriver 😉</p>
             </div>
             <div class="buttons"><a class="btn btn-primary" role="button" href="index.html">Retourner en sécurité</a></div>
@@ -203,9 +210,9 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                             <input type="text" name="codePostal" value="" placeholder="Code Postal" required/>
                         </label><br>
 
-                        <label class="formulaire_client" for="mail">
-                            Adresse email 💻 :<br>
-                            <input type="email" name="mail" value="" placeholder="Adresse mail" required/>
+                        <label class="formulaire_client" for="pseudo">
+                            Pseudo 💻 :<br>
+                            <input type="pseudo" name="pseudo" value="" placeholder="Pseudo" required/>
                         </label><br>
 
                           <input type="submit" value="Envoyer 😘" name="go"/>
@@ -218,18 +225,18 @@ setcookie('email', 'null@mail.com', time() + 365*24*3600, null, null, false, tru
                             $adresse = $_POST["adresse"];
                             $codePostal = $_POST["codePostal"];
                             $telephone = $_POST["telephone"];
-                            $mail = $_POST["mail"];
+                            $pseudo = $_POST["pseudo"];
 
                             //Envoi dans la base de donnée
                             $sql = $bdd->prepare ("INSERT INTO client VALUES
-                              (:nom, :prenom, :adresse, :codePostal, :telephone, :mail)");
+                              (:nom, :prenom, :adresse, :codePostal, :telephone, :pseudo)");
 
                             $sql->bindParam(':nom',$nom);
                             $sql->bindParam(':prenom',$prenom);
                             $sql->bindParam(':adresse',$adresse);
                             $sql->bindParam(':codePostal',$codePostal);
                             $sql->bindParam(':telephone',$telephone);
-                            $sql->bindParam(':mail',$mail);
+                            $sql->bindParam(':pseudo',$pseudo);
                             $sql->execute();
                             $sql->closeCursor();
                         }
