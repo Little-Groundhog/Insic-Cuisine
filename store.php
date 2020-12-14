@@ -1,7 +1,7 @@
 <?php
 @session_start(); //Lancement de la session pour les cookies
-setcookie('IDClientCookies', 2, time() + 365*24*3600, null, null, false, true);
-setcookie('pseudo', 'john', time() + 365*24*3600, null, null, false, true);
+setcookie('IDClientCookies', 0, time() + 365*24*3600, null, null, false, true);
+setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, true);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -31,11 +31,6 @@ setcookie('pseudo', 'john', time() + 365*24*3600, null, null, false, true);
     <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Team-Clean.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
-    <script>
-        function IDClient(){
-            document.getElementById("ID").innerHTML = <?php echo $_COOKIE['IDClientCookies']; ?>;
-        }
-    </script>
 </head>
 
 <body style="background: linear-gradient(rgba(0,0,0,0.49), rgba(153,146,143,0.4626405090137858) 34%, rgba(255,255,255,0.65) 100%);">
@@ -55,31 +50,35 @@ setcookie('pseudo', 'john', time() + 365*24*3600, null, null, false, true);
         }
 
         /*Création d'un compte utilisateur via le formulaire en haut de la page*/
-        if(isset($_POST["createCompte"]))//Quand le bouton envoyer est pressé pour le paramétre placard
-        {//TODO finir la page
-            $largeur = $_POST["largeur_haut"];
-            $hauteur = $_POST["hauteur_haut"];
-            $profondeur = $_POST["profondeur_haut"];
-            $nombre_etagere = $_POST["nombre_etagere_haut"];
+        if(isset($_POST["createCompte"]))//Quand le bouton envoyer est pressé pour la création de compte
+        {
+            $nom = $_POST["cnom"];
+            $prenom = $_POST["cprenom"];
+            $pseudo = $_POST["cpseudo"];
+            $adresse = $_POST["cadresse"];
+            $codePostal = $_POST["ccodePostal"];
+            $password = $_POST["cpassword"];
 
 
             //Envoi dans la base de données
-            $sql = $bdd->prepare ("INSERT INTO placard_haut (largeur, hauteur, profondeur, etagere)
-                                            VALUES (:largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere)");
+            $sql = $bdd->prepare ("INSERT INTO client (nom, prenom, pseudo, adresse, code_postal, motDePasse)
+                                            VALUES (:nom, :prenom, :pseudo, :adresse, :codePostal, :password)");
 
-            $sql->bindParam(':largeur',$largeur);
-            $sql->bindParam(':hauteur',$hauteur);
-            $sql->bindParam(':profondeur',$profondeur);
-            $sql->bindParam(':nombre_etagere',$nombre_etagere);
+            $sql->bindParam(':nom',$nom);
+            $sql->bindParam(':prenom',$prenom);
+            $sql->bindParam(':pseudo',$pseudo);
+            $sql->bindParam(':adresse',$adresse);
+            $sql->bindParam(':codePostal',$codePostal);
+            $sql->bindParam(':password',$password);
             $sql->execute();
             $sql->closeCursor();
         }
 
         /*Connexion au compte*/
-        if(isset($_POST["connexion"]))//Quand le bouton envoyer est pressé pour le formulaire client
+        if(isset($_POST["connexion"]))//Quand le bouton envoyer est pressé pour la connexion
         {
             $pseudo = $_POST["pseudo"];
-            $mdp = $_POST["motDePasse"];
+            $mdp = $_POST["password"];
 
             setcookie('pseudo', $pseudo, time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
 
@@ -93,11 +92,74 @@ setcookie('pseudo', 'john', time() + 365*24*3600, null, null, false, true);
             while($donnees = $sql->fetch())//Récupération des données ligne par ligne
             {
                 $IDClient = $donnees['IDClient'];//Valur à récuperer stockée en décimal
-                echo '<script> IDClient(); </script>';//Lancement du script pour l'affichage de l'ID en haut de page
             }
+
+            echo '<script> IDClient(); </script>';//Lancement du script pour l'affichage de l'ID en haut de page
             setcookie('IDClientCookies', $IDClient, time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
 
-            $sql->closeCursor();//Fin de la requete
+            $sql->closeCursor();
+        }
+
+        /*Envoie des paramètres placard_haut*/
+        if(isset($_POST["go_param_placard_haut"]))//Quand le bouton envoyer est pressé pour le paramétre placard
+        {
+            $largeur = $_POST["largeur_haut"];
+            $hauteur = $_POST["hauteur_haut"];
+            $profondeur = $_POST["profondeur_haut"];
+            $nombre_etagere = $_POST["nombre_etagere_haut"];
+
+
+            //Envoi dans la base de données
+            $sql = $bdd->prepare ("INSERT INTO placard_haut (IDClient, largeur, hauteur, profondeur, etagere)
+                                            VALUES (:IDClient, :largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere)");
+
+            $sql->bindParam(':IDClient',$_COOKIE['IDClientCookies']);
+            $sql->bindParam(':largeur',$largeur);
+            $sql->bindParam(':hauteur',$hauteur);
+            $sql->bindParam(':profondeur',$profondeur);
+            $sql->bindParam(':nombre_etagere',$nombre_etagere);
+            $sql->execute();
+            $sql->closeCursor();
+        }
+
+        /*Envoie des paramètres bar*/
+        if(isset($_POST["go_param_bar"]))//Quand le bouton envoyer est pressé pour le paramétre placard
+        {
+            $largeur = $_POST["largeur"];
+            $hauteur = $_POST["hauteur"];
+            $profondeur = $_POST["profondeur"];
+
+            //Envoi dans la base de données
+            $sql = $bdd->prepare ("INSERT INTO bar (IDClient, largeur, hauteur, profondeur)
+                                            VALUES (:IDClient, :largeur/100, :hauteur/100, :profondeur/100)");
+
+            $sql->bindParam(':IDClient',$_COOKIE['IDClientCookies']);
+            $sql->bindParam(':largeur',$largeur);
+            $sql->bindParam(':hauteur',$hauteur);
+            $sql->bindParam(':profondeur',$profondeur);
+            $sql->execute();
+            $sql->closeCursor();
+        }
+
+        /*nvoie des paramètres placard_bas*/
+        if(isset($_POST["go_param_placard"]))//Quand le bouton envoyer est pressé pour le paramétre placard
+        {
+            $largeur = $_POST["largeur"];
+            $hauteur = $_POST["hauteur"];
+            $profondeur = $_POST["profondeur"];
+            $nombre_etagere = $_POST["nombre_etagere"];
+
+            //Envoi dans la base de données
+            $sql = $bdd->prepare ("INSERT INTO placard_bas (IDClient, largeur, hauteur, profondeur, etagere)
+                                            VALUES (:IDClient, :largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere)");
+
+            $sql->bindParam(':IDClient',$_COOKIE['IDClientCookies']);
+            $sql->bindParam(':largeur',$largeur);
+            $sql->bindParam(':hauteur',$hauteur);
+            $sql->bindParam(':profondeur',$profondeur);
+            $sql->bindParam(':nombre_etagere',$nombre_etagere);
+            $sql->execute();
+            $sql->closeCursor();
         }
     ?>
     <div class="modal fade" role="dialog" tabindex="-1" id="modal2">
@@ -138,27 +200,29 @@ setcookie('pseudo', 'john', time() + 365*24*3600, null, null, false, true);
                     <h4 class="modal-title">Se connecter</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                 </div>
-                <div class="modal-body">
-                    <p>Vous devez déjà avoir créer un compte 😎</p>
-                    <label>Pseudo :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label>
-                    <input type="text">
-                    <p></p>
-                    <label>Mot de passe :&nbsp;</label>
-                    <input type="password">
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-light" type="button" data-dismiss="modal">Annuler</button>
-                    <button class="btn btn-light" data-toggle="modal" data-target="#modal2" type="button">Créer un compte</button>
-                    <button class="btn btn-primary" type="button">Se connecter</button>
-                </div>
+                <form action="store.php" method="post" >
+                    <div class="modal-body">
+                        <p>Vous devez déjà avoir créer un compte 😎</p>
+                        <label>Pseudo :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label>
+                        <input name="pseudo" type="text">
+                        <p></p>
+                        <label>Mot de passe :&nbsp;</label>
+                        <input name="password" type="password">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-light" type="button" data-dismiss="modal">Annuler</button>
+                        <button class="btn btn-light" data-toggle="modal" data-target="#modal2" type="button">Créer un compte</button>
+                        <button class="btn btn-primary" name="connexion" type="submit">Se connecter</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
     <div>
         <div class="container">
             <div class="row">
-                <div class="col text-right" style="padding-right: 0px;padding-left: 0px;">
-                    <input type="text" style="background: rgba(255,255,255,0);border-style: none;width: 250px;font-family: Raleway, sans-serif;text-align: right;padding: 15px;padding-top: 0;padding-bottom: 0;" placeholder="Actuellement non connecté">
+                <div class="col text-right" style="padding-right: 0;padding-left: 0;" id="ID">
+                    <?php echo "Bienvenue '" . $_COOKIE['pseudo'] . "' votre ID est : '".$_COOKIE['IDClientCookies']."'"; ?>
                     <button class="btn btn-primary" data-toggle="modal" data-target="#modal1" type="button">Se connecter</button>
                     <button class="btn btn-primary" data-toggle="modal" data-target="#modal2" type="button">Créer un compte</button>
                 </div>
@@ -183,7 +247,7 @@ setcookie('pseudo', 'john', time() + 365*24*3600, null, null, false, true);
     <div class="highlight-blue">
         <div class="container">
             <div class="intro">
-                <h2 class="text-center">Zone en tests <br> <?php echo "IDClient récupéré : '" . $IDClient . "' avec le pseudo :'".$_COOKIE['pseudo']."'"; ?></h2>
+                <h2 class="text-center">Zone en tests <br> <?php echo "IDClient récupéré : '" . $_COOKIE['IDClientCookies'] . "' avec le pseudo :'".$_COOKIE['pseudo']."'"; ?></h2>
                 <p class="text-center">Emplacement pour les formulaires en relation avec la base de données et CATIA, ici tout peut arriver 😉</p>
             </div>
             <div class="buttons">
@@ -200,7 +264,8 @@ setcookie('pseudo', 'john', time() + 365*24*3600, null, null, false, true);
     <div>
         <div class="container-fluid text-left">
             <div class="row">
-                <div class="col-md-6"><form action="store.php" method="post" ><br>
+                <div class="col-md-6">
+                    <form action="store.php" method="post" ><br>
                         <h1>Tests avec CATIA</h1><br>
                         <h2>Paramétrage du placard haut</h2><br>
 
@@ -226,89 +291,6 @@ setcookie('pseudo', 'john', time() + 365*24*3600, null, null, false, true);
 
                         <input type="submit" value="Envoyer" name="go_param_placard_haut"/>
                     </form>
-                    <?php
-                    if(isset($_POST["go_param_placard_haut"]))//Quand le bouton envoyer est pressé pour le paramétre placard
-                    {
-                        $largeur = $_POST["largeur_haut"];
-                        $hauteur = $_POST["hauteur_haut"];
-                        $profondeur = $_POST["profondeur_haut"];
-                        $nombre_etagere = $_POST["nombre_etagere_haut"];
-
-
-                        //Envoi dans la base de données
-                        $sql = $bdd->prepare ("INSERT INTO placard_haut (largeur, hauteur, profondeur, etagere)
-                                        VALUES (:largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere)");
-
-                        $sql->bindParam(':largeur',$largeur);
-                        $sql->bindParam(':hauteur',$hauteur);
-                        $sql->bindParam(':profondeur',$profondeur);
-                        $sql->bindParam(':nombre_etagere',$nombre_etagere);
-                        $sql->execute();
-                        $sql->closeCursor();
-                    }
-                    ?>
-                </div>
-                <div class="col-md-6">
-                      <form action="store.php" method="post" ><br>
-                        <h1>Formulaire de contact</h1><br>
-
-                        <label class="formulaire_client" for="nom">
-                            Nom 😀 :<br>
-                            <input type="text" name="nom" value="" placeholder="Nom" required/>
-                        </label>
-
-                        <label class="formulaire_client" for="prenom">
-                            Prénom 😎 :<br>
-                            <input type="text" name="prenom" value="" placeholder="Prénom" required/>
-                        </label><br>
-
-                        <label class="formulaire_client" for="telephone">
-                            Téléphone 📱 :<br>
-                            <input type="text" name="telephone" value="" placeholder="Téléphone" required/>
-                        </label><br>
-
-                        <label class="formulaire_client" for="adresse">
-                            Adresse 🏠 :<br>
-                            <input type="text" name="adresse" value="" placeholder="Adresse" required/>
-                        </label>
-
-                        <label class="formulaire_client" for="code_postal">
-                            Code postal ✉ :<br>
-                            <input type="text" name="codePostal" value="" placeholder="Code Postal" required/>
-                        </label><br>
-
-                        <label class="formulaire_client" for="pseudo">
-                            Pseudo 💻 :<br>
-                            <input type="pseudo" name="pseudo" value="" placeholder="Pseudo" required/>
-                        </label><br>
-
-                          <input type="submit" value="Envoyer 😘" name="go"/>
-                      </form>
-                    <?php
-                        if(isset($_POST["go"]))//Quand le bouton envoyer est pressé pour le formulaire client
-                        {
-                            $nom = $_POST["nom"];
-                            $prenom = $_POST["prenom"];
-                            $adresse = $_POST["adresse"];
-                            $codePostal = $_POST["codePostal"];
-                            $telephone = $_POST["telephone"];
-                            $pseudo = $_POST["pseudo"];
-
-                            //Envoi dans la base de donnée
-                            $sql = $bdd->prepare ("INSERT INTO client VALUES
-                              (:nom, :prenom, :adresse, :codePostal, :telephone, :pseudo)");
-
-                            $sql->bindParam(':nom',$nom);
-                            $sql->bindParam(':prenom',$prenom);
-                            $sql->bindParam(':adresse',$adresse);
-                            $sql->bindParam(':codePostal',$codePostal);
-                            $sql->bindParam(':telephone',$telephone);
-                            $sql->bindParam(':pseudo',$pseudo);
-                            $sql->execute();
-                            $sql->closeCursor();
-                        }
-                    ?>
-                    <div class="btn-toolbar"></div>
                 </div>
             </div>
         </div>
@@ -318,46 +300,26 @@ setcookie('pseudo', 'john', time() + 365*24*3600, null, null, false, true);
             <div class="row">
                 <div class="col-md-6">
                     <form action="store.php" method="post" ><br>
-                            <h1>Tests avec CATIA</h1><br>
-                            <h2>Paramétrage du bar</h2><br>
+                        <h1>Tests avec CATIA</h1><br>
+                        <h2>Paramétrage du bar</h2><br>
 
-                            <label class="formulaire_bar" for="largeur">
-                                Largeur (Compris entre 100 et 400 cm) :<br>
-                                <input type="number" min="100" max="400" name="largeur" value="" placeholder="" required/>
-                            </label><br>
+                        <label class="formulaire_bar" for="largeur">
+                            Largeur (Compris entre 100 et 400 cm) :<br>
+                            <input type="number" min="100" max="400" name="largeur" value="" placeholder="" required/>
+                        </label><br>
 
-                            <label class="formulaire_bar" for="hauteur">
-                                Hauteur (Compris entre 15 et 40 cm) :<br>
-                                <input type="number" min="15" max="40" name="hauteur" value="" placeholder="" required/>
-                            </label><br>
+                        <label class="formulaire_bar" for="hauteur">
+                            Hauteur (Compris entre 15 et 40 cm) :<br>
+                            <input type="number" min="15" max="40" name="hauteur" value="" placeholder="" required/>
+                        </label><br>
 
-                            <label class="formulaire_bar" for="profondeur">
-                                Profondeur (Compris entre 40 et 80 cm) :<br>
-                                <input type="number" min="40" max="80" name="profondeur" value="" placeholder="" required/>
-                            </label><br><br>
+                        <label class="formulaire_bar" for="profondeur">
+                            Profondeur (Compris entre 40 et 80 cm) :<br>
+                            <input type="number" min="40" max="80" name="profondeur" value="" placeholder="" required/>
+                        </label><br><br>
 
-                            <input type="submit" value="Envoyer" name="go_param_bar"/>
-                        </form>
-                    <?php
-                    if(isset($_POST["go_param_bar"]))//Quand le bouton envoyer est pressé pour le paramétre placard
-                    {
-                        $largeur = $_POST["largeur"];
-                        $hauteur = $_POST["hauteur"];
-                        $profondeur = $_POST["profondeur"];
-
-                        //Envoi dans la base de données
-                        $sql = $bdd->prepare ("INSERT INTO bar (IDClient, largeur, hauteur, profondeur)
-                                        VALUES (:IDClient, :largeur/100, :hauteur/100, :profondeur/100)");
-
-                        $sql->bindParam(':IDClient',$_COOKIE['IDClientCookies']);
-                        $sql->bindParam(':largeur',$largeur);
-                        $sql->bindParam(':hauteur',$hauteur);
-                        $sql->bindParam(':profondeur',$profondeur);
-                        $sql->execute();
-                        $sql->closeCursor();
-                    }
-                    ?>
-
+                        <input type="submit" value="Envoyer" name="go_param_bar"/>
+                    </form>
                 </div>
                 <div class="col-md-6">
                   <form action="store.php" method="post" ><br>
@@ -386,41 +348,6 @@ setcookie('pseudo', 'john', time() + 365*24*3600, null, null, false, true);
 
                       <input type="submit" value="Envoyer 😋" name="go_param_placard"/>
                   </form>
-                    <?php
-                        if(isset($_POST["go_param_placard"]))//Quand le bouton envoyer est pressé pour le paramétre placard
-                        {
-                            $largeur = $_POST["largeur"];
-                            $hauteur = $_POST["hauteur"];
-                            $profondeur = $_POST["profondeur"];
-                            $nombre_etagere = $_POST["nombre_etagere"];
-
-                            $eta1 = "false";
-                            $eta2 = "false";
-                            $eta3 = "false";
-
-                            if($nombre_etagere >= 1){
-                                $eta1 = "true";
-                            }
-                            if($nombre_etagere >= 2){
-                                $eta2 = "true";
-                            }
-                            if($nombre_etagere >= 3){
-                                $eta3 = "true";
-                            }
-
-                            //Envoi dans la base de données
-                            $sql = $bdd->prepare ("INSERT INTO placard_bas (IDClient, largeur, hauteur, profondeur, etagere)
-                                        VALUES (:IDClient, :largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere)");
-
-                            $sql->bindParam(':IDClient',$_COOKIE['IDClientCookies']);
-                            $sql->bindParam(':largeur',$largeur);
-                            $sql->bindParam(':hauteur',$hauteur);
-                            $sql->bindParam(':profondeur',$profondeur);
-                            $sql->bindParam(':nombre_etagere',$nombre_etagere);
-                            $sql->execute();
-                            $sql->closeCursor();
-                        }
-                    ?>
                 </div>
             </div>
         </div>
