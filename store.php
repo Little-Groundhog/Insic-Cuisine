@@ -1,7 +1,7 @@
 <?php
 @session_start(); //Lancement de la session pour les cookies
-setcookie('IDClientCookies', 2, time() + 365*24*3600, null, null, false, true);
-setcookie('pseudo', 'john', time() + 365*24*3600, null, null, false, true);
+setcookie('IDClientCookies', 0, time() + 365*24*3600, null, null, false, true);
+setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, true);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -31,11 +31,6 @@ setcookie('pseudo', 'john', time() + 365*24*3600, null, null, false, true);
     <link rel="stylesheet" href="assets/css/Login-Form-Clean.css">
     <link rel="stylesheet" href="assets/css/Team-Clean.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
-    <script>
-        function IDClient(){
-            document.getElementById("ID").innerHTML = <?php echo $_COOKIE['IDClientCookies']; ?>;
-        }
-    </script>
 </head>
 
 <body style="background: linear-gradient(rgba(0,0,0,0.49), rgba(153,146,143,0.4626405090137858) 34%, rgba(255,255,255,0.65) 100%);">
@@ -97,8 +92,9 @@ setcookie('pseudo', 'john', time() + 365*24*3600, null, null, false, true);
             while($donnees = $sql->fetch())//Récupération des données ligne par ligne
             {
                 $IDClient = $donnees['IDClient'];//Valur à récuperer stockée en décimal
-                echo '<script> IDClient(); </script>';//Lancement du script pour l'affichage de l'ID en haut de page
             }
+
+            echo '<script> IDClient(); </script>';//Lancement du script pour l'affichage de l'ID en haut de page
             setcookie('IDClientCookies', $IDClient, time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
 
             $sql->closeCursor();
@@ -225,8 +221,8 @@ setcookie('pseudo', 'john', time() + 365*24*3600, null, null, false, true);
     <div>
         <div class="container">
             <div class="row">
-                <div class="col text-right" style="padding-right: 0px;padding-left: 0px;">
-                    <input type="text" style="background: rgba(255,255,255,0);border-style: none;width: 250px;font-family: Raleway, sans-serif;text-align: right;padding: 15px;padding-top: 0;padding-bottom: 0;" placeholder="Actuellement non connecté">
+                <div class="col text-right" style="padding-right: 0;padding-left: 0;" id="ID">
+                    <?php echo "Bienvenue '" . $_COOKIE['pseudo'] . "' votre ID est : '".$_COOKIE['IDClientCookies']."'"; ?>
                     <button class="btn btn-primary" data-toggle="modal" data-target="#modal1" type="button">Se connecter</button>
                     <button class="btn btn-primary" data-toggle="modal" data-target="#modal2" type="button">Créer un compte</button>
                 </div>
