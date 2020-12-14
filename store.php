@@ -153,20 +153,6 @@ setcookie('pseudo', 'john', time() + 365*24*3600, null, null, false, true);
             $profondeur = $_POST["profondeur"];
             $nombre_etagere = $_POST["nombre_etagere"];
 
-            $eta1 = "false";
-            $eta2 = "false";
-            $eta3 = "false";
-
-            if($nombre_etagere >= 1){
-                $eta1 = "true";
-            }
-            if($nombre_etagere >= 2){
-                $eta2 = "true";
-            }
-            if($nombre_etagere >= 3){
-                $eta3 = "true";
-            }
-
             //Envoi dans la base de données
             $sql = $bdd->prepare ("INSERT INTO placard_bas (IDClient, largeur, hauteur, profondeur, etagere)
                                             VALUES (:IDClient, :largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere)");
