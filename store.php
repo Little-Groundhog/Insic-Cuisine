@@ -150,8 +150,8 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
             $nombre_etagere = $_POST["nombre_etagere"];
 
             //Envoi dans la base de données
-            $sql = $bdd->prepare ("INSERT INTO placard_bas (IDClient, largeur, hauteur, profondeur, etagere)
-                                            VALUES (:IDClient, :largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere)");
+            $sql = $bdd->prepare ("INSERT INTO placard_bas (IDClient, modele, largeur, hauteur, profondeur, etagere)
+                                            VALUES (:IDClient, 1, :largeur/100, :hauteur/100, :profondeur/100, :nombre_etagere)");
 
             $sql->bindParam(':IDClient',$_COOKIE['IDClientCookies']);
             $sql->bindParam(':largeur',$largeur);
