@@ -161,6 +161,43 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
             $sql->execute();
             $sql->closeCursor();
         }
+
+        /*Création de la référence assemblage*/
+        if(isset($_POST["assemblage"]))//Quand le bouton envoyer est pressé pour l'assemblage'
+        {
+            /*Valeurs des modules choisis
+            1 = placard bas modèle 1
+            2 = placard bas modèle 2
+            3 = bar
+            4 = placard haut modèle 1*/
+            $module1 = ceil($_POST['module1']);
+            $module2 = ceil($_POST['module2']);
+            $module3 = ceil($_POST['module3']);
+            $module4 = ceil($_POST['module4']);
+            $module5 = ceil($_POST['module5']);
+
+            /*Position des différents modules
+            L = en ligne
+            A = en angle*/
+            $pos1 = $_POST['pos1'];
+            $pos2 = $_POST['pos2'];
+            $pos3 = $_POST['pos3'];
+            $pos4 = $_POST['pos4'];
+            $pos5 = $_POST['pos5'];
+
+            /*Création de la référence*/
+            $listeModule = array($module1, $pos1, $module2, $pos2, $module3, $pos3, $module4, $pos4, $module5, $pos5);
+            $reference = implode("",$listeModule);
+
+            //Envoi dans la base de données
+            $sql = $bdd->prepare ("INSERT INTO assemblage (IDClient, reference)
+                                            VALUES (:IDClient, :reference)");
+
+            $sql->bindParam(':IDClient',$_COOKIE['IDClientCookies']);
+            $sql->bindParam(':reference',$reference);
+            $sql->execute();
+            $sql->closeCursor();
+        }
     ?>
     <div class="modal fade" role="dialog" tabindex="-1" id="modal2">
         <div class="modal-dialog" role="document">
@@ -348,7 +385,90 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
     </div>
     <div>
         <div class="container">
-
+            <form action="store.php" method="post" ><br>
+                <h1>Test d'assemblage</h1>
+                <h3>paramétrage de l'assemblage</h3>
+                <label class="d-table">Premier module :</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="formCheck-3" value="L" name="pos1">
+                    <label class="form-check-label" for="formCheck-2">Section 1 (en ligne)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="formCheck-4" value="A" name="pos1">
+                    <label class="form-check-label" for="formCheck-2">Section 2 (en angle)</label>
+                </div>
+                <select name="module1" class="d-table">
+                    <option value="1" selected="">Placard bas modéle 1</option>
+                    <option value="2">Placard bas modèle 2</option>
+                    <option value="3">Bar</option>
+                    <option value="4">Placard haut modèle 1</option>
+                </select>
+                <p></p>
+                <label class="d-table">Second module :&nbsp;</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="formCheck-5" value="L" name="pos2">
+                    <label class="form-check-label" for="formCheck-2">Section 1 (en ligne)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="formCheck-6" value="A" name="pos2">
+                    <label class="form-check-label" for="formCheck-2">Section 2 (en angle)</label>
+                </div>
+                <select name="module2" class="d-table">
+                    <option value="1" selected="">Placard bas modéle 1</option>
+                    <option value="2">Placard bas modèle 2</option>
+                    <option value="3">Bar</option>
+                    <option value="4">Placard haut modèle 1</option>
+                </select>
+                <p></p>
+                <label class="d-table">Troisième module :&nbsp;</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="formCheck-7" value="L" name="pos3">
+                    <label class="form-check-label" for="formCheck-2">Section 1 (en ligne)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="formCheck-8" value="A" name="pos3">
+                    <label class="form-check-label" for="formCheck-2">Section 2 (en angle)</label>
+                </div>
+                <select name="module3" class="d-table">
+                    <option value="1" selected="">Placard bas modéle 1</option>
+                    <option value="2">Placard bas modèle 2</option>
+                    <option value="3">Bar</option>
+                    <option value="4">Placard haut modèle 1</option>
+                </select>
+                <p></p>
+                <label class="d-table">Quatrième module :&nbsp;</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="formCheck-9" value="L" name="pos4">
+                    <label class="form-check-label" for="formCheck-2">Section 1 (en ligne)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="formCheck-10" value="A" name="pos4">
+                    <label class="form-check-label" for="formCheck-2">Section 2 (en angle)</label>
+                </div>
+                <select name="module4" class="d-table">
+                    <option value="1" selected="">Placard bas modéle 1</option>
+                    <option value="2">Placard bas modèle 2</option>
+                    <option value="3">Bar</option>
+                    <option value="4">Placard haut modèle 1</option>
+                </select>
+                <p></p>
+                <label class="d-table">Cinquième module :&nbsp;</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="formCheck-2" value="L" name="pos5">
+                    <label class="form-check-label" for="formCheck-2">Section 1 (en ligne)</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="formCheck-1" value="A" name="pos5">
+                    <label class="form-check-label" for="formCheck-2">Section 2 (en angle)</label>
+                </div>
+                <select name="module5" class="d-table">
+                    <option value="1" selected="">Placard bas modéle 1</option>
+                    <option value="2">Placard bas modèle 2</option>
+                    <option value="3">Bar</option>
+                    <option value="4">Placard haut modèle 1</option>
+                </select>
+                <p></p><button class="btn btn-primary" name="assemblage" type="submit">Envoyer</button>
+            </form>
         </div>
     </div>
     <div class="footer-basic">
