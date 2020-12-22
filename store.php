@@ -1,6 +1,8 @@
 <?php
 @session_start(); //Lancement de la session pour les cookies
-setcookie('IDClientCookies', 0, time() + 365*24*3600, null, null, false, true);
+if($_COOKIE['IDClientCookies'] == 0 or $_COOKIE['IDClientCookies'] == NULL){
+    setcookie('IDClientCookies', 0, time() + 365*24*3600, null, null, false, true);
+}
 setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, true);
 ?>
 <!DOCTYPE html>
