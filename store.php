@@ -480,6 +480,31 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
                 <p></p><button class="btn btn-primary" name="assemblage" type="submit">Envoyer</button>
             </form>
         </div>
+        <div class="container">
+            <form method="post" action="store.php" >
+                <div id="champs" >
+                    <input type="text" name="titre[]" />
+                    <input type="text" name="contenu[]" />
+                    <input type="text" name="description[]" />
+                </div>
+                <script type="text/javascript" >
+                    var div = document.getElementById('champs');
+                    function addInput(nam){
+                        var input = document.createElement("input");
+                        input.name = name;
+                        div.appendChild(input);
+                    }
+                    function addField() {
+                        addInput("titre[]");
+                        addInput("contenu[]");
+                        addInput("description[]");
+                        div.appendChild(document.createElement("br"));
+                    }
+                </script>
+                <button type="button" onclick="addField()" >+</button>
+                <input type="submit" />
+            </form>
+        </div>
     </div>
     <div class="footer-basic">
         <footer>
