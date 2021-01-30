@@ -170,6 +170,11 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
         /*Création de la référence assemblage*/
         if(isset($_POST["assemblage"]))//Quand le bouton envoyer est pressé pour l'assemblage'
         {
+            /*
+             *
+             * Les valeurs de chaque modules sont copiés en dut pour faire des tests à termes l'objectif est de les placé en mode infini
+             *
+             * */
             /*Valeurs des modules choisis
             1 = placard bas modèle 1
             2 = placard bas modèle 2
@@ -190,8 +195,35 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
             $pos4 = $_POST['pos4'];
             $pos5 = $_POST['pos5'];
 
+            /*Options pour chaque module*/
+            //module 1
+            $op11 = 0;
+            $op12 = 0;
+            $op13 = 0;
+            //module 2
+            $op21 = 0;
+            $op22 = 0;
+            $op23 = 0;
+            //module 3
+            $op31 = 0;
+            $op32 = 0;
+            $op33 = 0;
+            //module 4
+            $op41 = 0;
+            $op42 = 0;
+            $op43 = 0;
+            //module 5
+            $op51 = 0;
+            $op52 = 0;
+            $op53 = 0;
+
             /*Création de la référence*/
-            $listeModule = array($module1, $pos1, $module2, $pos2, $module3, $pos3, $module4, $pos4, $module5, $pos5);
+            $listeModule = array($module1, $pos1, $op11, $op12, $op13,
+                                 $module2, $pos2, $op21, $op22, $op23,
+                                 $module3, $pos3, $op31, $op32, $op33,
+                                 $module4, $pos4, $op41, $op42, $op43,
+                                 $module5, $pos5, $op51, $op52, $op53);
+
             $reference = implode("",$listeModule);
 
             //Envoi dans la base de données
@@ -410,7 +442,7 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
                 <select name="module1" class="d-table">
                     <option value="1" selected="">Placard bas modéle 1</option>
                     <option value="2">Placard bas modèle 2</option>
-                    <option value="3">Bar</option>
+                    <option value="3">Libre</option>
                     <option value="4">Placard haut modèle 1</option>
                 </select>
                 <p></p>
@@ -426,7 +458,7 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
                 <select name="module2" class="d-table">
                     <option value="1" selected="">Placard bas modéle 1</option>
                     <option value="2">Placard bas modèle 2</option>
-                    <option value="3">Bar</option>
+                    <option value="3">Libre</option>
                     <option value="4">Placard haut modèle 1</option>
                 </select>
                 <p></p>
@@ -442,7 +474,7 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
                 <select name="module3" class="d-table">
                     <option value="1" selected="">Placard bas modéle 1</option>
                     <option value="2">Placard bas modèle 2</option>
-                    <option value="3">Bar</option>
+                    <option value="3">Libre</option>
                     <option value="4">Placard haut modèle 1</option>
                 </select>
                 <p></p>
@@ -458,7 +490,7 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
                 <select name="module4" class="d-table">
                     <option value="1" selected="">Placard bas modéle 1</option>
                     <option value="2">Placard bas modèle 2</option>
-                    <option value="3">Bar</option>
+                    <option value="3">Libre</option>
                     <option value="4">Placard haut modèle 1</option>
                 </select>
                 <p></p>
@@ -474,7 +506,7 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
                 <select name="module5" class="d-table">
                     <option value="1" selected="">Placard bas modéle 1</option>
                     <option value="2">Placard bas modèle 2</option>
-                    <option value="3">Bar</option>
+                    <option value="3">Libre</option>
                     <option value="4">Placard haut modèle 1</option>
                 </select>
                 <p></p><button class="btn btn-primary" name="assemblage" type="submit">Envoyer</button>
