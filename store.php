@@ -198,23 +198,23 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
             /*Options pour chaque module*/
             //module 1
             $op11 = 0;
-            $op12 = 0;
+            $op12 = $_POST['bar1'];
             $op13 = 0;
             //module 2
             $op21 = 0;
-            $op22 = 0;
+            $op22 = $_POST['bar2'];
             $op23 = 0;
             //module 3
             $op31 = 0;
-            $op32 = 0;
+            $op32 = $_POST['bar3'];
             $op33 = 0;
             //module 4
             $op41 = 0;
-            $op42 = 0;
+            $op42 = $_POST['bar4'];
             $op43 = 0;
             //module 5
             $op51 = 0;
-            $op52 = 0;
+            $op52 = $_POST['bar5'];
             $op53 = 0;
 
             /*Création de la référence*/
@@ -445,6 +445,10 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
                     <option value="3">Libre</option>
                     <option value="4">Placard haut modèle 1</option>
                 </select>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="formCheck-11" value="1" name="bar1">
+                    <label class="form-check-label" for="formCheck-2">Bar sur le module (seulement les placard bas)</label>
+                </div>
                 <p></p>
                 <label class="d-table">Second module :&nbsp;</label>
                 <div class="form-check">
@@ -461,6 +465,10 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
                     <option value="3">Libre</option>
                     <option value="4">Placard haut modèle 1</option>
                 </select>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="formCheck-22" value="1" name="bar2">
+                    <label class="form-check-label" for="formCheck-2">Bar sur le module (seulement les placard bas)</label>
+                </div>
                 <p></p>
                 <label class="d-table">Troisième module :&nbsp;</label>
                 <div class="form-check">
@@ -477,6 +485,10 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
                     <option value="3">Libre</option>
                     <option value="4">Placard haut modèle 1</option>
                 </select>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="formCheck-33" value="1" name="bar3">
+                    <label class="form-check-label" for="formCheck-2">Bar sur le module (seulement les placard bas)</label>
+                </div>
                 <p></p>
                 <label class="d-table">Quatrième module :&nbsp;</label>
                 <div class="form-check">
@@ -493,6 +505,10 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
                     <option value="3">Libre</option>
                     <option value="4">Placard haut modèle 1</option>
                 </select>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="formCheck-44" value="1" name="bar4">
+                    <label class="form-check-label" for="formCheck-2">Bar sur le module (seulement les placard bas)</label>
+                </div>
                 <p></p>
                 <label class="d-table">Cinquième module :&nbsp;</label>
                 <div class="form-check">
@@ -509,6 +525,10 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
                     <option value="3">Libre</option>
                     <option value="4">Placard haut modèle 1</option>
                 </select>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="formCheck-55" value="1" name="bar5">
+                    <label class="form-check-label" for="formCheck-2">Bar sur le module (seulement les placard bas)</label>
+                </div>
                 <p></p><button class="btn btn-primary" name="assemblage" type="submit">Envoyer</button>
             </form>
         </div>
