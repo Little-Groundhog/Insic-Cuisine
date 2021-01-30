@@ -198,24 +198,35 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
             /*Options pour chaque module*/
             //module 1
             $op11 = 0;
-            $op12 = $_POST['bar1'];
+            $op12 = 0;
             $op13 = 0;
             //module 2
             $op21 = 0;
-            $op22 = $_POST['bar2'];
+            $op22 = 0;
             $op23 = 0;
             //module 3
             $op31 = 0;
-            $op32 = $_POST['bar3'];
+            $op32 = 0;
             $op33 = 0;
             //module 4
             $op41 = 0;
-            $op42 = $_POST['bar4'];
+            $op42 = 0;
             $op43 = 0;
             //module 5
             $op51 = 0;
-            $op52 = $_POST['bar5'];
+            $op52 = 0;
             $op53 = 0;
+
+            if($_POST['bar1'] == 1)
+                $op12 = 1;
+            if($_POST['bar2'] == 1)
+                $op22 = 1;
+            if($_POST['bar3'] == 1)
+                $op32 = 1;
+            if($_POST['bar4'] == 1)
+                $op42 = 1;
+            if($_POST['bar5'] == 1)
+                $op52 = 1;
 
             /*Création de la référence*/
             $listeModule = array($module1, $pos1, $op11, $op12, $op13,
