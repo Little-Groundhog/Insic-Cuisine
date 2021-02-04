@@ -383,7 +383,7 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
                         <h2>Paramétrage du placard bas</h2><br>
 
                         <label class="formulaire_placard_bas" for="largeur">
-                            Largeur (Compris entre 60 et 100 cm) :<br>
+                            Largeur (<Co>                           </Co>mpris entre 60 et 100 cm) :<br>
                             <input type="number" min="60" max="100" name="largeur" value="" placeholder="" required/>
                         </label><br>
 
