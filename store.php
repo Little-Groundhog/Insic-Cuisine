@@ -348,6 +348,204 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
     </section>
     <div>
         <div class="container-fluid text-left">
+            <section class="getintouch" style="background: url(&quot;https://user-images.githubusercontent.com/22176758/106576418-62354200-653d-11eb-8de8-b4182f77ac80.png&quot;);background-size: cover;">
+                <div class="container text-center modern-form" style="opacity: 1;">
+                    <div class="text-center">
+                        <h4 data-bs-hover-animate="tada" style="color: #212529;font-size: 45px;">Paramétrer sa cuisine 🎨</h4>
+                    </div>
+                    <hr class="modern-form__hr">
+                    <div class="modern-form__form-container">
+
+
+                        <h4 style="color: #212529;font-size: 45px;">Commençons par définir votre cuisine dans l'ensemble 🐗</h4>
+                        <form>
+                            <div class="form-row row-cols-1">
+                                <div class="col text-left col-contact">
+                                    <div class="form-group modern-form__form-group--padding-r"><select class="form-control">
+                                            <optgroup label="Modules disponibles">
+                                                <option value="1" selected="">Placard bas avec portes</option>
+                                                <option value="2">Placard bas avec tiroir</option>
+                                                <option value="3">Ilôt central</option>
+                                                <option value="4">Placard haut</option>
+                                            </optgroup>
+                                        </select>
+                                        <div class="line-box">
+                                            <div class="line"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-11"><label class="form-check-label" for="formCheck-11">Ajouter un jolie bar (seulement pour les placard bas)</label></div>
+                                </div>
+                                <div class="col d-lg-flex justify-content-lg-center align-items-lg-center col-contact">
+                                    <div class="form-group modern-form__form-group--padding-l">
+                                        <div class="line-box">
+                                            <div class="line"></div>
+                                        </div>
+                                    </div>
+                                    <div class="container">
+                                        <form method="post" action="store.php" >
+                                            <div id="module" >
+                                                <input type="text" name="titre[]" />
+                                                <input type="text" name="contenu[]" />
+                                                <input type="text" name="description[]" />
+                                            </div>
+                                            <script type="text/javascript" >
+                                                var div = document.getElementById('module');
+                                                function addInput(nam){
+                                                    var input = document.createElement("input");
+                                                    input.name = name;
+                                                    div.appendChild(input);
+                                                }
+                                                function addField() {
+                                                    addInput("titre[]");
+                                                    addInput("contenu[]");
+                                                    addInput("description[]");
+                                                    div.appendChild(document.createElement("br"));
+                                                }
+                                            </script>
+                                            <button type="button" onclick="addField()" >+</button>
+                                            <input type="submit" />
+                                        </form>
+                                    </div>
+                                    <button class="btn btn-info border rounded-circle d-lg-flex justify-content-lg-start jello animated infinite" type="submit" style="font-family: Lora, serif;">+</button>
+                                </div>
+                            </div>
+                        </form>
+
+
+                        <form>
+                            <div class="form-row row-cols-1">
+                                <div class="col text-center">
+                                    <h4 style="color: #212529;font-size: 45px;"><br>Passons au paramétrage de chaque module 😎</h4>
+                                    <hr class="modern-form__hr">
+                                    <h4 style="color: #212529;font-size: 20;">Paramétrons le placard bas avec des portes <br>(ignorer la section si vous n'avez pas choisi de placard bas de ce type)</h4>
+                                    <div class="form-row row-cols-2">
+                                        <div class="col text-left col-contact">
+                                            <div class="form-group modern-form__form-group--padding-r">
+                                                <div class="line-box">
+                                                    <div class="line"></div>
+                                                </div>
+                                            </div><input class="form-control" type="number" placeholder="Largeur (entre 60 et 100 cm)" min="60" max="100" step="1" name="largeur_PB1">
+                                        </div>
+                                        <div class="col text-left col-contact">
+                                            <div class="form-group modern-form__form-group--padding-r">
+                                                <div class="line-box">
+                                                    <div class="line"></div>
+                                                </div>
+                                            </div><input class="form-control" type="number" placeholder="Hauteur (entre 80 et 100 cm)" min="80" max="100" step="1" name="hauteur_PB1">
+                                        </div>
+                                        <div class="col text-left col-contact">
+                                            <div class="form-group modern-form__form-group--padding-r">
+                                                <div class="line-box">
+                                                    <div class="line"></div>
+                                                </div>
+                                            </div><input class="form-control" type="number" placeholder="Profondeur (entre 40 et 80 cm)" min="40" max="80" step="1" name="profondeur_PB1">
+                                        </div>
+                                        <div class="col text-left col-contact">
+                                            <div class="form-group modern-form__form-group--padding-r">
+                                                <div class="line-box">
+                                                    <div class="line"></div>
+                                                </div>
+                                            </div><input class="form-control" type="number" placeholder="Nombre d'étagères (entre 0 et 3)" min="0" max="3" step="1" name="etagere_PB1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col text-center">
+                                    <hr class="modern-form__hr">
+                                    <h4 style="color: #212529;font-size: 20;">Paramétrons le placard bas avec des tiroirs <br>(ignorer la section si vous n'avez pas choisi de placard bas de ce type)</h4>
+                                    <div class="form-row row-cols-2">
+                                        <div class="col text-left col-contact">
+                                            <div class="form-group modern-form__form-group--padding-r">
+                                                <div class="line-box">
+                                                    <div class="line"></div>
+                                                </div>
+                                            </div><input class="form-control" type="number" placeholder="Largeur (entre 60 et 100 cm)" min="60" max="100" step="1" name="largeur_PB2">
+                                        </div>
+                                        <div class="col text-left col-contact">
+                                            <div class="form-group modern-form__form-group--padding-r">
+                                                <div class="line-box">
+                                                    <div class="line"></div>
+                                                </div>
+                                            </div><input class="form-control" type="number" placeholder="Hauteur (entre 80 et 100 cm)" min="80" max="100" step="1" name="hauteur_PB2">
+                                        </div>
+                                        <div class="col text-left col-contact">
+                                            <div class="form-group modern-form__form-group--padding-r">
+                                                <div class="line-box">
+                                                    <div class="line"></div>
+                                                </div>
+                                            </div><input class="form-control" type="number" placeholder="Profondeur (entre 40 et 80 cm)" min="40" max="80" step="1" name="profondeur_PB2">
+                                        </div>
+                                        <div class="col text-left col-contact">
+                                            <div class="form-group modern-form__form-group--padding-r">
+                                                <div class="line-box">
+                                                    <div class="line"></div>
+                                                </div>
+                                            </div><input class="form-control" type="number" placeholder="Nombre de tiroirs (entre 0 et 3)" min="0" max="3" step="1" name="tiroir_PB2">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col text-center">
+                                    <hr class="modern-form__hr">
+                                    <h4 style="color: #212529;font-size: 20;">Paramétrons le placard haut&nbsp;<br>(ignorer la section si vous n'avez pas choisi de placard haut)</h4>
+                                    <div class="form-row row-cols-2">
+                                        <div class="col text-left col-contact">
+                                            <div class="form-group modern-form__form-group--padding-r">
+                                                <div class="line-box">
+                                                    <div class="line"></div>
+                                                </div>
+                                            </div><input class="form-control" type="number" placeholder="Largeur (entre 60 et 100 cm)" min="60" max="100" step="1" name="largeur_PH2">
+                                        </div>
+                                        <div class="col text-left col-contact">
+                                            <div class="form-group modern-form__form-group--padding-r">
+                                                <div class="line-box">
+                                                    <div class="line"></div>
+                                                </div>
+                                            </div><input class="form-control" type="number" placeholder="Hauteur (entre 80 et 100 cm)" min="80" max="100" step="1" name="hauteur_PH2">
+                                        </div>
+                                        <div class="col text-left col-contact">
+                                            <div class="form-group modern-form__form-group--padding-r">
+                                                <div class="line-box">
+                                                    <div class="line"></div>
+                                                </div>
+                                            </div><input class="form-control" type="number" placeholder="Profondeur (entre 40 et 80 cm)" min="40" max="80" step="1" name="profondeur_PH2">
+                                        </div>
+                                        <div class="col text-left col-contact">
+                                            <div class="form-group modern-form__form-group--padding-r">
+                                                <div class="line-box">
+                                                    <div class="line"></div>
+                                                </div>
+                                            </div><input class="form-control" type="number" placeholder="Nombre d'étagères (entre 0 et 3)" min="0" max="3" step="1" name="etagere_PH1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col text-center">
+                                    <hr class="modern-form__hr">
+                                    <h4 style="color: #212529;font-size: 20;">Paramétrons le bar&nbsp;<br>(ignorer la section si vous n'avez pas choisi de bar)</h4>
+                                    <div class="form-row">
+                                        <div class="col text-left col-contact">
+                                            <div class="form-group modern-form__form-group--padding-r">
+                                                <div class="line-box">
+                                                    <div class="line"></div>
+                                                </div>
+                                            </div><input class="form-control" type="number" placeholder="Hauteur (entre 15 et 40 cm)" min="15" max="40" step="1" name="hauteur_BA1">
+                                        </div>
+                                        <div class="col text-left col-contact">
+                                            <div class="form-group modern-form__form-group--padding-r">
+                                                <div class="line-box">
+                                                    <div class="line"></div>
+                                                </div>
+                                            </div><input class="form-control" type="number" placeholder="Profondeur (entre 40 et 80 cm)" min="40" max="80" step="1" name="profondeur_BA1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div><button class="btn btn-primary submit-now" data-bs-hover-animate="pulse" type="submit">Envoyer ✉</button>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div>
+        <div class="container-fluid text-left">
             <div class="row">
                 <div class="col-md-4">
                     <form action="store.php" method="post" ><br>
