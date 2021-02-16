@@ -361,7 +361,8 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
                         <form>
                             <div class="form-row row-cols-1">
                                 <div class="col text-left col-contact">
-                                    <div class="form-group modern-form__form-group--padding-r"><select class="form-control">
+                                    <div class="form-group modern-form__form-group--padding-r">
+                                        <select class="form-control">
                                             <optgroup label="Modules disponibles">
                                                 <option value="1" selected="">Placard bas avec portes</option>
                                                 <option value="2">Placard bas avec tiroir</option>
@@ -373,7 +374,10 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
                                             <div class="line"></div>
                                         </div>
                                     </div>
-                                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-11"><label class="form-check-label" for="formCheck-11">Ajouter un jolie bar (seulement pour les placard bas)</label></div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="formCheck-11_sup">
+                                        <label class="form-check-label" for="formCheck-11">Ajouter un jolie bar (seulement pour les placard bas)</label>
+                                    </div>
                                 </div>
                                 <div class="col d-lg-flex justify-content-lg-center align-items-lg-center col-contact">
                                     <div class="form-group modern-form__form-group--padding-l">
@@ -383,22 +387,42 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
                                     </div>
                                     <div class="container">
                                         <form method="post" action="store.php" >
-                                            <div id="module" >
+                                            <div id="moduleParAjout" >
+                                                <select class="form-control" name="choixModule[]">
+                                                    <optgroup label="Modules disponibles">
+                                                        <option value="1" selected="">Placard bas avec portes</option>
+                                                        <option value="2">Placard bas avec tiroir</option>
+                                                        <option value="3">Ilôt central</option>
+                                                        <option value="4">Placard haut</option>
+                                                    </optgroup>
+                                                </select>
+                                                <input class="form-check-input" type="checkbox" id="formCheck-11" name="addBarCheck[]">
+                                                <label class="form-check-label" for="formCheck-11" name="addBar[]">Ajouter un jolie bar (seulement pour les placard bas)</label>
                                                 <input type="text" name="titre[]" />
                                                 <input type="text" name="contenu[]" />
                                                 <input type="text" name="description[]" />
                                             </div>
                                             <script type="text/javascript" >
-                                                var div = document.getElementById('module');
+                                                var div = document.getElementById('moduleParAjout');
                                                 function addInput(nam){
                                                     var input = document.createElement("input");
                                                     input.name = name;
                                                     div.appendChild(input);
                                                 }
+                                                function addSelect(nam){
+                                                    var select = document.createElement("select");
+                                                    select.name = name;
+                                                    div.appendChild(select);
+                                                }
+                                                function addLabel(nam){
+                                                    var label = document.createElement("label");
+                                                    label.name = name;
+                                                    div.appendChild(label);
+                                                }
                                                 function addField() {
-                                                    addInput("titre[]");
-                                                    addInput("contenu[]");
-                                                    addInput("description[]");
+                                                    addSelect("choixModule[]");
+                                                    addInput("addBarCheck[]");
+                                                    addLabel("addBar[]");
                                                     div.appendChild(document.createElement("br"));
                                                 }
                                             </script>
