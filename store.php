@@ -27,6 +27,157 @@
 </head>
 
 <body style="background: linear-gradient(rgba(0,0,0,0.49), rgba(153,146,143,0.4626405090137858) 34%, rgba(255,255,255,0.65) 100%);">
+    <?php
+        //TODO rajouter le script IDCLient
+        //TODO mettre à jour sur le serveur avec les bons assets
+        /*Variables utilisées dans tout le code php de la page*/
+        $IDClient = 0;
+
+        /*Connexion à la base de données*/
+        try
+        {
+            $bdd = new PDO('mysql:host=localhost;dbname=iblkmqyy_cuisine;charset=utf8', 'iblkmqyy_cuisine', 'Marmotte8');
+            $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (Exception $e)
+        {
+        die('Erreur : ' . $e->getMessage());
+        }
+
+        /*Création d'un compte utilisateur via le formulaire en haut de la page*/
+        if(isset($_POST["createCompte"]))//Quand le bouton envoyer est pressé pour la création de compte
+        {
+            $nom = $_POST["cnom"];
+            $prenom = $_POST["cprenom"];
+            $pseudo = $_POST["cpseudo"];
+            $password = $_POST["cpassword"];
+            $budget = $_POST["cbudget"];
+            $longueur = $_POST["clongueur"];
+            $largeur = $_POST["clargeur"];
+
+
+            //Envoi dans la base de données
+            $sql = $bdd->prepare ("INSERT INTO client (nom, prenom, pseudo, motDePasse, budget, longueur, largeur)
+            VALUES (:nom, :prenom, :password, :budget, :longueur, :largeur)");
+
+            $sql->bindParam(':nom',$nom);
+            $sql->bindParam(':prenom',$prenom);
+            $sql->bindParam(':pseudo',$pseudo);
+            $sql->bindParam(':password',$password);
+            $sql->bindParam(':budget',$budget);
+            $sql->bindParam(':longueur',$longueur);
+            $sql->bindParam(':largeur',$largeur);
+            $sql->execute();
+            $sql->closeCursor();
+        }
+
+        /*Connexion au compte*/
+        if(isset($_POST["connexion"]))//Quand le bouton envoyer est pressé pour la connexion
+        {
+            $pseudo = $_POST["pseudo"];
+            $mdp = $_POST["password"];
+
+            setcookie('pseudo', $pseudo, time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+
+            $sql = $bdd->prepare("SELECT IDClient FROM client WHERE pseudo = :pseudo AND motDePasse = :mdp");
+            $sql->bindParam(':pseudo',$pseudo);
+            $sql->bindParam(':mdp',$mdp);
+            $sql->execute();
+
+            $donnees =0;//init
+
+        while($donnees = $sql->fetch())//Récupération des données ligne par ligne
+        {
+            $IDClient = $donnees['IDClient'];//Valur à récuperer stockée en décimal
+        }
+
+        echo '<script> IDClient(); </script>';//Lancement du script pour l'affichage de l'ID en haut de page
+        setcookie('IDClientCookies', $IDClient, time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+
+        $sql->closeCursor();
+
+        }
+
+        /*Création de la référence assemblage*/
+        if(isset($_POST["assemblage"]))//Quand le bouton envoyer est pressé pour l'assemblage'
+        {
+            /*
+            *
+            * Les valeurs de chaque modules sont copiés en dut pour faire des tests à termes l'objectif est de les placé en mode infini
+            *
+            * */
+            /*Valeurs des modules choisis
+            1 = placard bas modèle 1
+            2 = placard bas modèle 2
+            3 = bar
+            4 = placard haut modèle 1*/
+            $module1 = ceil($_POST['module1']);
+            $module2 = ceil($_POST['module2']);
+            $module3 = ceil($_POST['module3']);
+            $module4 = ceil($_POST['module4']);
+            $module5 = ceil($_POST['module5']);
+
+            /*Position des différents modules
+            L = en ligne
+            A = en angle*/
+            $pos1 = $_POST['pos1'];
+            $pos2 = $_POST['pos2'];
+            $pos3 = $_POST['pos3'];
+            $pos4 = $_POST['pos4'];
+            $pos5 = $_POST['pos5'];
+
+            /*Options pour chaque module*/
+            //module 1
+            $op11 = 0;
+            $op12 = 0;
+            $op13 = 0;
+            //module 2
+            $op21 = 0;
+            $op22 = 0;
+            $op23 = 0;
+            //module 3
+            $op31 = 0;
+            $op32 = 0;
+            $op33 = 0;
+            //module 4
+            $op41 = 0;
+            $op42 = 0;
+            $op43 = 0;
+            //module 5
+            $op51 = 0;
+            $op52 = 0;
+            $op53 = 0;
+
+            if($_POST['bar1'] == 1)
+            $op12 = 1;
+            if($_POST['bar2'] == 1)
+            $op22 = 1;
+            if($_POST['bar3'] == 1)
+            $op32 = 1;
+            if($_POST['bar4'] == 1)
+            $op42 = 1;
+            if($_POST['bar5'] == 1)
+            $op52 = 1;
+
+            /*Création de la référence*/
+            $listeModule = array($module1, $pos1, $op11, $op12, $op13,
+            $module2, $pos2, $op21, $op22, $op23,
+            $module3, $pos3, $op31, $op32, $op33,
+            $module4, $pos4, $op41, $op42, $op43,
+            $module5, $pos5, $op51, $op52, $op53);
+
+            $reference = implode("",$listeModule);
+
+            //Envoi dans la base de données
+            $sql = $bdd->prepare ("INSERT INTO assemblage (IDClient, reference)
+            VALUES (:IDClient, :reference)");
+
+            $sql->bindParam(':IDClient',$_COOKIE['IDClientCookies']);
+            $sql->bindParam(':reference',$reference);
+            $sql->execute();
+            $sql->closeCursor();
+        }
+    ?>
     <div class="modal fade" role="dialog" tabindex="-1" id="modal2">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -76,7 +227,7 @@
                     <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.html">Nos meubles</a></li>
-                    <li class="nav-item"><a class="nav-link" href="store.html">Réaliser une commande</a></li>
+                    <li class="nav-item"><a class="nav-link" href="store.php">Réaliser une commande</a></li>
                     <li class="nav-item"><a class="nav-link" href="3D.html">Configurateur 3D</a></li>
                 </ul>
             </div>
