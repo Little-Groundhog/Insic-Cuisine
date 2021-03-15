@@ -9,37 +9,24 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/fonts/material-icons.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="assets/css/Animated-Typing-With-Blinking.css">
     <link rel="stylesheet" href="assets/css/Features-Clean.css">
     <link rel="stylesheet" href="assets/css/Footer-Basic.css">
     <link rel="stylesheet" href="assets/css/Highlight-Blue.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="assets/css/Modern-Contact-Form.css">
     <link rel="stylesheet" href="assets/css/Team-Clean.css">
     <link rel="stylesheet" href="assets/css/Team-Grid.css">
     <link rel="stylesheet" href="assets/css/untitled.css">
-
-    <script type="text/javascript">
-    function init()
-    {
-      var tabObj=document.forms['cuisine_parametre'].elements
-      var i=0;
-      while(tabObj[i])
-      {
-      	if (tabObj[i].className=='form-control-lg')
-        {
-     		  tabObj[i].onchange=function()
-          {
-            alert("changé")
-          }
-     		}
-     		i++
-      }
-    }
-    </script>
 </head>
 
-<body style="background: linear-gradient(rgba(0,0,0,0.49), rgba(153,146,143,0.4626405090137858) 34%, rgba(255,255,255,0.65) 100%);" onload="init()">
+<body style="background: linear-gradient(rgba(0,0,0,0.49), rgba(153,146,143,0.4626405090137858) 34%, rgba(255,255,255,0.65) 100%);">
     <div class="modal fade" role="dialog" tabindex="-1" id="modal2">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -89,8 +76,7 @@
                     <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.html">Nos meubles</a></li>
-                    <li class="nav-item"><a class="nav-link" href="store.php">Réaliser une commande</a></li>
-                    <li class="nav-item"><a class="nav-link" href="3D.html">Configurateur 3D</a></li>
+                    <li class="nav-item"><a class="nav-link" href="store.html">Réaliser une commande</a></li>
                 </ul>
             </div>
         </div>
@@ -114,20 +100,15 @@
             </div>
             <div class="row people">
                 <div class="col-md-4 col-lg-12 item" style="padding-right: 0;padding-left: 0;width: 192;">
-                    <div id="cuisine" class="box" style="background: repeating-radial-gradient(rgba(248,2,2,0.5), rgba(254,2,2,0.5)), url(&quot;assets/img/blanc_test.jpeg&quot;) center / cover, #5c1ec2;">
+                    <div class="box" style="background: repeating-radial-gradient(rgba(248,2,2,0.5), rgba(254,2,2,0.5)), url(&quot;http://inspirationcuisine.com/inspiration/ressources/uploads/2014/01/aviva-cuisine.jpg&quot;) bottom / cover, #5c1ec2;">
                         <div class="cover" style="background: rgba(31,147,255,0.75);">
-                          <form action="ligne.html" method="post" name="cuisine_parametre">
-                            <h2 class="text-center" style="padding-top: 0;">
-                              Couleur&nbsp;&nbsp;<input type="color">
-                            </h2>
-                            <select class="form-control-lg" style="background: rgba(255,255,255,0);">
+                            <h2 class="text-center" style="padding-top: 0;">Couleur&nbsp;&nbsp;<input type="color"></h2><select class="form-control-lg" style="background: rgba(255,255,255,0);">
                                 <optgroup label="Pieds : ">
                                     <option value="12" selected="">Rond</option>
                                     <option value="13">Carré</option>
                                     <option value="14">This is item 3</option>
                                 </optgroup>
                             </select>
-                          </form>
                         </div>
                     </div>
                 </div>
@@ -150,6 +131,8 @@
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="assets/js/Animated-Typing-With-Blinking.js"></script>
     <script src="assets/js/current-day.js"></script>
 </body>
