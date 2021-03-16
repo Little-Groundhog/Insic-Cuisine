@@ -31,15 +31,17 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Créer un compte</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" style="color: var(--dark);">Créer un compte</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                 </div>
                 <div class="modal-body">
-                    <p>Bienvenue dans l'équipe 🤩</p><label>Nom :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label><input type="text">
-                    <p></p><label>Prénom :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text">
-                    <p></p><label>Pseudo :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text">
-                    <p></p><label>Adresse :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label><input type="text">
-                    <p></p><label>Code postal :&nbsp; &nbsp;</label><input type="text">
-                    <p></p><label>Mot de passe :&nbsp;</label><input type="text">
+                    <p>Bienvenue dans l'équipe 🤩</p><label>Nom :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label><input type="text">
+                    <p></p><label>Prénom :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text">
+                    <p></p>
+                    <p><label>Mot de passe :&nbsp; &nbsp;</label><input type="text"></p><label>Budget :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label><input type="text">
+                    <p style="color: var(--blue);">Paramétrage de la pièce :</p>
+                    <p></p><label>Longueur :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text">
+                    <p></p><label>Largeur :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text">
+                    <p></p>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">J'abandonne honteusement</button><button class="btn btn-primary" type="button">Créer mon compte</button></div>
             </div>
@@ -75,19 +77,10 @@
                     <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.html">Nos meubles</a></li>
                     <li class="nav-item"><a class="nav-link" href="store.php">Réaliser une commande</a></li>
-                    <li class="nav-item"><a class="nav-link" href="3D.html">Configurateur 3D</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container" style="font-size: 32;">
-        <div class="row" style="font-size: 32;">
-            <div class="col" style="font-size: 32;color: var(--white);"><label style="font-size: 32;color: var(--dark);">Dimension de la pièce =&gt;&nbsp;</label><label style="color: var(--dark);"><strong>&nbsp;Longueur :&nbsp;</strong></label><input type="number" style="background: rgba(255,255,255,0);border-style: none;color: var(--dark);text-align: center;" min="1" max="50" name="longueur"><label style="color: var(--dark);"><strong>&nbsp;largeur :&nbsp;</strong></label><input type="number" style="background: rgba(255,255,255,0);border-style: none;color: var(--dark);text-align: center;" min="1" max="50" name="largeur"></div>
-        </div>
-        <div class="row" style="border-bottom-color: var(--danger);">
-            <div class="col" style="color: var(--white);"><label style="font-size: 32;color: var(--dark);"><strong>Budget :&nbsp;</strong></label><input type="number" style="background: rgba(255,255,255,0);border-style: none;color: var(--dark);text-align: right;" min="1" max="100000" name="longueur"><label style="font-size: 32;color: var(--dark);"><strong>€&nbsp;</strong></label></div>
-        </div>
-    </div>
     <section class="page-section about-heading">
         <div class="container">
             <div class="about-heading-content"></div>
@@ -102,42 +95,24 @@
     <div class="team-grid">
         <div class="container">
             <div class="intro">
-                <h2 class="text-center">Choix de la cuisine</h2>
-                <p class="text-center">Choisir le style de sa cuisine implique de grandes responsabilités !<br>Une fois sélectionnée plus de retour en arrière possible.</p>
+                <h2 class="text-center">Cuisine en ligne</h2>
+                <p class="text-center">Très bon choix ! <br>Une cuisine simple et efficace.</p>
             </div>
             <div class="row people">
-                <div class="col-md-4 col-lg-3 item">
-                    <div class="box" style="background: url(&quot;assets/img/ligne.jpg&quot;) center / cover;">
+                <div class="col-md-4 col-lg-12 item" style="padding-right: 0;padding-left: 0;width: 192;">
+                    <div class="box" style="background: repeating-radial-gradient(rgba(248,2,2,0.5), rgba(254,2,2,0.5)), url(&quot;http://inspirationcuisine.com/inspiration/ressources/uploads/2014/01/aviva-cuisine.jpg&quot;) bottom / cover, #5c1ec2;">
                         <div class="cover" style="background: rgba(31,147,255,0.75);">
-                            <h3 class="name">Cuisine en Ligne</h3>
-                            <p class="title">Pour les petits espaces</p><a class="btn btn-primary" role="button">Sélectionner</a>
+                            <h2 class="text-center" style="padding-top: 0;">Couleur&nbsp;&nbsp;<input type="color"></h2><select class="form-control-lg" style="background: rgba(255,255,255,0);">
+                                <optgroup label="Pieds : ">
+                                    <option value="12" selected="">Rond</option>
+                                    <option value="13">Carré</option>
+                                    <option value="14">This is item 3</option>
+                                </optgroup>
+                            </select>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg-3 item">
-                    <div class="box" style="background: url(&quot;assets/img/angle.jpg&quot;) center / cover;">
-                        <div class="cover">
-                            <h3 class="name">Cuisine en Angle</h3>
-                            <p class="title">Pour les familles</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-3 item">
-                    <div class="box" style="background: url(&quot;assets/img/u.jpg&quot;) center / cover;">
-                        <div class="cover">
-                            <h3 class="name">Cuisine en U</h3>
-                            <p class="title">Pour les grandes surfaces ouvertes</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-3 item">
-                    <div class="box" style="background: url(&quot;assets/img/pro.jpg&quot;) center / cover;">
-                        <div class="cover">
-                            <h3 class="name">C'est moi qui pilote</h3>
-                            <p class="title">Pour un vrai projet</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="col text-center"><button class="btn btn-primary" type="submit">Terminer ma cuisine</button></div>
             </div>
         </div>
     </div>
