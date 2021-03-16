@@ -95,10 +95,9 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
 
         while($donnees = $sql->fetch())//Récupération des données ligne par ligne
         {
-            $IDClient = $donnees['IDClient'];//Valur à récuperer stockée en décimal
+            $IDClient = $donnees['IDClient'];//Valeur à récuperer stockée en décimal
         }
-
-        echo '<script> IDClient(); </script>';//Lancement du script pour l'affichage de l'ID en haut de page
+        
         setcookie('IDClientCookies', $IDClient, time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
 
         $sql->closeCursor();
