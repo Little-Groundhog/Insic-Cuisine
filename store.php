@@ -65,7 +65,7 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
 
         //Envoi dans la base de données
         $sql = $bdd->prepare ("INSERT INTO client (nom, prenom, pseudo, motDePasse, budget, longueur, largeur)
-                VALUES (:nom, :prenom, :password, :budget, :longueur, :largeur)");
+                VALUES (:nom, :prenom, :pseudo, :password, :budget, :longueur, :largeur)");
 
         $sql->bindParam(':nom',$nom);
         $sql->bindParam(':prenom',$prenom);
