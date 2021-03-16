@@ -205,8 +205,8 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
                         <p></p>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-light" type="button" data-dismiss="modal">J'abandonne honteusement</button>
-                        <button class="btn btn-primary" type="button">Créer mon compte</button>
+                        <button type="submit" class="btn btn-light" type="button" data-dismiss="modal">J'abandonne honteusement</button>
+                        <button type="submit" class="btn btn-primary" type="button">Créer mon compte</button>
                     </div>
                 </form>
             </div>
@@ -227,8 +227,8 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
                         <label>Mot de passe :&nbsp;</label><input name="password" type="password">
                     </div>
                     <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Annuler</button>
-                        <button class="btn btn-light" data-toggle="modal" data-target="#modal2" type="button">Créer un compte</button>
-                        <button class="btn btn-primary" type="button">Se connecter</button>
+                        <button type="submit" class="btn btn-light" data-toggle="modal" data-target="#modal2" type="button">Créer un compte</button>
+                        <button type="submit" class="btn btn-primary" type="button">Se connecter</button>
                     </div>
                 </form>
             </div>
