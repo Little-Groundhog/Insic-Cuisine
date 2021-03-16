@@ -191,18 +191,24 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
                 <div class="modal-header">
                     <h4 class="modal-title" style="color: var(--dark);">Créer un compte</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                 </div>
-                <div class="modal-body">
-                    <p>Bienvenue dans l'équipe 🤩</p><label>Nom :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label><input type="text">
-                    <p></p><label>Prénom :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text">
-                    <p></p><label>Pseudo:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label><input type="text">
-                    <p></p>
-                    <p><label>Mot de passe :&nbsp; &nbsp;</label><input type="text"></p><label>Budget :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label><input type="text">
-                    <p style="color: var(--blue);">Paramétrage de la pièce :</p>
-                    <p></p><label>Longueur :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text">
-                    <p></p><label>Largeur :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input type="text">
-                    <p></p>
-                </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">J'abandonne honteusement</button><button class="btn btn-primary" type="button">Créer mon compte</button></div>
+                <form action="store.php" method="post" >
+                    <div class="modal-body">
+                        <p>Bienvenue dans l'équipe 🤩</p>
+                        <label>Nom :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label><input name="cnom" type="text">
+                        <p></p><label>Prénom :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input name="cprenom" type="text">
+                        <p></p><label>Pseudo:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label><input name="cpseudo" type="text">
+                        <p></p><label>Mot de passe :&nbsp; &nbsp;</label><input name="cpassword" type="text">
+                        <p></p><label>Budget :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label><input name="cbudget" type="text">
+                        <p style="color: var(--blue);">Paramétrage des dimensions de la cuisine :</p>
+                        <p></p><label>Longueur :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input name="clongueur" type="text">
+                        <p></p><label>Largeur :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input name="clargeur" type="text">
+                        <p></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-light" type="button" data-dismiss="modal">J'abandonne honteusement</button>
+                        <button class="btn btn-primary" type="button">Créer mon compte</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -210,13 +216,21 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Se connecter</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Se connecter</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                 </div>
-                <div class="modal-body">
-                    <p>Vous devez déjà avoir créer un compte 😎</p><label>Pseudo :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label><input type="text">
-                    <p></p><label>Mot de passe :&nbsp;</label><input type="password">
-                </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Annuler</button><button class="btn btn-light" data-toggle="modal" data-target="#modal2" type="button">Créer un compte</button><button class="btn btn-primary" type="button">Se connecter</button></div>
+                <form action="store.php" method="post" >
+                    <div class="modal-body">
+                        <p>Vous devez déjà avoir créer un compte 😎</p>
+                        <label>Pseudo :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label><input name="pseudo" type="text">
+                        <p></p>
+                        <label>Mot de passe :&nbsp;</label><input name="password" type="password">
+                    </div>
+                    <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Annuler</button>
+                        <button class="btn btn-light" data-toggle="modal" data-target="#modal2" type="button">Créer un compte</button>
+                        <button class="btn btn-primary" type="button">Se connecter</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
