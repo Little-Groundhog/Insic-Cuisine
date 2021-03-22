@@ -1,3 +1,16 @@
+<?php
+    @session_start(); //Lancement de la session pour les cookies
+    if($_COOKIE['IDClientCookies'] == 0 or $_COOKIE['IDClientCookies'] == NULL){
+        setcookie('IDClientCookies', 0, time() + 365*24*3600, null, null, false, true);
+    }
+    if($_COOKIE['Reference'] == 00000000 or $_COOKIE['Reference'] == NULL){
+        setcookie('Reference', 00000000, time() + 365*24*3600, null, null, false, true);
+    }
+    if($_COOKIE['pseudo'] == 'Non connecté' or $_COOKIE['pseudo'] == NULL){
+        setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, true);
+    }
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -22,6 +35,75 @@
 </head>
 
 <body style="background: linear-gradient(rgba(0,0,0,0.49), rgba(153,146,143,0.4626405090137858) 34%, rgba(255,255,255,0.65) 100%);">
+    <?php
+        /*Variables utilisées dans tout le code php de la page*/
+        $IDClient = 0;
+
+        /*Connexion à la base de données*/
+        try
+        {
+            $bdd = new PDO('mysql:host=localhost;dbname=iblkmqyy_cuisine;charset=utf8', 'iblkmqyy_cuisine', 'Marmotte8');
+            $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }
+        catch (Exception $e)
+        {
+            die('Erreur : ' . $e->getMessage());
+        }
+
+        /*Création d'un compte utilisateur via le formulaire en haut de la page*/
+        if(isset($_POST["createCompte"]))//Quand le bouton envoyer est pressé pour la création de compte
+        {
+            $nom = $_POST["cnom"];
+            $prenom = $_POST["cprenom"];
+            $pseudo = $_POST["cpseudo"];
+            $password = $_POST["cpassword"];
+            $budget = $_POST["cbudget"];
+            $longueur = $_POST["clongueur"];
+            $largeur = $_POST["clargeur"];
+
+
+            //Envoi dans la base de données
+            $sql = $bdd->prepare ("INSERT INTO client (nom, prenom, pseudo, motDePasse, budget, longueur, largeur)
+                        VALUES (:nom, :prenom, :pseudo, :password, :budget, :longueur, :largeur)");
+
+            $sql->bindParam(':nom',$nom);
+            $sql->bindParam(':prenom',$prenom);
+            $sql->bindParam(':pseudo',$pseudo);
+            $sql->bindParam(':password',$password);
+            $sql->bindParam(':budget',$budget);
+            $sql->bindParam(':longueur',$longueur);
+            $sql->bindParam(':largeur',$largeur);
+            $sql->execute();
+            $sql->closeCursor();
+        }
+
+        /*Connexion au compte*/
+        if(isset($_POST["connexion"]))//Quand le bouton envoyer est pressé pour la connexion
+        {
+            $pseudo = $_POST["pseudo"];
+            $mdp = $_POST["password"];
+
+            setcookie('pseudo', $pseudo, time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+
+            $sql = $bdd->prepare("SELECT IDClient FROM client WHERE pseudo = :pseudo AND motDePasse = :mdp");
+            $sql->bindParam(':pseudo',$pseudo);
+            $sql->bindParam(':mdp',$mdp);
+            $sql->execute();
+
+            $donnees =0;//init
+
+            while($donnees = $sql->fetch())//Récupération des données ligne par ligne
+            {
+                $IDClient = $donnees['IDClient'];//Valeur à récuperer stockée en décimal
+            }
+
+            setcookie('IDClientCookies', $IDClient, time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+
+            $sql->closeCursor();
+        }
+
+
+    ?>
     <div class="modal fade" role="dialog" tabindex="-1" id="modal2">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -85,46 +167,55 @@
             <div class="row row-cols-1 people">
                 <div class="col-lg-12 text-center"><img src="assets/img/untitled.png" style="align-items: center;width: 930px;"></div>
                 <div class="col text-center" style="margin-top: 30px;">
-                    <h4>Options générale</h4><label>Couleurs des meubles :&nbsp;<select>
-                            <optgroup label="Couleurs">
-                                <option value="1">Noir</option>
-                                <option value="2">Crème</option>
-                                <option value="14">Rouge</option>
-                            </optgroup>
-                        </select></label>
-                    <p></p><label>Matière du plan de travail :&nbsp;<select>
-                            <optgroup label="Matière plan de travail">
-                                <option value="1">Bois</option>
-                                <option value="2">This is item 2</option>
-                            </optgroup>
-                        </select></label>
-                    <p></p><label>Style des poignées :&nbsp;<select>
-                            <optgroup label="Poignees">
-                                <option value="1">Moderne</option>
-                                <option value="2">Arrondie</option>
-                            </optgroup>
-                        </select></label>
-                    <p></p>
-                    <h4>Options modules</h4><label>Îlot central :&nbsp;<select>
-                            <optgroup label="ilot">
-                                <option value="1">Oui</option>
-                                <option value="2">Non</option>
-                            </optgroup>
-                        </select></label>
-                    <p></p><label>Type d'évier :&nbsp;<select>
-                            <optgroup label="Evier">
-                                <option value="1">Simple bac</option>
-                                <option value="2">Double bac</option>
-                            </optgroup>
-                        </select></label>
-                    <p></p><label>Type d'hotte :&nbsp;<select>
-                            <optgroup label="hotte">
-                                <option value="1" selected="">LKGTU564</option>
-                                <option value="2">MPODR509</option>
-                                <option value="3">TRDOPA87</option>
-                            </optgroup>
-                        </select></label>
-                    <p></p><button class="btn btn-primary" type="submit">Refresh</button><label>&nbsp;</label><button class="btn btn-primary" type="submit">Terminer ma cuisine</button>
+                    <form action="store.php" method="post" >
+                        <h4>Options générale</h4><label>Couleurs des meubles :&nbsp;<select>
+                                <optgroup label="Couleurs">
+                                    <option value="1">Noir</option>
+                                    <option value="2">Crème</option>
+                                    <option value="14">Rouge</option>
+                                </optgroup>
+                            </select></label>
+                        <p></p><label>Matière du plan de travail :&nbsp;<select>
+                                <optgroup label="Matière plan de travail">
+                                    <option value="1">Bois</option>
+                                    <option value="2">This is item 2</option>
+                                </optgroup>
+                            </select></label>
+                        <p></p><label>Style des poignées :&nbsp;<select>
+                                <optgroup label="Poignees">
+                                    <option value="1">Moderne</option>
+                                    <option value="2">Arrondie</option>
+                                </optgroup>
+                            </select></label>
+                        <p></p>
+                        <h4>Options modules</h4><label>Îlot central :&nbsp;<select>
+                                <optgroup label="ilot">
+                                    <option value="1">Oui</option>
+                                    <option value="2">Non</option>
+                                </optgroup>
+                            </select></label>
+                        <p></p>
+                        <label>Type d'évier :&nbsp;<select>
+                                <optgroup label="Evier">
+                                    <option value="1">Simple bac</option>
+                                    <option value="2">Double bac</option>
+                                </optgroup>
+                            </select></label>
+                        <p></p>
+                        <label>Type d'hotte :&nbsp;
+                            <select>
+                                <optgroup label="hotte">
+                                    <option value="1" selected="">LKGTU564</option>
+                                    <option value="2">MPODR509</option>
+                                    <option value="3">TRDOPA87</option>
+                                </optgroup>
+                            </select>
+                        </label>
+                        <p></p>
+                        <button class="btn btn-primary" type="submit">Refresh</button>
+                        <label>&nbsp;</label>
+                        <button class="btn btn-primary" type="submit">Terminer ma cuisine</button>
+                    </form>
                 </div>
             </div>
         </div>
