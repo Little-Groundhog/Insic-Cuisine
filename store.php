@@ -97,7 +97,7 @@ setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, tr
         {
             $IDClient = $donnees['IDClient'];//Valeur à récuperer stockée en décimal
         }
-        
+
         setcookie('IDClientCookies', $IDClient, time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
 
         $sql->closeCursor();
