@@ -39,31 +39,27 @@
 
 <body style="background: linear-gradient(rgba(0,0,0,0.49), rgba(153,146,143,0.4626405090137858) 34%, rgba(255,255,255,0.65) 100%);" onload="changeImage();">
     <script type="text/javascript">
-        function getCookie(nomCookie)
-        {
-            deb = document.cookie.indexOf(nomCookie+ "=")
-            if (deb >= 0)
-            {
-                deb += nomCookie.length + 1
-                fin = document.cookie.indexOf(";",deb)
-                if (fin < 0) fin = document.cookie.length
-                return unescape(document.cookie.substring(deb,fin))
+        function GetCookie (name) {
+            var arg = name + "=";
+            var alen = arg.length;
+            var clen = document.cookie.length;
+            var i = 0;
+            while (i < clen) {
+                var j = i + alen;
+                if (document.cookie.substring(i, j) == arg)
+                    return getCookieVal (j);
+                i = document.cookie.indexOf(" ", i) + 1;
+                if (i == 0)
+                    break;
             }
-            else
-                return ""
+            return getCookieVal (j);
         }
         function changeImage()
         {
-            var x = document.getElementById("cuisineImage");
-            var v = x.getAttribute("src");
-            if(v == "untitled.png") {
-                v = getCookie('ReferenceImage') + ".png"
-            }
-            else {
-                v = getCookie('ReferenceImage') + ".png"
-            }
-            x.setAttribute("src", v);
+            var nom = '<?php echo $nom; ?>';
+            document.getElementById("cuisineImage").setAttribute("src", GetCookie("ReferenceImage"));
         }
+        changeImage();
     </script>
     <script type="text/javascript">
 
@@ -151,7 +147,7 @@
             $codeImage = implode("",$listeParametre);
 
             /*Mise à jour du cookies avec le nom de la nouvelle image*/
-            setcookie('ReferenceImage', $codeImage, time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+            setcookie('ReferenceImage', $codeImage . ".png", time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
         }
 
 
@@ -218,7 +214,7 @@
             </div>
             <div class="row row-cols-1 people">
                 <div class="col-lg-12 text-center">
-                    <img src="assets/img/untitled.png" style="align-items: center;width: 930px;" id="cuisineImage">
+                    <img src="assets/img/<?php echo $_COOKIE['ReferenceImage'] ?>" style="align-items: center;width: 930px;" id="cuisineImage">
                 </div>
                 <div class="col text-center" style="margin-top: 30px;">
                     <form action="ligne.php" method="post" >
