@@ -37,33 +37,7 @@
     <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
 
-<body style="background: linear-gradient(rgba(0,0,0,0.49), rgba(153,146,143,0.4626405090137858) 34%, rgba(255,255,255,0.65) 100%);" onload="changeImage();">
-    <script type="text/javascript">
-        function GetCookie (name) {
-            var arg = name + "=";
-            var alen = arg.length;
-            var clen = document.cookie.length;
-            var i = 0;
-            while (i < clen) {
-                var j = i + alen;
-                if (document.cookie.substring(i, j) == arg)
-                    return getCookieVal (j);
-                i = document.cookie.indexOf(" ", i) + 1;
-                if (i == 0)
-                    break;
-            }
-            return getCookieVal (j);
-        }
-        function changeImage()
-        {
-            var nom = '<?php echo $nom; ?>';
-            document.getElementById("cuisineImage").setAttribute("src", GetCookie("ReferenceImage"));
-        }
-        changeImage();
-    </script>
-    <script type="text/javascript">
-
-    </script>
+<body style="background: linear-gradient(rgba(0,0,0,0.49), rgba(153,146,143,0.4626405090137858) 34%, rgba(255,255,255,0.65) 100%);">
     <?php
         /*Variables utilisées dans tout le code php de la page*/
         $IDClient = 0;
