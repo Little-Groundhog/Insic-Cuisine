@@ -57,10 +57,10 @@
             var x = document.getElementById("cuisineImage");
             var v = x.getAttribute("src");
             if(v == "untitled.png") {
-                v = getCookie("ReferenceImage") + ".png"
+                v = getCookie('ReferenceImage') + ".png"
             }
             else {
-                v = getCookie("ReferenceImage") + ".png"
+                v = getCookie('ReferenceImage') + ".png"
             }
             x.setAttribute("src", v);
         }
