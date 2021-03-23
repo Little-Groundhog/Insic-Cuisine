@@ -37,7 +37,7 @@
     <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
 
-<body style="background: linear-gradient(rgba(0,0,0,0.49), rgba(153,146,143,0.4626405090137858) 34%, rgba(255,255,255,0.65) 100%);" onload="display_img();">
+<body style="background: linear-gradient(rgba(0,0,0,0.49), rgba(153,146,143,0.4626405090137858) 34%, rgba(255,255,255,0.65) 100%);" onload="changeImage();">
     <script type="text/javascript">
         function getCookie(nomCookie)
         {
@@ -52,12 +52,21 @@
             else
                 return ""
         }
-        function display_img()
+        function changeImage()
         {
-            var nomImage = getCookie("ReferenceImage");
-            document.getElementById("cuisineImage").innerHTML = <img src="assets/img/" + nomImage + ".jpg" style="align-items: center;width: 930px;" id="cuisineImage">;
-        };
-        display_img();
+            var x = document.getElementById("cuisineImage");
+            var v = x.getAttribute("src");
+            if(v == "untitled.png") {
+                v = getCookie("ReferenceImage") + ".png"
+            }
+            else {
+                v = getCookie("ReferenceImage") + ".png"
+            }
+            x.setAttribute("src", v);
+        }
+    </script>
+    <script type="text/javascript">
+
     </script>
     <?php
         /*Variables utilisées dans tout le code php de la page*/
