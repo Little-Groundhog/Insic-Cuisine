@@ -6,6 +6,9 @@
     if($_COOKIE['Reference'] == 00000000 or $_COOKIE['Reference'] == NULL){
         setcookie('Reference', 00000000, time() + 365*24*3600, null, null, false, true);
     }
+    if($_COOKIE['ReferenceImage'] == 00000000 or $_COOKIE['ReferenceImage'] == NULL){
+        setcookie('ReferenceImage', 00000000, time() + 365*24*3600, null, null, false, true);
+    }
     if($_COOKIE['pseudo'] == 'Non connecté' or $_COOKIE['pseudo'] == NULL){
         setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, true);
     }
@@ -102,6 +105,25 @@
             $sql->closeCursor();
         }
 
+        if(isset($_POST["refresh"]))
+        {
+            /*Récupération des valeurs dans les selects*/
+            $couleurs = ceil($_POST['couleurs']);
+            $planTravail = ceil($_POST['planTravail']);
+            $poignees = ceil($_POST['poignees']);
+            $ilot = ceil($_POST['ilot']);
+            $evier = ceil($_POST['evier']);
+            $hotte = ceil($_POST['hotte']);
+
+            /*Création du code image*/
+            $listeParametre = array($couleurs, $planTravail, $poignees, $ilot, $evier, $hotte);
+
+            $codeImage = implode("",$listeParametre);
+
+            /*Mise à jour du cookies avec le nom de la nouvelle image*/
+            setcookie('ReferenceImage', $codeImage, time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+        }
+
 
     ?>
     <div class="modal fade" role="dialog" tabindex="-1" id="modal2">
@@ -168,53 +190,67 @@
                 <div class="col-lg-12 text-center"><img src="assets/img/untitled.png" style="align-items: center;width: 930px;"></div>
                 <div class="col text-center" style="margin-top: 30px;">
                     <form action="store.php" method="post" >
-                        <h4>Options générale</h4><label>Couleurs des meubles :&nbsp;<select>
+                        <h4>Options générale</h4>
+                        <label>Couleurs des meubles :&nbsp;
+                            <select name="couleurs">
                                 <optgroup label="Couleurs">
-                                    <option value="1">Noir</option>
-                                    <option value="2">Crème</option>
-                                    <option value="14">Rouge</option>
-                                </optgroup>
-                            </select></label>
-                        <p></p><label>Matière du plan de travail :&nbsp;<select>
-                                <optgroup label="Matière plan de travail">
-                                    <option value="1">Bois</option>
-                                    <option value="2">This is item 2</option>
-                                </optgroup>
-                            </select></label>
-                        <p></p><label>Style des poignées :&nbsp;<select>
-                                <optgroup label="Poignees">
-                                    <option value="1">Moderne</option>
-                                    <option value="2">Arrondie</option>
-                                </optgroup>
-                            </select></label>
-                        <p></p>
-                        <h4>Options modules</h4><label>Îlot central :&nbsp;<select>
-                                <optgroup label="ilot">
-                                    <option value="1">Oui</option>
-                                    <option value="2">Non</option>
-                                </optgroup>
-                            </select></label>
-                        <p></p>
-                        <label>Type d'évier :&nbsp;<select>
-                                <optgroup label="Evier">
-                                    <option value="1">Simple bac</option>
-                                    <option value="2">Double bac</option>
-                                </optgroup>
-                            </select></label>
-                        <p></p>
-                        <label>Type d'hotte :&nbsp;
-                            <select>
-                                <optgroup label="hotte">
-                                    <option value="1" selected="">LKGTU564</option>
-                                    <option value="2">MPODR509</option>
-                                    <option value="3">TRDOPA87</option>
+                                    <option value="0">Noir</option>
+                                    <option value="1">Crème</option>
+                                    <option value="2">Rouge</option>
                                 </optgroup>
                             </select>
                         </label>
                         <p></p>
-                        <button class="btn btn-primary" type="submit">Refresh</button>
+                        <label>Matière du plan de travail :&nbsp;
+                            <select name="planTravail">
+                                <optgroup label="Matière plan de travail">
+                                    <option value="0">Bois</option>
+                                    <option value="1">Marbre</option>
+                                </optgroup>
+                            </select>
+                        </label>
+                        <p></p>
+                        <label>Style des poignées :&nbsp;
+                            <select name="poignees">
+                                <optgroup label="Poignees">
+                                    <option value="0">Moderne</option>
+                                    <option value="1">Arrondie</option>
+                                </optgroup>
+                            </select>
+                        </label>
+                        <p></p>
+                        <h4>Options modules</h4>
+                        <label>Îlot central :&nbsp;
+                            <select name="ilot">
+                                <optgroup label="ilot">
+                                    <option value="0">Oui</option>
+                                    <option value="1">Non</option>
+                                </optgroup>
+                            </select>
+                        </label>
+                        <p></p>
+                        <label>Type d'évier :&nbsp;
+                            <select name="evier">
+                                <optgroup label="Evier">
+                                    <option value="0">Simple bac</option>
+                                    <option value="1">Double bac</option>
+                                </optgroup>
+                            </select>
+                        </label>
+                        <p></p>
+                        <label>Type d'hotte :&nbsp;
+                            <select name="hotte">
+                                <optgroup label="hotte">
+                                    <option value="0">LKGTU564</option>
+                                    <option value="1">MPODR509</option>
+                                    <option value="2">TRDOPA87</option>
+                                </optgroup>
+                            </select>
+                        </label>
+                        <p></p>
+                        <button class="btn btn-primary" type="submit" name="refresh">Refresh</button>
                         <label>&nbsp;</label>
-                        <button class="btn btn-primary" type="submit">Terminer ma cuisine</button>
+                        <button class="btn btn-primary" type="submit" name="terminer">Terminer ma cuisine</button>
                     </form>
                 </div>
             </div>
@@ -228,7 +264,6 @@
                 <li class="list-inline-item"><a href="about.html">A propos</a></li>
                 <li class="list-inline-item"><a href="products.html">Nos meubles</a></li>
                 <li class="list-inline-item"><a href="store.php">Réaliser une commande</a></li>
-                <li class="list-inline-item"><a href="3D.html">Configurateur 3D</a></li>
             </ul>
             <p class="copyright">Insic Cusine @2020</p>
         </footer>

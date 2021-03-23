@@ -294,7 +294,6 @@
                 <li class="list-inline-item"><a href="about.html">A propos</a></li>
                 <li class="list-inline-item"><a href="products.html">Nos meubles</a></li>
                 <li class="list-inline-item"><a href="store.php">Réaliser une commande</a></li>
-                <li class="list-inline-item"><a href="3D.html">Configurateur 3D</a></li>
             </ul>
             <p class="copyright">Insic Cusine @2020</p>
         </footer>
