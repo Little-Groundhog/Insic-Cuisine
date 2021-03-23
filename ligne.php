@@ -37,7 +37,28 @@
     <link rel="stylesheet" href="assets/css/untitled.css">
 </head>
 
-<body style="background: linear-gradient(rgba(0,0,0,0.49), rgba(153,146,143,0.4626405090137858) 34%, rgba(255,255,255,0.65) 100%);">
+<body style="background: linear-gradient(rgba(0,0,0,0.49), rgba(153,146,143,0.4626405090137858) 34%, rgba(255,255,255,0.65) 100%);" onload="display_img();">
+    <script type="text/javascript">
+        function getCookie(nomCookie)
+        {
+            deb = document.cookie.indexOf(nomCookie+ "=")
+            if (deb >= 0)
+            {
+                deb += nomCookie.length + 1
+                fin = document.cookie.indexOf(";",deb)
+                if (fin < 0) fin = document.cookie.length
+                return unescape(document.cookie.substring(deb,fin))
+            }
+            else
+                return ""
+        }
+        function display_img()
+        {
+            var nomImage = getCookie("ReferenceImage");
+            document.getElementById("cuisineImage").innerHTML = <img src="assets/img/" + nomImage + ".jpg" style="align-items: center;width: 930px;" id="cuisineImage">;
+        };
+        display_img();
+    </script>
     <?php
         /*Variables utilisées dans tout le code php de la page*/
         $IDClient = 0;
@@ -187,9 +208,11 @@
                 <p class="text-center">Très bon choix ! <br>Une cuisine simple et efficace.</p>
             </div>
             <div class="row row-cols-1 people">
-                <div class="col-lg-12 text-center"><img src="assets/img/untitled.png" style="align-items: center;width: 930px;"></div>
+                <div class="col-lg-12 text-center">
+                    <img src="assets/img/untitled.png" style="align-items: center;width: 930px;" id="cuisineImage">
+                </div>
                 <div class="col text-center" style="margin-top: 30px;">
-                    <form action="store.php" method="post" >
+                    <form action="ligne.php" method="post" >
                         <h4>Options générale</h4>
                         <label>Couleurs des meubles :&nbsp;
                             <select name="couleurs">
