@@ -110,8 +110,6 @@
 
         if(isset($_POST["refresh"]))
         {
-            $reload = 1;
-
             /*Récupération des valeurs dans les selects*/
             $typeCuisine = 0;
             $couleurs = ceil($_POST['couleurs']);
@@ -120,7 +118,7 @@
             $ilot = ceil($_POST['ilot']);
             $evier = ceil($_POST['evier']);
             $hotte = ceil($_POST['hotte']);
-            $bar = 0;
+            $bar = 0;//pas de bar pour la cuisine en ligne
 
             /*Création du code image*/
             $listeParametre = array($typeCuisine, $couleurs, $planTravail, $poignees, $ilot, $evier, $hotte, $bar);
@@ -130,6 +128,61 @@
             /*Mise à jour du cookies avec le nom de la nouvelle image*/
             setcookie('ReferenceImage', $codeImage . ".png", time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
             setcookie('refresh',"oui", time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+        }
+        if(isset($_POST["terminer"]))
+        {
+            /*Récupération des valeurs dans les selects*/
+            $typeCuisine = 0;
+            $couleurs = ceil($_POST['couleurs']);
+            $planTravail = ceil($_POST['planTravail']);
+            $poignees = ceil($_POST['poignees']);
+            $ilot = ceil($_POST['ilot']);
+            $evier = ceil($_POST['evier']);
+            $hotte = ceil($_POST['hotte']);
+            $bar = 0;//pas de bar pour la cuisine en ligne
+
+            //Récupération des longueurs et largeurs de la cuisine client
+            $longueur = 0;
+            $largeur = 0;
+            $idclient = $_COOKIE['IDClientCookies'];
+
+            $sql = $bdd->prepare("SELECT longueur FROM client WHERE IDClient = :idclient");
+            $sql->bindParam(':idclient',$idclient);
+            $sql->execute();
+
+            $donnees =0;//init
+
+            while($donnees = $sql->fetch())//Récupération des données ligne par ligne
+            {
+                $longueur = $donnees['longueur'];//Valeur à récuperer stockée en décimal
+            }
+
+            $sql = $bdd->prepare("SELECT largeur FROM client WHERE IDClient = :idclient");
+            $sql->bindParam(':idclient',$idclient);
+            $sql->execute();
+
+            $donnees =0;//init
+
+            while($donnees = $sql->fetch())//Récupération des données ligne par ligne
+            {
+                $largeur = $donnees['largeur'];//Valeur à récuperer stockée en décimal
+            }
+
+            $separateur = 'T';//utiliser pour séparer la taille et les options
+
+            /*Création du code image*/
+            $listeParametreCatia = array($longueur, $largeur, $separateur, $typeCuisine, $couleurs, $planTravail, $poignees, $ilot, $evier, $hotte, $bar);
+
+            $codeCatia = implode("",$listeParametreCatia);
+
+            //Envoi dans la base de données
+            $sql = $bdd->prepare ("INSERT INTO assemblage (IDClient, reference)
+                                                        VALUES (:IDClient, :reference)");
+
+            $sql->bindParam(':IDClient',$idclient);
+            $sql->bindParam(':reference',$codeCatia);
+            $sql->execute();
+            $sql->closeCursor();
         }
     ?>
     <script>
