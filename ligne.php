@@ -12,6 +12,9 @@
     if($_COOKIE['pseudo'] == 'Non connecté' or $_COOKIE['pseudo'] == NULL){
         setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, true);
     }
+    if($_COOKIE['refresh'] == 'non' or $_COOKIE['refresh'] == NULL){
+        setcookie('refresh', 'non', time() + 365*24*3600, null, null, false, true);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -107,25 +110,39 @@
 
         if(isset($_POST["refresh"]))
         {
+            $reload = 1;
+
             /*Récupération des valeurs dans les selects*/
+            $typeCuisine = 0;
             $couleurs = ceil($_POST['couleurs']);
             $planTravail = ceil($_POST['planTravail']);
             $poignees = ceil($_POST['poignees']);
             $ilot = ceil($_POST['ilot']);
             $evier = ceil($_POST['evier']);
             $hotte = ceil($_POST['hotte']);
+            $bar = 0;
 
             /*Création du code image*/
-            $listeParametre = array($couleurs, $planTravail, $poignees, $ilot, $evier, $hotte);
+            $listeParametre = array($typeCuisine, $couleurs, $planTravail, $poignees, $ilot, $evier, $hotte, $bar);
 
             $codeImage = implode("",$listeParametre);
 
             /*Mise à jour du cookies avec le nom de la nouvelle image*/
             setcookie('ReferenceImage', $codeImage . ".png", time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+            setcookie('refresh',"oui", time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
         }
-
-
     ?>
+    <script>
+        function reload(){
+            location.reload();
+        }
+        <?php
+            if($_COOKIE['refresh']=='oui'){
+                echo "reload();";
+                setcookie('refresh',"non", time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+            }
+        ?>
+    </script>
     <div class="modal fade" role="dialog" tabindex="-1" id="modal2">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -196,9 +213,9 @@
                         <label>Couleurs des meubles :&nbsp;
                             <select name="couleurs">
                                 <optgroup label="Couleurs">
-                                    <option value="0">Noir</option>
-                                    <option value="1">Crème</option>
-                                    <option value="2">Rouge</option>
+                                    <option value="0" name="couleurNoir" <?php if($couleurs == 0){ echo "selected"; } ?>>Noir</option>
+                                    <option value="1" name="couleurCreme" <?php if($couleurs == 1){ echo "selected"; } ?>>Crème</option>
+                                    <option value="2" name="couleurRouge" <?php if($couleurs == 2){ echo "selected"; } ?>>Rouge</option>
                                 </optgroup>
                             </select>
                         </label>
@@ -206,8 +223,8 @@
                         <label>Matière du plan de travail :&nbsp;
                             <select name="planTravail">
                                 <optgroup label="Matière plan de travail">
-                                    <option value="0">Bois</option>
-                                    <option value="1">Marbre</option>
+                                    <option value="0" <?php if($planTravail == 0){ echo "selected"; } ?>>Bois</option>
+                                    <option value="1" <?php if($planTravail == 1){ echo "selected"; } ?>>Marbre</option>
                                 </optgroup>
                             </select>
                         </label>
@@ -215,8 +232,8 @@
                         <label>Style des poignées :&nbsp;
                             <select name="poignees">
                                 <optgroup label="Poignees">
-                                    <option value="0">Moderne</option>
-                                    <option value="1">Arrondie</option>
+                                    <option value="0" <?php if($poignees == 0){ echo "selected"; } ?>>Moderne</option>
+                                    <option value="1" <?php if($poignees == 1){ echo "selected"; } ?>>Arrondie</option>
                                 </optgroup>
                             </select>
                         </label>
@@ -225,8 +242,8 @@
                         <label>Îlot central :&nbsp;
                             <select name="ilot">
                                 <optgroup label="ilot">
-                                    <option value="0">Oui</option>
-                                    <option value="1">Non</option>
+                                    <option value="1" <?php if($ilot == 1){ echo "selected"; } ?>>Oui</option>
+                                    <option value="0" <?php if($ilot == 0){ echo "selected"; } ?>>Non</option>
                                 </optgroup>
                             </select>
                         </label>
@@ -234,8 +251,8 @@
                         <label>Type d'évier :&nbsp;
                             <select name="evier">
                                 <optgroup label="Evier">
-                                    <option value="0">Simple bac</option>
-                                    <option value="1">Double bac</option>
+                                    <option value="0" <?php if($evier == 0){ echo "selected"; } ?>>Simple bac</option>
+                                    <option value="1" <?php if($evier == 1){ echo "selected"; } ?>>Double bac</option>
                                 </optgroup>
                             </select>
                         </label>
@@ -243,9 +260,9 @@
                         <label>Type d'hotte :&nbsp;
                             <select name="hotte">
                                 <optgroup label="hotte">
-                                    <option value="0">LKGTU564</option>
-                                    <option value="1">MPODR509</option>
-                                    <option value="2">TRDOPA87</option>
+                                    <option value="0" <?php if($hotte == 0){ echo "selected"; } ?>>LKGTU564</option>
+                                    <option value="1" <?php if($hotte == 1){ echo "selected"; } ?>>MPODR509</option>
+                                    <option value="2" <?php if($hotte == 2){ echo "selected"; } ?>>TRDOPA87</option>
                                 </optgroup>
                             </select>
                         </label>
