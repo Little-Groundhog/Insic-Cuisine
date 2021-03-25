@@ -277,7 +277,7 @@
                             <select name="planTravail">
                                 <optgroup label="Matière plan de travail">
                                     <option value="0" <?php if($planTravail == 0){ echo "selected"; } ?>>Bois</option>
-                                    <option value="1" <?php if($planTravail == 1){ echo "selected"; } ?>>Marbre</option>
+                                    <option value="1" <?php if($planTravail == 1){ echo "selected"; } ?>>Couleur béton</option>
                                 </optgroup>
                             </select>
                         </label>
