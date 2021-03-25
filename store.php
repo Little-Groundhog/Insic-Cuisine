@@ -207,7 +207,7 @@
                     <div class="box" style="background: url(&quot;assets/img/angle.jpg&quot;) center / cover;">
                         <div class="cover">
                             <h3 class="name">Cuisine en Angle</h3>
-                            <p class="title">Pour les familles</p><a class="btn btn-primary" role="button" href="angle.html">Sélectionner</a>
+                            <p class="title">Pour les familles</p><a class="btn btn-primary" role="button" href="angle.php">Sélectionner</a>
                         </div>
                     </div>
                 </div>
