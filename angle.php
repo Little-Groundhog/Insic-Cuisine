@@ -9,17 +9,12 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i">
-    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="assets/fonts/material-icons.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="assets/css/Animated-Typing-With-Blinking.css">
     <link rel="stylesheet" href="assets/css/Features-Clean.css">
     <link rel="stylesheet" href="assets/css/Footer-Basic.css">
     <link rel="stylesheet" href="assets/css/Highlight-Blue.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="assets/css/Modern-Contact-Form.css">
     <link rel="stylesheet" href="assets/css/Team-Clean.css">
     <link rel="stylesheet" href="assets/css/Team-Grid.css">
@@ -76,43 +71,67 @@
                     <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.html">Nos meubles</a></li>
-                    <li class="nav-item"><a class="nav-link" href="store.php">Réaliser une commande</a></li>
+                    <li class="nav-item"><a class="nav-link" href="store.html">Réaliser une commande</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <section class="page-section about-heading">
-        <div class="container">
-            <div class="about-heading-content"></div>
-        </div>
-    </section>
-    <div>
-        <div class="container-fluid text-left">
-            <section class="getintouch" style="background: url(&quot;https://user-images.githubusercontent.com/22176758/106576418-62354200-653d-11eb-8de8-b4182f77ac80.png&quot;);background-size: cover;"></section>
-        </div>
-    </div>
-    <div></div>
-    <div class="team-grid">
-        <div class="container">
+    <div class="team-grid" style="height: auto;">
+        <div class="container" style="max-height: auto;max-width: auto;width: 1920;">
             <div class="intro">
-                <h2 class="text-center">Cuisine en ligne</h2>
-                <p class="text-center">Très bon choix ! <br>Une cuisine simple et efficace.</p>
+                <h2 class="text-center" data-bss-hover-animate="pulse">Cuisine en angle</h2>
+                <p class="text-center">Très bon choix ! <br>Une cuisine complète et pratique.</p>
             </div>
-            <div class="row people">
-                <div class="col-md-4 col-lg-12 item" style="padding-right: 0;padding-left: 0;width: 192;">
-                    <div class="box" style="background: repeating-radial-gradient(rgba(248,2,2,0.5), rgba(254,2,2,0.5)), url(&quot;http://inspirationcuisine.com/inspiration/ressources/uploads/2014/01/aviva-cuisine.jpg&quot;) bottom / cover, #5c1ec2;">
-                        <div class="cover" style="background: rgba(31,147,255,0.75);">
-                            <h2 class="text-center" style="padding-top: 0;">Couleur&nbsp;&nbsp;<input type="color"></h2><select class="form-control-lg" style="background: rgba(255,255,255,0);">
-                                <optgroup label="Pieds : ">
-                                    <option value="12" selected="">Rond</option>
-                                    <option value="13">Carré</option>
-                                    <option value="14">This is item 3</option>
-                                </optgroup>
-                            </select>
-                        </div>
-                    </div>
+            <div class="row row-cols-1 people">
+                <div class="col-lg-12 text-center"><img src="assets/img/untitled.png" style="align-items: center;width: 930px;"></div>
+                <div class="col text-center" style="margin-top: 30px;">
+                    <h4>Options générale</h4><label>Couleurs des meubles :&nbsp;<select>
+                            <optgroup label="Couleurs">
+                                <option value="1">Noir</option>
+                                <option value="2">Crème</option>
+                                <option value="14">Rouge</option>
+                            </optgroup>
+                        </select></label>
+                    <p></p><label>Matière du plan de travail :&nbsp;<select>
+                            <optgroup label="Matière plan de travail">
+                                <option value="1">Bois</option>
+                                <option value="2">This is item 2</option>
+                            </optgroup>
+                        </select></label>
+                    <p></p><label>Style des poignées :&nbsp;<select>
+                            <optgroup label="Poignees">
+                                <option value="1">Moderne</option>
+                                <option value="2">Arrondie</option>
+                            </optgroup>
+                        </select></label>
+                    <p></p>
+                    <h4>Options modules</h4><label>Îlot central :&nbsp;<select>
+                            <optgroup label="ilot">
+                                <option value="1">Oui</option>
+                                <option value="2">Non</option>
+                            </optgroup>
+                        </select></label>
+                    <p></p><label>Type d'évier :&nbsp;<select>
+                            <optgroup label="Evier">
+                                <option value="1">Simple bac</option>
+                                <option value="2">Double bac</option>
+                            </optgroup>
+                        </select></label>
+                    <p></p><label>Type d'hotte :&nbsp;<select>
+                            <optgroup label="hotte">
+                                <option value="1">LKGTU564</option>
+                                <option value="2">MPODR509</option>
+                                <option value="3">TRDOPA87</option>
+                            </optgroup>
+                        </select></label>
+                    <p></p><label>Position du bar :&nbsp;<select>
+                            <optgroup label="bar">
+                                <option value="1">Aucun bar</option>
+                                <option value="2">Bar sur l'aile</option>
+                            </optgroup>
+                        </select></label>
+                    <p></p><button class="btn btn-primary" type="submit">Refresh</button><label>&nbsp;</label><button class="btn btn-primary" type="submit">Terminer ma cuisine</button>
                 </div>
-                <div class="col text-center"><button class="btn btn-primary" type="submit">Terminer ma cuisine</button></div>
             </div>
         </div>
     </div>
@@ -132,7 +151,6 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="assets/js/Animated-Typing-With-Blinking.js"></script>
     <script src="assets/js/current-day.js"></script>
 </body>
