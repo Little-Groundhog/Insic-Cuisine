@@ -111,7 +111,7 @@
         if(isset($_POST["refresh"]))
         {
             /*Récupération des valeurs dans les selects*/
-            $typeCuisine = 0;
+            $typeCuisine = 0;//Les cuisines en ligne sont afféctés au numéros 0
             $couleurs = ceil($_POST['couleurs']);
             $planTravail = ceil($_POST['planTravail']);
             $poignees = ceil($_POST['poignees']);

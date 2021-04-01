@@ -131,7 +131,7 @@
         if(isset($_POST["terminer"]))
         {
             /*Récupération des valeurs dans les selects*/
-            $typeCuisine = 1;
+            $typeCuisine = 1;//Les cuisines en angle sont affectés au numéro 1
             $couleurs = ceil($_POST['couleurs']);
             $planTravail = ceil($_POST['planTravail']);
             $poignees = ceil($_POST['poignees']);
@@ -244,7 +244,7 @@
                     <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.html">Nos meubles</a></li>
-                    <li class="nav-item"><a class="nav-link" href="store.html">Réaliser une commande</a></li>
+                    <li class="nav-item"><a class="nav-link" href="store.php">Réaliser une commande</a></li>
                 </ul>
             </div>
         </div>
@@ -323,14 +323,14 @@
                             <select name="bar">
                                 <optgroup label="bar">
                                     <option value="0" <?php if($bar == 0){ echo "selected"; } ?>>Aucun bar</option>
-                                    <option value="1" <?php if($bar == 0){ echo "selected"; } ?>>Bar sur l'aile</option>
+                                    <option value="1" <?php if($bar == 1){ echo "selected"; } ?>>Bar sur l'aile</option>
                                 </optgroup>
                             </select>
                         </label>
                         <p></p>
-                        <button class="btn btn-primary" type="submit">Refresh</button>
+                        <button class="btn btn-primary" type="submit" name="refresh">Refresh</button>
                         <label>&nbsp;</label>
-                        <button class="btn btn-primary" type="submit">Terminer ma cuisine</button>
+                        <button class="btn btn-primary" type="submit" name="terminer">Terminer ma cuisine</button>
                     </form>
                 </div>
             </div>
@@ -344,7 +344,6 @@
                 <li class="list-inline-item"><a href="about.html">A propos</a></li>
                 <li class="list-inline-item"><a href="products.html">Nos meubles</a></li>
                 <li class="list-inline-item"><a href="store.php">Réaliser une commande</a></li>
-                <li class="list-inline-item"><a href="3D.html">Configurateur 3D</a></li>
             </ul>
             <p class="copyright">Insic Cusine @2020</p>
         </footer>
