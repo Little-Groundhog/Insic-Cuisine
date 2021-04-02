@@ -258,7 +258,7 @@
             </div>
             <div class="row row-cols-1 people">
                 <div class="col-lg-12 text-center">
-                    <img src="assets/img/<?php echo $_COOKIE['ReferenceImage'] ?>" style="align-items: center;width: 930px;" id="cuisineImage">
+                    <img src="assets/img/<?php echo $_COOKIE['ReferenceImage'] ?>" style="align-items: center;width: 930px;" id="cuisineImage" alt="Image non généré avec Blender">
                 </div>
                 <div class="col text-center" style="margin-top: 30px;">
                     <form action="ligne.php" method="post" >

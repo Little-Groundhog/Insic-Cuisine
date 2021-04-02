@@ -1,3 +1,21 @@
+<?php
+    @session_start(); //Lancement de la session pour les cookies
+    if($_COOKIE['IDClientCookies'] == 0 or $_COOKIE['IDClientCookies'] == NULL){
+        setcookie('IDClientCookies', 0, time() + 365*24*3600, null, null, false, true);
+    }
+    if($_COOKIE['Reference'] == 00000000 or $_COOKIE['Reference'] == NULL){
+        setcookie('Reference', 00000000, time() + 365*24*3600, null, null, false, true);
+    }
+    if($_COOKIE['ReferenceImage'] == 00000000 or $_COOKIE['ReferenceImage'] == NULL){
+        setcookie('ReferenceImage', 00000000, time() + 365*24*3600, null, null, false, true);
+    }
+    if($_COOKIE['pseudo'] == 'Non connecté' or $_COOKIE['pseudo'] == NULL){
+        setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, true);
+    }
+    if($_COOKIE['refresh'] == 'non' or $_COOKIE['refresh'] == NULL){
+        setcookie('refresh', 'non', time() + 365*24*3600, null, null, false, true);
+    }
+?>
 <!DOCTYPE html>
 <html>
 
@@ -27,6 +45,161 @@
 </head>
 
 <body style="background: linear-gradient(rgba(0,0,0,0.49), rgba(153,146,143,0.4626405090137858) 34%, rgba(255,255,255,0.65) 100%);">
+    <?php
+    /*Variables utilisées dans tout le code php de la page*/
+    $IDClient = 0;
+
+    /*Connexion à la base de données*/
+    try
+    {
+        $bdd = new PDO('mysql:host=localhost;dbname=iblkmqyy_cuisine;charset=utf8', 'iblkmqyy_cuisine', 'Marmotte8');
+        $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+    catch (Exception $e)
+    {
+        die('Erreur : ' . $e->getMessage());
+    }
+
+    /*Création d'un compte utilisateur via le formulaire en haut de la page*/
+    if(isset($_POST["createCompte"]))//Quand le bouton envoyer est pressé pour la création de compte
+    {
+        $nom = $_POST["cnom"];
+        $prenom = $_POST["cprenom"];
+        $pseudo = $_POST["cpseudo"];
+        $password = $_POST["cpassword"];
+        $budget = $_POST["cbudget"];
+        $longueur = $_POST["clongueur"];
+        $largeur = $_POST["clargeur"];
+
+
+        //Envoi dans la base de données
+        $sql = $bdd->prepare ("INSERT INTO client (nom, prenom, pseudo, motDePasse, budget, longueur, largeur)
+                                    VALUES (:nom, :prenom, :pseudo, :password, :budget, :longueur, :largeur)");
+
+        $sql->bindParam(':nom',$nom);
+        $sql->bindParam(':prenom',$prenom);
+        $sql->bindParam(':pseudo',$pseudo);
+        $sql->bindParam(':password',$password);
+        $sql->bindParam(':budget',$budget);
+        $sql->bindParam(':longueur',$longueur);
+        $sql->bindParam(':largeur',$largeur);
+        $sql->execute();
+        $sql->closeCursor();
+    }
+
+    /*Connexion au compte*/
+    if(isset($_POST["connexion"]))//Quand le bouton envoyer est pressé pour la connexion
+    {
+        $pseudo = $_POST["pseudo"];
+        $mdp = $_POST["password"];
+
+        setcookie('pseudo', $pseudo, time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+
+        $sql = $bdd->prepare("SELECT IDClient FROM client WHERE pseudo = :pseudo AND motDePasse = :mdp");
+        $sql->bindParam(':pseudo',$pseudo);
+        $sql->bindParam(':mdp',$mdp);
+        $sql->execute();
+
+        $donnees =0;//init
+
+        while($donnees = $sql->fetch())//Récupération des données ligne par ligne
+        {
+            $IDClient = $donnees['IDClient'];//Valeur à récuperer stockée en décimal
+        }
+
+        setcookie('IDClientCookies', $IDClient, time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+
+        $sql->closeCursor();
+    }
+
+    if(isset($_POST["refresh"]))
+    {
+        /*Récupération des valeurs dans les selects*/
+        $typeCuisine = 2;//Cuisine en u = 2
+        $couleurs = ceil($_POST['couleurs']);
+        $planTravail = ceil($_POST['planTravail']);
+        $poignees = ceil($_POST['poignees']);
+        $ilot = ceil($_POST['ilot']);
+        $evier = ceil($_POST['evier']);
+        $hotte = ceil($_POST['hotte']);
+        $bar = ceil($_POST['bar']);
+
+        /*Création du code image*/
+        $listeParametre = array($typeCuisine, $couleurs, $planTravail, $poignees, $ilot, $evier, $hotte, $bar);
+
+        $codeImage = implode("",$listeParametre);
+
+        /*Mise à jour du cookies avec le nom de la nouvelle image*/
+        setcookie('ReferenceImage', $codeImage . ".png", time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+        setcookie('refresh',"oui", time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+    }
+    if(isset($_POST["terminer"]))
+    {
+        /*Récupération des valeurs dans les selects*/
+        $typeCuisine = 2;//Cuisine en u = 2
+        $couleurs = ceil($_POST['couleurs']);
+        $planTravail = ceil($_POST['planTravail']);
+        $poignees = ceil($_POST['poignees']);
+        $ilot = ceil($_POST['ilot']);
+        $evier = ceil($_POST['evier']);
+        $hotte = ceil($_POST['hotte']);
+        $bar = ceil($_POST['bar']);
+
+        //Récupération des longueurs et largeurs de la cuisine client
+        $longueur = 0;
+        $largeur = 0;
+        $idclient = $_COOKIE['IDClientCookies'];
+
+        $sql = $bdd->prepare("SELECT longueur FROM client WHERE IDClient = :idclient");
+        $sql->bindParam(':idclient',$idclient);
+        $sql->execute();
+
+        $donnees =0;//init
+
+        while($donnees = $sql->fetch())//Récupération des données ligne par ligne
+        {
+            $longueur = $donnees['longueur'];//Valeur à récuperer stockée en décimal
+        }
+
+        $sql = $bdd->prepare("SELECT largeur FROM client WHERE IDClient = :idclient");
+        $sql->bindParam(':idclient',$idclient);
+        $sql->execute();
+
+        $donnees =0;//init
+
+        while($donnees = $sql->fetch())//Récupération des données ligne par ligne
+        {
+            $largeur = $donnees['largeur'];//Valeur à récuperer stockée en décimal
+        }
+
+        $separateur = 'T';//utiliser pour séparer la taille et les options
+
+        /*Création du code image*/
+        $listeParametreCatia = array($longueur, $largeur, $separateur, $typeCuisine, $couleurs, $planTravail, $poignees, $ilot, $evier, $hotte, $bar);
+
+        $codeCatia = implode("",$listeParametreCatia);
+
+        //Envoi dans la base de données
+        $sql = $bdd->prepare ("INSERT INTO assemblage (IDClient, reference)
+                                                                    VALUES (:IDClient, :reference)");
+
+        $sql->bindParam(':IDClient',$idclient);
+        $sql->bindParam(':reference',$codeCatia);
+        $sql->execute();
+        $sql->closeCursor();
+    }
+    ?>
+    <script>
+        function reload(){
+            location.reload();
+        }
+        <?php
+        if($_COOKIE['refresh']=='oui'){
+            echo "reload();";
+            setcookie('refresh',"non", time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+        }
+        ?>
+    </script>
     <div class="modal fade" role="dialog" tabindex="-1" id="modal2">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -76,7 +249,7 @@
                     <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">A propos</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.html">Nos meubles</a></li>
-                    <li class="nav-item"><a class="nav-link" href="store.html">Réaliser une commande</a></li>
+                    <li class="nav-item"><a class="nav-link" href="store.php">Réaliser une commande</a></li>
                 </ul>
             </div>
         </div>
@@ -88,7 +261,9 @@
                 <p class="text-center">Parfait !<br>Je vois que vous avez bon goût</p>
             </div>
             <div class="row row-cols-1 people">
-                <div class="col-lg-12 text-center"><img src="assets/img/untitled.png" style="align-items: center;width: 930px;"></div>
+                <div class="col-lg-12 text-center">
+                    <img src="assets/img/<?php echo $_COOKIE['ReferenceImage'] ?>" style="align-items: center;width: 930px;" id="cuisineImage" alt="Image non généré avec Blender">
+                </div>
                 <div class="col text-center" style="margin-top: 30px;">
                     <h4>Options générale</h4><label>Couleurs des meubles :&nbsp;<select>
                             <optgroup label="Couleurs">

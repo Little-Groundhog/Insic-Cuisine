@@ -215,7 +215,7 @@
                     <div class="box" style="background: url(&quot;assets/img/u.jpg&quot;) center / cover;">
                         <div class="cover">
                             <h3 class="name">Cuisine en U</h3>
-                            <p class="title">Pour les grandes surfaces ouvertes</p><a class="btn btn-primary" role="button" href="u.html">Sélectionner</a>
+                            <p class="title">Pour les grandes surfaces ouvertes</p><a class="btn btn-primary" role="button" href="u.php">Sélectionner</a>
                         </div>
                     </div>
                 </div>
