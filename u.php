@@ -265,77 +265,79 @@
                     <img src="assets/img/<?php echo $_COOKIE['ReferenceImage'] ?>" style="align-items: center;width: 930px;" id="cuisineImage" alt="Image non généré avec Blender">
                 </div>
                 <div class="col text-center" style="margin-top: 30px;">
-                    <h4>Options générale</h4>
-                    <label>Couleurs des meubles :&nbsp;
-                        <select name="couleurs">
-                            <optgroup label="Couleurs">
-                                <option value="0" <?php if($couleurs == 0){ echo "selected"; } ?>>Noir</option>
-                                <option value="1" <?php if($couleurs == 1){ echo "selected"; } ?>>Crème</option>
-                                <option value="2" <?php if($couleurs == 2){ echo "selected"; } ?>>Rouge</option>
-                            </optgroup>
-                        </select>
-                    </label>
-                    <p></p>
-                    <label>Matière du plan de travail :&nbsp;
-                        <select name="planTravail">
-                            <optgroup label="Matière plan de travail">
-                                <option value="0" <?php if($planTravail == 0){ echo "selected"; } ?>>Bois</option>
-                                <option value="1" <?php if($planTravail == 1){ echo "selected"; } ?>>Couleur béton</option>
-                            </optgroup>
-                        </select>
-                    </label>
-                    <p></p>
-                    <label>Style des poignées :&nbsp;
-                        <select name="poignees">
-                            <optgroup label="Poignees">
-                                <option value="0" <?php if($poignees == 0){ echo "selected"; } ?>>Moderne</option>
-                                <option value="1" <?php if($poignees == 1){ echo "selected"; } ?>>Arrondie</option>
-                            </optgroup>
-                        </select>
-                    </label>
-                    <p></p>
-                    <h4>Options modules</h4>
-                    <label>Îlot central :&nbsp;
-                        <select name="ilot">
-                            <optgroup label="ilot">
-                                <option value="1" <?php if($ilot == 1){ echo "selected"; } ?>>Oui</option>
-                                <option value="0" <?php if($ilot == 0){ echo "selected"; } ?>>Non</option>
-                            </optgroup>
-                        </select>
-                    </label>
-                    <p></p>
-                    <label>Type d'évier :&nbsp;
-                        <select name="evier">
-                            <optgroup label="Evier">
-                                <option value="0" <?php if($evier == 0){ echo "selected"; } ?>>Simple bac</option>
-                                <option value="1" <?php if($evier == 1){ echo "selected"; } ?>>Double bac</option>
-                            </optgroup>
-                        </select>
-                    </label>
-                    <p></p>
-                    <label>Type d'hotte :&nbsp;
-                        <select name="hotte">
-                            <optgroup label="hotte">
-                                <option value="0" <?php if($hotte == 0){ echo "selected"; } ?>>LKGTU564</option>
-                                <option value="1" <?php if($hotte == 1){ echo "selected"; } ?>>MPODR509</option>
-                                <option value="2" <?php if($hotte == 2){ echo "selected"; } ?>>TRDOPA87</option>
-                            </optgroup>
-                        </select>
-                    </label>
-                    <p></p>
-                    <label>Position du bar :&nbsp;
-                        <select name="bar">
-                            <optgroup label="bar">
-                                <option value="0" <?php if($bar == 0){ echo "selected"; } ?>>Aucun bar</option>
-                                <option value="1" <?php if($bar == 1){ echo "selected"; } ?>>Bar sur la base du U</option>
-                                <option value="2" <?php if($bar == 2){ echo "selected"; } ?>>Bar sur le coté du U</option>
-                            </optgroup>
-                        </select>
-                    </label>
-                    <p></p>
-                    <button class="btn btn-primary" type="submit" name="refresh">Refresh</button>
-                    <label>&nbsp;</label>
-                    <button class="btn btn-primary" type="submit" name="terminer">Terminer ma cuisine</button>
+                    <form action="u.php" method="post" >
+                        <h4>Options générale</h4>
+                        <label>Couleurs des meubles :&nbsp;
+                            <select name="couleurs">
+                                <optgroup label="Couleurs">
+                                    <option value="0" <?php if($couleurs == 0){ echo "selected"; } ?>>Noir</option>
+                                    <option value="1" <?php if($couleurs == 1){ echo "selected"; } ?>>Crème</option>
+                                    <option value="2" <?php if($couleurs == 2){ echo "selected"; } ?>>Rouge</option>
+                                </optgroup>
+                            </select>
+                        </label>
+                        <p></p>
+                        <label>Matière du plan de travail :&nbsp;
+                            <select name="planTravail">
+                                <optgroup label="Matière plan de travail">
+                                    <option value="0" <?php if($planTravail == 0){ echo "selected"; } ?>>Bois</option>
+                                    <option value="1" <?php if($planTravail == 1){ echo "selected"; } ?>>Couleur béton</option>
+                                </optgroup>
+                            </select>
+                        </label>
+                        <p></p>
+                        <label>Style des poignées :&nbsp;
+                            <select name="poignees">
+                                <optgroup label="Poignees">
+                                    <option value="0" <?php if($poignees == 0){ echo "selected"; } ?>>Moderne</option>
+                                    <option value="1" <?php if($poignees == 1){ echo "selected"; } ?>>Arrondie</option>
+                                </optgroup>
+                            </select>
+                        </label>
+                        <p></p>
+                        <h4>Options modules</h4>
+                        <label>Îlot central :&nbsp;
+                            <select name="ilot">
+                                <optgroup label="ilot">
+                                    <option value="1" <?php if($ilot == 1){ echo "selected"; } ?>>Oui</option>
+                                    <option value="0" <?php if($ilot == 0){ echo "selected"; } ?>>Non</option>
+                                </optgroup>
+                            </select>
+                        </label>
+                        <p></p>
+                        <label>Type d'évier :&nbsp;
+                            <select name="evier">
+                                <optgroup label="Evier">
+                                    <option value="0" <?php if($evier == 0){ echo "selected"; } ?>>Simple bac</option>
+                                    <option value="1" <?php if($evier == 1){ echo "selected"; } ?>>Double bac</option>
+                                </optgroup>
+                            </select>
+                        </label>
+                        <p></p>
+                        <label>Type d'hotte :&nbsp;
+                            <select name="hotte">
+                                <optgroup label="hotte">
+                                    <option value="0" <?php if($hotte == 0){ echo "selected"; } ?>>LKGTU564</option>
+                                    <option value="1" <?php if($hotte == 1){ echo "selected"; } ?>>MPODR509</option>
+                                    <option value="2" <?php if($hotte == 2){ echo "selected"; } ?>>TRDOPA87</option>
+                                </optgroup>
+                            </select>
+                        </label>
+                        <p></p>
+                        <label>Position du bar :&nbsp;
+                            <select name="bar">
+                                <optgroup label="bar">
+                                    <option value="0" <?php if($bar == 0){ echo "selected"; } ?>>Aucun bar</option>
+                                    <option value="1" <?php if($bar == 1){ echo "selected"; } ?>>Bar sur la base du U</option>
+                                    <option value="2" <?php if($bar == 2){ echo "selected"; } ?>>Bar sur le coté du U</option>
+                                </optgroup>
+                            </select>
+                        </label>
+                        <p></p>
+                        <button class="btn btn-primary" type="submit" name="refresh">Refresh</button>
+                        <label>&nbsp;</label>
+                        <button class="btn btn-primary" type="submit" name="terminer">Terminer ma cuisine</button>
+                    </form>
                 </div>
             </div>
         </div>
