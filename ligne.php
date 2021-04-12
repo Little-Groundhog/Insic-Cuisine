@@ -14,6 +14,7 @@
     }
     if($_COOKIE['refresh'] == '0' or $_COOKIE['refresh'] == NULL){
         setcookie('refresh', '0', time() + 365*24*3600, null, null, false, true);
+
     }
 ?>
 
