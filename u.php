@@ -3,14 +3,14 @@
     if($_COOKIE['IDClientCookies'] == 0 or $_COOKIE['IDClientCookies'] == NULL){
         setcookie('IDClientCookies', 0, time() + 365*24*3600, null, null, false, true);
     }
-    if($_COOKIE['Reference'] == 20000000 or $_COOKIE['Reference'] == NULL){
+    if($_COOKIE['Reference'] != 20000000 or $_COOKIE['Reference'] == NULL){
         setcookie('Reference', 20000000, time() + 365*24*3600, null, null, false, true);
     }
-    if($_COOKIE['ReferenceImage'] == 20000000 or $_COOKIE['ReferenceImage'] == NULL){
-        setcookie('ReferenceImage', 20000000, time() + 365*24*3600, null, null, false, true);
+    if($_COOKIE['ReferenceImage'] != '20000000.png' or $_COOKIE['ReferenceImage'] == NULL){
+        setcookie('ReferenceImage', '20000000.png', time() + 365*24*3600, null, null, false, true);
     }
-    if($_COOKIE['ReferenceImage2'] == 920000000 or $_COOKIE['ReferenceImage2'] == NULL){
-        setcookie('ReferenceImage2', 920000000, time() + 365*24*3600, null, null, false, true);
+    if($_COOKIE['ReferenceImage2'] != '920000000.png' or $_COOKIE['ReferenceImage2'] == NULL){
+        setcookie('ReferenceImage2', '920000000.png', time() + 365*24*3600, null, null, false, true);
     }
     if($_COOKIE['pseudo'] == 'Non connecté' or $_COOKIE['pseudo'] == NULL){
         setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, true);
