@@ -6,14 +6,14 @@
     if($_COOKIE['Reference'] == 00000000 or $_COOKIE['Reference'] == NULL){
         setcookie('Reference', 00000000, time() + 365*24*3600, null, null, false, true);
     }
-    if($_COOKIE['ReferenceImage'] == 00000000 or $_COOKIE['ReferenceImage'] == NULL){
-        setcookie('ReferenceImage', 00000000, time() + 365*24*3600, null, null, false, true);
+    if($_COOKIE['ReferenceImage'] == '00000000' or $_COOKIE['ReferenceImage'] == NULL){
+        setcookie('ReferenceImage', '00000000', time() + 365*24*3600, null, null, false, true);
     }
     if($_COOKIE['pseudo'] == 'Non connecté' or $_COOKIE['pseudo'] == NULL){
         setcookie('pseudo', 'Non connecté', time() + 365*24*3600, null, null, false, true);
     }
-    if($_COOKIE['refresh'] == 'non' or $_COOKIE['refresh'] == NULL){
-        setcookie('refresh', 'non', time() + 365*24*3600, null, null, false, true);
+    if($_COOKIE['refresh'] == '0' or $_COOKIE['refresh'] == NULL){
+        setcookie('refresh', '0', time() + 365*24*3600, null, null, false, true);
     }
 ?>
 
@@ -127,7 +127,7 @@
 
             /*Mise à jour du cookies avec le nom de la nouvelle image*/
             setcookie('ReferenceImage', $codeImage . ".png", time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
-            setcookie('refresh',"oui", time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+            setcookie('refresh',"0", time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
         }
         if(isset($_POST["terminer"]))
         {
@@ -190,9 +190,21 @@
             location.reload();
         }
         <?php
-            if($_COOKIE['refresh']=='oui'){
+            if($_COOKIE['refresh']=='0'){
                 echo "reload();";
-                setcookie('refresh',"non", time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+                setcookie('refresh',"1", time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+            }
+            if($_COOKIE['refresh']=='1'){
+                echo "reload();";
+                setcookie('refresh',"2", time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+            }
+            if($_COOKIE['refresh']=='3'){
+                echo "reload();";
+                setcookie('refresh',"3", time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
+            }
+            if($_COOKIE['refresh']=='4'){
+                echo "reload();";
+                setcookie('refresh',"5", time() + 365 * 24 * 3600, null, null, false, true);//Mise à jour du cookies
             }
         ?>
     </script>
