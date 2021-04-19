@@ -109,6 +109,16 @@
 
         if(isset($_POST["refresh"]))
         {
+            /*Initialisation des variables*/
+            $typeCuisine = 0;
+            $couleurs = 0;
+            $planTravail = 0;
+            $poignees = 0;
+            $ilot = 0;
+            $evier = 0;
+            $hotte = 0;
+            $bar = 0;
+
             /*Récupération des valeurs dans les selects*/
             $typeCuisine = 1;
             $couleurs = ceil($_POST['couleurs']);
@@ -130,6 +140,16 @@
         }
         if(isset($_POST["terminer"]))
         {
+            /*Initialisation des variables*/
+            $typeCuisine = 0;
+            $couleurs = 0;
+            $planTravail = 0;
+            $poignees = 0;
+            $ilot = 0;
+            $evier = 0;
+            $hotte = 0;
+            $bar = 0;
+
             /*Récupération des valeurs dans les selects*/
             $typeCuisine = 1;//Les cuisines en angle sont affectés au numéro 1
             $couleurs = ceil($_POST['couleurs']);
@@ -306,7 +326,8 @@
                         <label>Îlot central :&nbsp;
                             <select name="ilot">
                                 <optgroup label="ilot">
-                                    <option value="1" <?php if($ilot == 1){ echo "selected"; } ?>>Oui</option>
+                                    <option value="1" <?php if($ilot == 2){ echo "selected"; } ?>>Ilot avec tiroirs</option>
+                                    <option value="1" <?php if($ilot == 1){ echo "selected"; } ?>>Ilot avec portes</option>
                                     <option value="0" <?php if($ilot == 0){ echo "selected"; } ?>>Non</option>
                                 </optgroup>
                             </select>

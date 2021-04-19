@@ -117,6 +117,16 @@
 
     if(isset($_POST["refresh"]))
     {
+        /*Initialisation des variables*/
+        $typeCuisine = 0;
+        $couleurs = 0;
+        $planTravail = 0;
+        $poignees = 0;
+        $ilot = 0;
+        $evier = 0;
+        $hotte = 0;
+        $bar = 0;
+
         /*Récupération des valeurs dans les selects*/
         $typeCuisine = 2;//Cuisine en u = 2
         $couleurs = ceil($_POST['couleurs']);
@@ -139,6 +149,16 @@
     }
     if(isset($_POST["terminer"]))
     {
+        /*Initialisation des variables*/
+        $typeCuisine = 0;
+        $couleurs = 0;
+        $planTravail = 0;
+        $poignees = 0;
+        $ilot = 0;
+        $evier = 0;
+        $hotte = 0;
+        $bar = 0;
+
         /*Récupération des valeurs dans les selects*/
         $typeCuisine = 2;//Cuisine en u = 2
         $couleurs = ceil($_POST['couleurs']);
@@ -315,15 +335,6 @@
                         </label>
                         <p></p>
                         <h4>Options modules</h4>
-                        <label>Îlot central :&nbsp;
-                            <select name="ilot">
-                                <optgroup label="ilot">
-                                    <option value="1" <?php if($ilot == 1){ echo "selected"; } ?>>Oui</option>
-                                    <option value="0" <?php if($ilot == 0){ echo "selected"; } ?>>Non</option>
-                                </optgroup>
-                            </select>
-                        </label>
-                        <p></p>
                         <label>Type d'évier :&nbsp;
                             <select name="evier">
                                 <optgroup label="Evier">
@@ -347,8 +358,7 @@
                             <select name="bar">
                                 <optgroup label="bar">
                                     <option value="0" <?php if($bar == 0){ echo "selected"; } ?>>Aucun bar</option>
-                                    <option value="1" <?php if($bar == 1){ echo "selected"; } ?>>Bar sur la base du U</option>
-                                    <option value="2" <?php if($bar == 2){ echo "selected"; } ?>>Bar sur le coté du U</option>
+                                    <option value="1" <?php if($bar == 1){ echo "selected"; } ?>>Ajouter un bar</option>
                                 </optgroup>
                             </select>
                         </label>
