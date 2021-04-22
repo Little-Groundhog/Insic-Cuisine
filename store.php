@@ -122,7 +122,7 @@
                         <p></p><label>Longueur (mètres):&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input name="clongueur" type="text">
                         <p></p><label>Largeur (mètres):&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input name="clargeur" type="text">
                         <p></p>
-                    </div>
+                    </div><img src="https://user-images.githubusercontent.com/62706579/115725262-fb783580-a381-11eb-9340-d8195fc14841.jpg">
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-light" type="button" data-dismiss="modal">J'abandonne honteusement</button>
                         <button type="submit" class="btn btn-primary" name="createCompte" type="button">Créer mon compte</button>
