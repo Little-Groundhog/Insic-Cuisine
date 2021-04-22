@@ -119,8 +119,8 @@
                         <p></p><label>Mot de passe :&nbsp; &nbsp;</label><input name="cpassword" type="text">
                         <p></p><label>Budget :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</label><input name="cbudget" type="text">
                         <p style="color: var(--blue);">Paramétrage des dimensions de la cuisine :</p>
-                        <p></p><label>Longueur :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input name="clongueur" type="text">
-                        <p></p><label>Largeur :&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input name="clargeur" type="text">
+                        <p></p><label>Longueur (mètres):&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input name="clongueur" type="text">
+                        <p></p><label>Largeur (mètres):&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label><input name="clargeur" type="text">
                         <p></p>
                     </div>
                     <div class="modal-footer">
