@@ -190,7 +190,9 @@
             $separateur = 'T';//utiliser pour séparer la taille et les options
 
             /*Création du code image*/
-            $listeParametreCatia = array($longueur, $largeur, $separateur, $typeCuisine, $couleurs, $planTravail, $poignees, $ilot, $evier, $hotte, $bar);
+            $listeParametreCatia = array($longueur, $largeur, $separateur,
+                                         $typeCuisine, $couleurs, $planTravail,
+                                         $poignees, $ilot, $evier, $hotte, $bar);
 
             $codeCatia = implode("",$listeParametreCatia);
 
